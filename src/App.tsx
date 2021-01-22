@@ -1,5 +1,6 @@
-import { Button } from '@material-ui/core'
-import './App.scss'
+import React from 'react';
+import { Button } from '@material-ui/core';
+import './App.scss';
 
 function App() {
   return (
@@ -8,7 +9,7 @@ function App() {
         Hello app
       </Button>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
