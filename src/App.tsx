@@ -1,15 +1,14 @@
 import React from 'react';
-import { Button } from '@material-ui/core';
 import './App.scss';
 
-function App() {
+const App: React.FC = () => {
   return (
     <div className="App">
-      <Button variant="contained" color="primary">
-        Hello app
-      </Button>
+      <div className="header">HEADER</div>
+      <div className="navbar">NAVBAR</div>
+      <div className="main">CONTENT</div>
     </div>
   );
-}
+};
 
 export default App;

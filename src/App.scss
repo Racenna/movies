@@ -1,3 +1,54 @@
+@import 'sass/variables.scss';
+
 .App {
-  text-align: center;
+  display: grid;
+  width: 100%;
+  height: 400px;
+
+  grid-template-areas: 
+    "header header"
+    "navbar main";
+  grid-template-rows: 70px 1fr;
+  grid-template-columns: 2fr 8fr;
+
+  & > .header {
+    grid-area: header;
+    background-color: #8ca0ff;
+  }
+
+  & > .navbar {
+    grid-area: navbar;
+    background-color: #ffa08c;
+  }
+  & > .main {
+    grid-area: main;
+    background-color: #8cffa0;
+  }
+}
+
+@media (max-width: $phone-breakpoint) {
+  .App {
+    display: grid;
+    width: 100%;
+    height: 400px;
+  
+    grid-template-areas: 
+      "header"
+      "main";
+    grid-template-rows: 70px 1fr;
+    grid-template-columns: 1fr;
+  
+    & > .header {
+      grid-area: header;
+      background-color: #8ca0ff;
+    }
+  
+    & > .navbar {
+      display: none;
+    }
+    & > .main {
+      grid-area: main;
+      background-color: #8cffa0;
+    }
+  }
 }
