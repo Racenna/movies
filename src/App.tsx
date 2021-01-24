@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Header from './components/Header';
 import Navbar from './components/Navbar';
+import Recommended from './components/Main/Recommended';
 import './App.scss';
 
 const App: React.FC = () => {
@@ -18,7 +19,7 @@ const App: React.FC = () => {
             <div className="main">Categories</div>
           </Route>
           <Route exact path="/recommended">
-            <div className="main">Recommended</div>
+            <Recommended />
           </Route>
         </Switch>
       </div>

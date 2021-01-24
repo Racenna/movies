@@ -1,0 +1,51 @@
+@import '../../sass/variables.scss';
+
+.main {
+	grid-area: main;
+	padding: 4vh 3vw;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	height: 92.5vh;
+
+	.main-title {
+	  font-size: 1.5rem;
+	}
+
+	.main-content {
+		margin-top: 2vh;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: flex-start;
+
+		
+
+		&-item {
+			margin-top: 2vh;
+			margin-right: 2vw;
+
+			.item-image {
+				//TODO delete bgColor
+				background-color:purple;
+
+				border-radius: 6px;
+				height: 250px;
+				width: 200px;
+			}
+
+			.item-description {
+				margin-top: 1vh;
+
+				&-title {
+					margin-bottom: 1vh;
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: $phone-breakpoint) {
+	.main {
+		grid-area: main;
+		border: 1px solid #8cffa0;
+	}
+}

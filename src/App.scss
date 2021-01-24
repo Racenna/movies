@@ -9,10 +9,6 @@
     "navbar main";
   grid-template-rows: $headerHeight 1fr;
   grid-template-columns: 2fr 8fr;
-
-  & > .main {
-    grid-area: main;
-  }
 }
 
 @media (max-width: $phone-breakpoint) {
@@ -25,10 +21,5 @@
       "main";
     grid-template-rows: $headerHeight 1fr;
     grid-template-columns: 1fr;
-
-    & > .main {
-      grid-area: main;
-      border: 1px solid #8cffa0;
-    }
   }
 }
