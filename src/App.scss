@@ -10,14 +10,6 @@
   grid-template-rows: $headerHeight 1fr;
   grid-template-columns: 2fr 8fr;
 
-  & > .header {
-    grid-area: header;
-    display: flex;
-  }
-
-  & > .navbar {
-    grid-area: navbar;
-  }
   & > .main {
     grid-area: main;
   }
@@ -33,15 +25,7 @@
       "main";
     grid-template-rows: $headerHeight 1fr;
     grid-template-columns: 1fr;
-  
-    & > .header {
-      grid-area: header;
-      border: 1px solid #8ca0ff;
-    }
-  
-    & > .navbar {
-      display: none;
-    }
+
     & > .main {
       grid-area: main;
       border: 1px solid #8cffa0;

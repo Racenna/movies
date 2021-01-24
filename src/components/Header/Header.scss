@@ -1,49 +1,62 @@
 @import '../../sass/variables.scss';
 
-.header-logo {
+.header {
+	grid-area: header;
 	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 20%;
-	background-color: $secondaryColor;
 
-	span {
-		font-size: 38px;
-		font-weight: 500;
+	.header-logo {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 20%;
+		background-color: $secondaryColor;
+	
+		span {
+			font-size: 38px;
+			font-weight: 500;
+		}
+	}
+
+	.header-search {
+		width: 80%;
+		height: $headerHeight;
+		display: flex;
+		flex-direction: column;
+	
+		&-box {
+			height: $headerHeight - 5px;
+	
+			input[type='text'] {
+				width: 100%;
+				height: inherit;
+				background-color: inherit;
+				color: inherit;
+				text-align: center;
+				font-size: 20px;
+			}
+	
+			input[type='text']::placeholder {
+				font-size: 20px;
+				color: white;
+				opacity: .6;
+			}
+	
+			input[type='text']:focus::placeholder {
+				color: transparent;
+			}
+		}
+	
+		&-radial-gradient {
+			background: radial-gradient(53% 3px at center, $secondaryColor, $primaryColor);
+			height: $headerHeight - 65px;
+		}
 	}
 }
 
-.header-search {
-	width: 80%;
-	height: $headerHeight;
-	display: flex;
-	flex-direction: column;
 
-	&-box {
-		height: $headerHeight - 5px;
 
-		input[type='text'] {
-			width: 100%;
-			height: inherit;
-			background-color: inherit;
-			color: inherit;
-			text-align: center;
-			font-size: 20px;
-		}
-
-		input[type='text']::placeholder {
-			font-size: 20px;
-			color: white;
-			opacity: .6;
-		}
-
-		input[type='text']:focus::placeholder {
-			color: transparent;
-		}
-	}
-
-	&-radial-gradient {
-		background: radial-gradient(53% 3px at center, $secondaryColor, $primaryColor);
-		height: $headerHeight - 65px;
+@media (max-width: $phone-breakpoint) {
+	.header {
+		border: 1px solid #8ca0ff;
 	}
 }

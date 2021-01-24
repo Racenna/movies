@@ -5,10 +5,10 @@ import './Header.scss';
 
 const Header: React.FC = () => {
   return (
-    <div className="header">
+    <header className="header">
       <HeaderLogo />
       <HeaderSearch />
-    </div>
+    </header>
   );
 };
 

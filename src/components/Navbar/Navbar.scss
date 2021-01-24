@@ -1,0 +1,36 @@
+@import '../../sass/variables.scss';
+
+.navbar {
+	grid-area: navbar;
+	background-color: $navbarColor;
+
+	li {
+
+		
+		& .active {
+			border-left: .5vw solid $secondaryColor;
+		}
+		
+	  & a {
+			display: block;
+			color: #fff;
+			padding: 3vh 3vw;
+
+			&.active {
+				padding-left: 3vw - .5vw;
+				color: $secondaryColor;
+			}
+		
+			&:hover:not(.active) {
+				background-color: #444444;
+				color: #fff;
+			 }
+		}
+	}
+}
+
+@media (max-width: $phone-breakpoint) {
+	.navbar {
+		display: none;
+	}
+}
