@@ -6,8 +6,8 @@ const App: React.FC = () => {
   return (
     <div className="App">
       <Header />
-      <div className="navbar"></div>
-      <div className="main"></div>
+      <div className="navbar">NAVBAR</div>
+      <div className="main">CONTENT</div>
     </div>
   );
 };
