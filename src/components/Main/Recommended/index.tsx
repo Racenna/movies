@@ -33,7 +33,7 @@ const Recommended = () => {
     { id: '11', title: 'Boo 11', genres: 'Horror, Comedy' },
     { id: '12', title: 'Boo 12', genres: 'Horror, Comedy' },
     { id: '13', title: 'Boo 13', genres: 'Horror, Comedy' },
-    { id: '14', title: 'Boo 14', genres: 'Horror, Comedy' },
+    // { id: '14', title: 'Boo 14', genres: 'Horror, Comedy' },
   ];
 
   return (

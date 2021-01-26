@@ -63,7 +63,7 @@
 	}
 }
 
-@media (max-width: $phone-breakpoint) {
+@media (max-width: $tablet-breakpoint) {
 	.header {
 
 		.menu-box {
@@ -104,7 +104,6 @@
 		}
 
 		.menu {
-
 			display: block;
 
 			&.active {

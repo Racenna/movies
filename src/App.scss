@@ -11,7 +11,7 @@
   grid-template-columns: $logoNavbarWidth 8fr;
 }
 
-@media (max-width: $phone-breakpoint) {
+@media (max-width: $tablet-breakpoint) {
   .App {
     display: grid;
     width: 100%;

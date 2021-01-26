@@ -5,7 +5,7 @@
 	background-color: $navbarColor;
 }
 
-@media (max-width: $phone-breakpoint) {
+@media (max-width: $tablet-breakpoint) {
 	.navbar {
 		display: none;
 	}
