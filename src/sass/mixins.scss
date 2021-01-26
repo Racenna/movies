@@ -1,0 +1,15 @@
+@import './variables.scss';
+
+@mixin menuButton {
+	display: flex;
+	justify-content: space-around;
+	flex-flow: column nowrap;
+
+	.line-1, .line-2, .line-3 {
+		width: $menuBoxSize / 2;
+		height: 0.25rem;
+		background-color: #fff;
+		border-radius: 10px;
+		transition: 0.4s;
+	}
+}

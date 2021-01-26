@@ -1,6 +1,4 @@
-import React from 'react';
-
-const HeaderLogo: React.FC = () => {
+const HeaderLogo = () => {
   return (
     <div className="header-logo">
       <span>Logo</span>

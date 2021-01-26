@@ -1,6 +1,4 @@
-import React from 'react';
-
-const HeaderSearch: React.FC = () => {
+const HeaderSearch = () => {
   return (
     <div className="header-search">
       <div className="header-search-box">

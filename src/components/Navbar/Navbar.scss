@@ -3,32 +3,6 @@
 .navbar {
 	grid-area: navbar;
 	background-color: $navbarColor;
-
-	li {
-
-		& .active {
-			border-left: 5px solid $secondaryColor;
-		}
-		
-	  & a {
-			display: block;
-			color: #fff;
-			padding: 20px 50px;
-			margin: 15px 0;
-
-			font-size: 18px;
-
-			&.active {
-				padding-left: 50px - 5px;
-				color: $secondaryColor;
-			}
-		
-			&:hover:not(.active) {
-				background-color: #444444;
-				color: #fff;
-			 }
-		}
-	}
 }
 
 @media (max-width: $phone-breakpoint) {

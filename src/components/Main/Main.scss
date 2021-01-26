@@ -3,10 +3,10 @@
 .main {
 	grid-area: main;
 	margin-top: 5px;
-	padding: 35px 40px;
+	padding: 35px 40px 100px;
 	overflow-y: scroll;
 	overflow-x: hidden;
-	height: 95vh;
+	height: 100vh;
 
 	.main-title {
 		font-size: 24px;
@@ -41,8 +41,8 @@
 	}
 }
 
-@media (max-width: $phone-breakpoint) {
-	.main {
-		grid-area: main;
-	}
-}
+// @media (max-width: $phone-breakpoint) {
+// 	.main {
+// 		//TODO styles
+// 	}
+// }

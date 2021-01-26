@@ -1,4 +1,3 @@
-import React from 'react';
 import '../Main.scss';
 
 type ItemInterface = {
@@ -19,7 +18,7 @@ const Item = (props: ItemInterface) => {
   );
 };
 
-const Recommended: React.FC = () => {
+const Recommended = () => {
   const arrayItems = [
     { id: '1', title: 'Boo 1', genres: 'Horror, Comedy' },
     { id: '2', title: 'Boo 2', genres: 'Horror, Comedy' },
