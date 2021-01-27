@@ -15,8 +15,8 @@ const Navigation = () => {
         </NavLink>
       </li>
       <li>
-        <NavLink to="/recommended" activeClassName="active">
-          Recommended
+        <NavLink to="/popular" activeClassName="active">
+          Popular
         </NavLink>
       </li>
     </ul>

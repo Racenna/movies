@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Header from './components/Header';
 import Navbar from './components/Navbar';
-import Recommended from './components/Main/Recommended';
+import Popular from './components/Main/Popular';
 import './App.scss';
 
 const App = () => {
@@ -17,8 +17,8 @@ const App = () => {
           <Route exact path="/categories">
             <div className="main">Categories</div>
           </Route>
-          <Route exact path="/recommended">
-            <Recommended />
+          <Route exact path="/popular">
+            <Popular />
           </Route>
         </Switch>
       </div>

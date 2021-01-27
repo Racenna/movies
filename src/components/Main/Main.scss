@@ -3,12 +3,13 @@
 .main {
 	grid-area: main;
 	margin-top: 5px;
-	padding: 35px 10px 100px 40px;
+	padding: 35px 0px 100px 20px;
 	overflow-y: scroll;
 	overflow-x: hidden;
 	height: 100vh;
 
 	.main-title {
+		margin-left: 20px;
 		font-size: 24px;
 	}
 
@@ -18,22 +19,26 @@
 		justify-content: flex-start;
 
 		&-item {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
 			margin-top: 35px;
-			margin-right: 45px;
+			width: 250px;
 
 			.item-image {
-				//TODO delete bgColor
-				background-color:purple;
-
-				border-radius: 6px;
-				height: 250px;
-				width: 200px;
+				img {
+					border-radius: 6px;
+					height: 300px;
+					width: 200px;
+				}
 			}
 
 			.item-description {
+				max-width: 250px;
 				margin-top: 10px;
 
 				&-title {
+					text-align: center;
 					margin-bottom: 6px;
 				}
 			}
@@ -43,17 +48,26 @@
 
 @media (max-width: $tablet-breakpoint) {
 	.main {
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: center;
 
-		padding-left: 35px;
+		.main-title {
+			margin-left: 0px;
+			margin-bottom: 10px;
+			font-size: 24px;
+		}
 
 		.main-content {
-			
 	    &-item {
 				margin-top: 20px;
+				width: 220px;
 	
 				.item-image {
-					height: 200px;
-					width: 150px;
+					img {
+						height: 250px;
+						width: 180px;
+					}
 				}
 			}
 		}
@@ -61,35 +75,19 @@
 }
 
 @media (max-width: $phone-breakpoint) {
-
 	.main {
-		
 		.main-content {
+			justify-content: space-evenly;
 
 			&-item {
+				margin-top: 40px;
+				width: 250px;
 
 				.item-image {
-					height: 180px;
-					width: 130px;
-				}
-			}
-		}
-	}
-}
-
-@media (max-width: 394px) {
-
-	.main {
-		
-		.main-content {
-			flex-flow: column nowrap;
-			align-items: center;
-
-			&-item {
-
-				.item-image {
-					height: 200px;
-					width: 150px;
+					img {
+						height: 250px;
+						width: 180px;
+					}
 				}
 			}
 		}
