@@ -1,16 +1,19 @@
+import { NavLink } from 'react-router-dom';
+
 type MovieProp = {
   poster_path: string | null,
   title: string,
+  id: number,
 };
 
-const Movie = ({ poster_path, title }: MovieProp) => {
+const Movie = ({ poster_path, title, id }: MovieProp) => {
   const posterURL = `${process.env.REACT_APP_POSTER_BASE_URL}${poster_path}`;
 
   return (
     <div className="main-content-item">
-      <div className="item-image">
+      <NavLink to={`/movie/description/${id}`} className="item-image">
         <img src={posterURL} />
-      </div>
+      </NavLink>
       <div className="item-description">
         <div className="item-description-title">{title}</div>
       </div>
