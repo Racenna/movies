@@ -15,7 +15,9 @@ const Movie = ({ poster_path, title, id }: MovieProp) => {
         <img src={posterURL} />
       </NavLink>
       <div className="item-description">
-        <div className="item-description-title">{title}</div>
+        <div className="item-description-title">
+          <NavLink to={`/movie/description/${id}`}>{title}</NavLink>
+        </div>
       </div>
     </div>
   );

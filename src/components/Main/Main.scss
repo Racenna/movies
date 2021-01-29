@@ -30,6 +30,10 @@
 					border-radius: 6px;
 					height: 300px;
 					width: 200px;
+
+					&:hover {
+						opacity: .65;
+					}
 				}
 			}
 
@@ -38,8 +42,17 @@
 				margin-top: 10px;
 
 				&-title {
+					font-size: 18px;
 					text-align: center;
 					margin-bottom: 6px;
+
+					& a {
+						color: inherit;
+					}
+
+					& a:hover {
+						color: $secondaryColor;
+					}
 				}
 			}
 		}
