@@ -1,22 +1,22 @@
 import { useEffect, useState } from 'react';
 import { trendingAPI } from '../../../api/api';
 import { TrendingResults } from '../../../api/types';
-import Movies from './Movies';
+import Items from './Items/Items';
 import '../Main.scss';
 
 const Trending = () => {
-  const [movies, setMovies] = useState<Array<TrendingResults>>([]);
+  const [items, setItems] = useState<Array<TrendingResults>>([]);
 
   useEffect(() => {
     trendingAPI.getTrendingMoviesDay().then((res) => {
-      setMovies(res.results);
+      setItems(res.results);
     });
   }, []);
 
   return (
     <div className="main">
       <div className="main-title">Trending</div>
-      <Movies movies={movies} />
+      <Items items={items} />
     </div>
   );
 };

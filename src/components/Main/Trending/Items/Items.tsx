@@ -1,15 +1,15 @@
-import Movie from './Movie';
-import { TrendingResults } from '../../../api/types';
+import Item from './Item';
+import { TrendingResults } from '../../../../api/types';
 
 type MoviesProp = {
-  movies: Array<TrendingResults>,
+  items: Array<TrendingResults>,
 };
 
-const Movies = ({ movies }: MoviesProp) => {
+const Movies = ({ items }: MoviesProp) => {
   return (
     <div className="main-content">
-      {movies.map((value) => (
-        <Movie
+      {items.map((value) => (
+        <Item
           key={value.id}
           poster_path={value.poster_path}
           title={value.title}
