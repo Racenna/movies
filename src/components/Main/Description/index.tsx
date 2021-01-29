@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { moviesAPI } from '../../../api/movieAPI/movieAPI';
 import { MovieDetail } from '../../../api/movieAPI/types';
 import Preloader from '../../../common/Preloader';
+import './Description.scss';
 
 type Params = {
   movie_id: string,
@@ -20,7 +21,18 @@ const Description = () => {
 
   if (!movieDesc) return <Preloader />;
 
-  return <div className="main">{movieDesc?.title}</div>;
+  const imgPath = process.env.REACT_APP_POSTER_BASE_URL;
+
+  return (
+    <div className="description">
+      <div className="description-block">
+        <div className="description-block-poster">
+          <img src={`${imgPath}${movieDesc.poster_path}`} alt="bg-image" />
+        </div>
+        <div className="description-block-text"></div>
+      </div>
+    </div>
+  );
 };
 
 export default Description;

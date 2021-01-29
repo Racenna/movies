@@ -27,7 +27,7 @@
 
 			.item-image {
 				img {
-					border-radius: 6px;
+					border-radius: 8px;
 					height: 300px;
 					width: 200px;
 
@@ -78,7 +78,7 @@
 	
 				.item-image {
 					img {
-						height: 250px;
+						height: 270px;
 						width: 180px;
 					}
 				}
@@ -95,13 +95,6 @@
 			&-item {
 				margin-top: 40px;
 				width: 250px;
-
-				.item-image {
-					img {
-						height: 250px;
-						width: 180px;
-					}
-				}
 			}
 		}
 	}
