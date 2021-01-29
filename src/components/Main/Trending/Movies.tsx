@@ -1,9 +1,8 @@
 import Movie from './Movie';
-import { PopularMoviesResult } from '../../../api/api';
-import '../Main.scss';
+import { TrendingResults } from '../../../api/types';
 
 type MoviesProp = {
-  movies: Array<PopularMoviesResult>,
+  movies: Array<TrendingResults>,
 };
 
 const Movies = ({ movies }: MoviesProp) => {
