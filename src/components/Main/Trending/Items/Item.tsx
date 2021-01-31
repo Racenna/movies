@@ -7,7 +7,7 @@ type MovieProp = {
 };
 
 const Movie = ({ poster_path, title, id }: MovieProp) => {
-  const posterURL = `${process.env.REACT_APP_POSTER_BASE_URL}${poster_path}`;
+  const posterURL = `${process.env.REACT_APP_IMG_BASE_URL}${poster_path}`;
 
   return (
     <div className="main-content-item">

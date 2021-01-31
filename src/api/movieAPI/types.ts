@@ -1,15 +1,39 @@
 export type MovieDetail = {
   adult: boolean,
   backdrop_path: string | null,
+  belongs_to_collection: {
+    id: number,
+    name: string,
+    poster_path: string,
+    backdrop_path: string,
+  } | null,
+  budget: number,
   genres: Array<Genre>,
+  homepage: string | null,
   id: number,
+  imdb_id: string | null,
   original_language: string,
   original_title: string,
   overview: string | null,
   popularity: number,
   poster_path: string | null,
+  production_companies: Array<{
+    name: string,
+    id: number,
+    logo_path: string | null,
+    origin_country: string,
+  }>,
+  production_countries: Array<{
+    iso_3166_1: string,
+    name: string,
+  }>,
   release_date: string,
+  revenue: number,
   runtime: number | null,
+  spoken_languages: Array<{
+    iso_639_1: string,
+    name: string,
+  }>,
   status: string,
   tagline: string | null,
   title: string,
@@ -18,7 +42,42 @@ export type MovieDetail = {
   vote_count: number,
 };
 
-type Genre = {
+export type Genre = {
   id: number,
   name: string,
+};
+
+export type CastAndCrew = {
+  id: number,
+  cast: Array<Cast>,
+  crew: Array<Crew>,
+};
+
+export type Cast = {
+  adult: boolean,
+  gender: number | null,
+  id: number,
+  known_for_department: string,
+  name: string,
+  original_name: string,
+  popularity: number,
+  profile_path: string | null,
+  cast_id: number,
+  character: string,
+  credit_id: string,
+  order: number,
+};
+
+export type Crew = {
+  adult: boolean,
+  gender: number | null,
+  id: number,
+  known_for_department: string,
+  name: string,
+  original_name: string,
+  popularity: number,
+  profile_path: string | null,
+  credit_id: number,
+  department: string,
+  job: string,
 };
