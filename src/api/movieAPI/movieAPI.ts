@@ -1,5 +1,5 @@
 import { instance } from '../api';
-import { CastAndCrew, MovieDetail } from './types';
+import { CastAndCrew, MovieDetail, VideosMovie } from './types';
 
 export const moviesAPI = {
   async getMovieDetail(movie_id: number) {
@@ -11,6 +11,12 @@ export const moviesAPI = {
   async getCastMovie(movie_id: number) {
     const response = await instance.get<CastAndCrew>(
       `movie/${movie_id}/credits?language=en-US`
+    );
+    return response.data;
+  },
+  async getVideosMovie(movie_id: number) {
+    const response = await instance.get<VideosMovie>(
+      `movie/${movie_id}/videos?language=en-US`
     );
     return response.data;
   },
