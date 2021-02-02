@@ -5,7 +5,6 @@ type Prop = {
 };
 
 const ModalVideo = ({ isActive, videoKey, closeVideo }: Prop) => {
-  console.log(isActive, videoKey);
   const style = isActive ? 'active' : 'inactive';
   return (
     <div className={`modal-video ${style}`}>
