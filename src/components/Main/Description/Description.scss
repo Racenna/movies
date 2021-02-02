@@ -1,5 +1,4 @@
 @import '../../../sass/variables.scss';
-
 .description {
 	grid-area: main;
 	height: 100vh;
@@ -124,4 +123,126 @@
 
 	}
 
+	&-multimedia {
+		padding-bottom: 10px;
+		margin-bottom: 10px;
+		border-bottom: 2px solid $secondaryColor;
+
+		.videos {
+			display: flex;
+			flex-flow: row nowrap;
+			overflow-x: scroll;
+
+			.video {
+
+				&-container {
+					position: relative;
+					width: 285px;
+
+					img {
+						height: 175px;
+						width: 260px;
+					}
+
+					.preview-title {
+						display: block;
+						padding-top: 3px;
+						width: 260px;
+						white-space: nowrap;
+						overflow: hidden;
+						text-overflow: ellipsis;
+					}
+
+					.fade {
+						cursor: pointer;
+						display: flex;
+						justify-content: center;
+						align-items: center;
+						position: absolute;
+						background-color: #44444400;
+						height: 175px;
+						width: 260px;
+						top: 0;
+						left: 0;
+						transition: .3s ease;
+						
+						.play-button {
+							border-style: solid;
+							border-width: 25px 0px 25px 50px;
+							border-color: transparent transparent transparent #ffffff;
+							opacity: .8;
+							transition: .3s ease;
+						}
+
+						&:hover {
+							background-color: #44444477;
+
+							.play-button {
+								border-color: transparent transparent transparent $secondaryColor;
+							}
+						}
+
+					}
+				}
+			}
+
+			.modal-video.active {
+				z-index: 3;
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100vw;
+				height: 100vh;
+				background-color: #2e2e2ee1;
+
+				.close-button {
+					cursor: pointer;
+					margin-left: 90vw;
+					margin-top: 5vh;
+					display: flex;
+					justify-content: space-around;
+					flex-flow: column nowrap;
+					width: 50px;
+					height: 50px;
+
+					&:hover {
+						.line-1, .line-2 {
+							background-color: #cccccc;
+						}
+					}
+
+					.line-1, .line-2 {
+						width: 60px;
+						height: 4px;
+						background-color: #fff;
+						border-radius: 10px;
+						transition: .2s ease;
+					}
+
+					
+					.line-1 {
+						transform: rotate(-45deg) translate(-13px, 6px)
+					}
+
+					.line-2 {
+						transform: rotate(45deg) translate(-11px, -5px)
+					}
+
+				}
+
+				iframe {
+					margin-left: 8vw;
+					margin-right: 8vw;
+					margin-top: 5vh;
+					width: 82vw;
+					height: 70vh;
+				}
+			}
+			
+
+			.modal-video.inactive {
+			  display: none;
+			}
+		}
+	}
 }

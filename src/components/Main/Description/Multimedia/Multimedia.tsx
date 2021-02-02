@@ -1,4 +1,4 @@
-import Video from './Video';
+import Videos from './Videos/Videos';
 import { VideoType } from '../../../../api/movieAPI/types';
 
 type Prop = {
@@ -7,12 +7,8 @@ type Prop = {
 
 const Media = ({ videos }: Prop) => {
   return (
-    <div>
-      {videos.map((video) => (
-        <div key={video.id}>
-          <Video videoKey={video.key} />
-        </div>
-      ))}
+    <div className="description-multimedia">
+      <Videos videos={videos} />
     </div>
   );
 };

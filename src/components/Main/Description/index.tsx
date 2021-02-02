@@ -5,7 +5,7 @@ import { MovieDetail, Cast, VideoType } from '../../../api/movieAPI/types';
 import Preloader from '../../../common/Preloader';
 import DescriptionBlock from './DescriptionBlock/DescriptionBlock';
 import CastAndCrew from './CastAndCrewBlock/CastAndCrew';
-import Media from './Multimedia';
+import Multimedia from './Multimedia/Multimedia';
 import './Description.scss';
 
 type Params = {
@@ -51,7 +51,7 @@ const Description = () => {
         vote_count={movieDesc.vote_count}
       />
       <CastAndCrew cast={cast} />
-      <Media videos={videos} />
+      <Multimedia videos={videos} />
     </div>
   );
 };
