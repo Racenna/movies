@@ -1,7 +1,12 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { moviesAPI } from '../../../api/movieAPI/movieAPI';
-import { MovieDetail, Cast, VideoType } from '../../../api/movieAPI/types';
+import {
+  MovieDetail,
+  Cast,
+  VideoType,
+  ImageType,
+} from '../../../api/movieAPI/types';
 import Preloader from '../../../common/Preloader';
 import DescriptionBlock from './DescriptionBlock/DescriptionBlock';
 import CastAndCrew from './CastAndCrewBlock/CastAndCrew';
@@ -16,6 +21,7 @@ const Description = () => {
   const [movieDesc, setMovieDesc] = useState<MovieDetail | null>(null);
   const [cast, setCast] = useState<Array<Cast>>([]);
   const [videos, setVideos] = useState<Array<VideoType>>([]);
+  const [images, setImages] = useState<Array<ImageType>>([]);
   const { movie_id } = useParams<Params>();
 
   useEffect(() => {
@@ -31,6 +37,9 @@ const Description = () => {
     });
     moviesAPI.getVideosMovie(+movie_id).then((res) => {
       setVideos(res.results);
+    });
+    moviesAPI.getImagesMovie(+movie_id).then((res) => {
+      setImages(res);
     });
   }, []);
 
@@ -51,7 +60,7 @@ const Description = () => {
         vote_count={movieDesc.vote_count}
       />
       <CastAndCrew cast={cast} />
-      <Multimedia videos={videos} />
+      <Multimedia videos={videos} images={images} />
     </div>
   );
 };

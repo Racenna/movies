@@ -1,14 +1,17 @@
+import { VideoType, ImageType } from '../../../../api/movieAPI/types';
 import Videos from './Videos/Videos';
-import { VideoType } from '../../../../api/movieAPI/types';
+import Images from './Images/Images';
 
 type Prop = {
   videos: Array<VideoType>,
+  images: Array<ImageType>,
 };
 
-const Media = ({ videos }: Prop) => {
+const Media = ({ videos, images }: Prop) => {
   return (
     <div className="description-multimedia">
       <Videos videos={videos} />
+      <Images images={images} />
     </div>
   );
 };

@@ -25,15 +25,18 @@ const Videos = ({ videos }: Prop) => {
     <div className="videos">
       <div className="videos-title">Videos</div>
       <div className="videos-content">
-        {videos.map((video) => (
-          <div className="video" key={video.id}>
+        {videos.length !== 0 ? (
+          videos.map((video) => (
             <Video
+              key={video.id}
               videoKey={video.key}
               name={video.name}
               openVideo={openVideo}
             />
-          </div>
-        ))}
+          ))
+        ) : (
+          <i>No video</i>
+        )}
       </div>
       <ModalVideo
         isActive={isActive}

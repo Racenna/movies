@@ -6,7 +6,7 @@ type Prop = {
 
 const Video = ({ name, videoKey, openVideo }: Prop) => {
   return (
-    <div className="video-container">
+    <div className="video">
       <img src={`https://img.youtube.com/vi/${videoKey}/0.jpg`} />
       <div
         className="fade"

@@ -100,11 +100,11 @@ export type VideoType = {
 
 export type ImagesMovie = {
   id: number,
-  backdrops: Array<Image>,
-  posters: Array<Image>,
+  backdrops: Array<ImageType>,
+  posters: Array<ImageType>,
 };
 
-export type Image = {
+export type ImageType = {
   aspect_ratio: number,
   file_path: string,
   height: number,
