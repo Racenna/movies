@@ -97,3 +97,19 @@ export type VideoType = {
   size: string,
   type: string,
 };
+
+export type ImagesMovie = {
+  id: number,
+  backdrops: Array<Image>,
+  posters: Array<Image>,
+};
+
+export type Image = {
+  aspect_ratio: number,
+  file_path: string,
+  height: number,
+  iso_639_1: string | null,
+  vote_average: number,
+  vote_count: number,
+  width: number,
+};

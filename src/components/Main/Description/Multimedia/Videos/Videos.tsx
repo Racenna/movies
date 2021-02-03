@@ -23,11 +23,18 @@ const Videos = ({ videos }: Prop) => {
 
   return (
     <div className="videos">
-      {videos.map((video) => (
-        <div className="video" key={video.id}>
-          <Video videoKey={video.key} name={video.name} openVideo={openVideo} />
-        </div>
-      ))}
+      <div className="videos-title">Videos</div>
+      <div className="videos-content">
+        {videos.map((video) => (
+          <div className="video" key={video.id}>
+            <Video
+              videoKey={video.key}
+              name={video.name}
+              openVideo={openVideo}
+            />
+          </div>
+        ))}
+      </div>
       <ModalVideo
         isActive={isActive}
         videoKey={videoKey}

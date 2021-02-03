@@ -130,58 +130,69 @@
 
 		.videos {
 			display: flex;
-			flex-flow: row nowrap;
-			overflow-x: scroll;
+			flex-flow: column nowrap;
 
-			.video {
+			&-title {
+				font-size: 28px;
+				margin-bottom: 10px;
+			}
+			
+			&-content {
+				display: flex;
+				flex-flow: row nowrap;
+				overflow-x: scroll;
 
-				&-container {
-					position: relative;
-					width: 285px;
-
-					img {
-						height: 175px;
-						width: 260px;
-					}
-
-					.preview-title {
-						display: block;
-						padding-top: 3px;
-						width: 260px;
-						white-space: nowrap;
-						overflow: hidden;
-						text-overflow: ellipsis;
-					}
-
-					.fade {
-						cursor: pointer;
-						display: flex;
-						justify-content: center;
-						align-items: center;
-						position: absolute;
-						background-color: #44444400;
-						height: 175px;
-						width: 260px;
-						top: 0;
-						left: 0;
-						transition: .3s ease;
-						
-						.play-button {
-							border-style: solid;
-							border-width: 25px 0px 25px 50px;
-							border-color: transparent transparent transparent #ffffff;
-							opacity: .8;
+				.video {
+	
+					&-container {
+						position: relative;
+						width: 300px;
+	
+						img {
+							object-fit: cover;
+							height: 160px;
+							width: 285px;
+						}
+	
+						.preview-title {
+							display: block;
+							padding-top: 3px;
+							width: 260px;
+							white-space: nowrap;
+							overflow: hidden;
+							text-overflow: ellipsis;
+						}
+	
+						.fade {
+							cursor: pointer;
+							display: flex;
+							justify-content: center;
+							align-items: center;
+							position: absolute;
+							background-color: #44444400;
+							height: 160px;
+							width: 285px;
+							top: 0;
+							left: 0;
 							transition: .3s ease;
-						}
-
-						&:hover {
-							background-color: #44444477;
-
+							
 							.play-button {
-								border-color: transparent transparent transparent $secondaryColor;
+								border-style: solid;
+								border-width: 25px 0px 25px 50px;
+								border-color: transparent transparent transparent #ffffff;
+								opacity: .8;
+								transition: .3s ease;
 							}
+	
+							&:hover {
+								background-color: #44444477;
+	
+								.play-button {
+									border-color: transparent transparent transparent $secondaryColor;
+								}
+							}
+	
 						}
-
 					}
 				}
 			}
