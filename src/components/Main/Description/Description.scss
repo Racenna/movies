@@ -17,7 +17,8 @@
 		border-bottom: 2px solid $secondaryColor;
 
 		&-poster {
-			margin-right: 24px;
+			margin-right: 24px;			
+			user-select: none;
 
 			img {
 				width: 300px;
@@ -56,13 +57,15 @@
 				flex-direction: row;
 				flex-wrap: wrap;
 				align-items: center;
-	
+
 				&-item {
 					margin-left: 5px;
 					padding: 3px 5px;
 					border: 2px solid $secondaryColor;
 					border-radius: 6px;
 					
+					user-select: none;
+
 					&:hover {
 						cursor: pointer;
 						background-color: $secondaryColor;
@@ -100,6 +103,8 @@
 					height: 150px;
 					border-radius: 6px;
 					margin-bottom: 3px;
+
+					user-select: none;
 				}
 			}
 
@@ -114,6 +119,8 @@
 				font-weight: 500;
 				margin-bottom: 50px;
 				border-radius: 6px;
+
+				user-select: none;
 
 				&:hover {
 					cursor: pointer;
@@ -151,12 +158,16 @@
 	
 					.video {
 						position: relative;
-						width: 300px;
+						// width: 300px;
+						margin-right: 20px;
+
 	
 						img {
 							object-fit: cover;
 							height: 160px;
 							width: 285px;
+							
+							user-select: none;
 						}
 	
 						.preview-title {
@@ -209,6 +220,8 @@
 				width: 100vw;
 				height: 100vh;
 				background-color: #2e2e2ee1;
+
+				user-select: none;
 
 				.close-button {
 					cursor: pointer;
@@ -275,6 +288,8 @@
 				overflow-x: scroll;
 				align-items: center;
 				padding-bottom: 5px;
+				
+				user-select: none;
 
 				.image {
 					margin-right: 20px;
@@ -282,14 +297,114 @@
 						border-radius: 10px;
 						height: 170px;
 						width: 255px;
+						transition: .3s ease;
+
+						&:hover {
+							cursor: pointer;
+							opacity: .6;
+						}
 					}
 
 					.poster-img {
 						border-radius: 10px;
 						height: 255px;
 						width: 170px;
+						transition: .3s ease;
+
+						&:hover {
+							cursor: pointer;
+							opacity: .6;
+						}
 					}
 				}
+			}
+
+			.modal-image.active {
+				z-index: 3;
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100vw;
+				height: 100vh;
+				background-color: #2e2e2ee1;
+				
+				user-select: none;
+
+				.close-button {
+					cursor: pointer;
+					margin-left: 90vw;
+					margin-top: 5vh;
+					display: flex;
+					justify-content: space-around;
+					flex-flow: column nowrap;
+					width: 50px;
+					height: 50px;
+
+					&:hover {
+						.line-1, .line-2 {
+							background-color: #cccccc;
+						}
+					}
+
+					.line-1, .line-2 {
+						width: 60px;
+						height: 4px;
+						background-color: #fff;
+						border-radius: 10px;
+						transition: .2s ease;
+					}
+
+					
+					.line-1 {
+						transform: rotate(-45deg) translate(-13px, 6px)
+					}
+
+					.line-2 {
+						transform: rotate(45deg) translate(-11px, -5px)
+					}
+
+				}
+
+				.centered-img {
+					display:flex;
+					justify-content: space-between;
+					align-items: center;
+					height: 675px;
+					margin: 5vh;
+
+					.backdrop-img {
+						border-radius: 10px;
+						height: 450px;
+						width: 675px;
+					}
+	
+					.poster-img {
+						border-radius: 10px;
+						height: 675px;
+						width: 450px;
+					}
+
+					.arrow-button {
+						display: flex;
+						justify-content: center;
+						align-items: center;
+						width: 70px;
+						height: 70px;
+						background-color: transparent;
+						font-size: 40px;
+						transition: .3s ease;
+						
+						&:hover {
+							cursor: pointer;
+							background-color: #000000;
+						}
+					}
+				}
+			}
+			
+
+			.modal-image.inactive {
+			  display: none;
 			}
 		}
 	}
