@@ -21,22 +21,20 @@ const Videos = ({ videos }: Prop) => {
     setVideoKey('');
   };
 
+  const emptyStyle = videos.length === 0 ? 'empty' : '';
+
   return (
-    <div className="videos">
+    <div className={`videos ${emptyStyle}`}>
       <div className="videos-title">Videos</div>
       <div className="videos-content">
-        {videos.length !== 0 ? (
-          videos.map((video) => (
-            <Video
-              key={video.id}
-              videoKey={video.key}
-              name={video.name}
-              openVideo={openVideo}
-            />
-          ))
-        ) : (
-          <i>No video</i>
-        )}
+        {videos.map((video) => (
+          <Video
+            key={video.id}
+            videoKey={video.key}
+            name={video.name}
+            openVideo={openVideo}
+          />
+        ))}
       </div>
       <ModalVideo
         isActive={isActive}

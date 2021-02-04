@@ -37,25 +37,23 @@ const Images = ({ images }: Prop) => {
     }
   };
 
+  const emptyStyle = images.length === 0 ? 'empty' : '';
+
   return (
-    <div className="images">
+    <div className={`images ${emptyStyle}`}>
       <div className="images-title">Images</div>
       <div className="images-content">
-        {images.length !== 0 ? (
-          images.map((image, index) => {
-            const imgKey = image.file_path.slice(1, image.file_path.length - 4);
-            return (
-              <Image
-                image={image}
-                key={imgKey}
-                index={index}
-                openImage={openImage}
-              />
-            );
-          })
-        ) : (
-          <i>No Images</i>
-        )}
+        {images.map((image, index) => {
+          const imgKey = image.file_path.slice(1, image.file_path.length - 4);
+          return (
+            <Image
+              image={image}
+              key={imgKey}
+              index={index}
+              openImage={openImage}
+            />
+          );
+        })}
       </div>
       <ModalImage
         isActive={isActive}
