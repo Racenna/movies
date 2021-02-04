@@ -1,5 +1,11 @@
 import { instance } from '../api';
-import { CastAndCrew, ImagesMovie, MovieDetail, VideosMovie } from './types';
+import {
+  CastAndCrew,
+  ImagesMovie,
+  MovieDetail,
+  RecommendationsAndSimilarMovie,
+  VideosMovie,
+} from './types';
 
 export const moviesAPI = {
   async getMovieDetail(movie_id: number) {
@@ -25,5 +31,17 @@ export const moviesAPI = {
       `movie/${movie_id}/images?language=en`
     );
     return [...response.data.posters, ...response.data.backdrops];
+  },
+  async getRecommendedMovies(movie_id: number) {
+    const response = await instance.get<RecommendationsAndSimilarMovie>(
+      `movie/${movie_id}/recommendations?language=en`
+    );
+    return response.data.results;
+  },
+  async getSimilarMovies(movie_id: number) {
+    const response = await instance.get<RecommendationsAndSimilarMovie>(
+      `movie/${movie_id}/similar?language=en`
+    );
+    return response.data.results;
   },
 };

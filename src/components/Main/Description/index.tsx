@@ -6,11 +6,13 @@ import {
   Cast,
   VideoType,
   ImageType,
+  RecommendationsAndSimilarResult,
 } from '../../../api/movieAPI/types';
 import Preloader from '../../../common/Preloader';
 import DescriptionBlock from './DescriptionBlock/DescriptionBlock';
 import CastAndCrew from './CastAndCrewBlock/CastAndCrew';
 import Multimedia from './Multimedia/Multimedia';
+import RecommendedAndSimilar from './RecommendedAndSimilar/RecommendedAndSimilar';
 import './Description.scss';
 
 type Params = {
@@ -22,6 +24,12 @@ const Description = () => {
   const [cast, setCast] = useState<Array<Cast>>([]);
   const [videos, setVideos] = useState<Array<VideoType>>([]);
   const [images, setImages] = useState<Array<ImageType>>([]);
+  const [recommended, setRecommended] = useState<
+    Array<RecommendationsAndSimilarResult>
+  >([]);
+  const [similar, setSimilar] = useState<
+    Array<RecommendationsAndSimilarResult>
+  >([]);
   const { movie_id } = useParams<Params>();
 
   useEffect(() => {
@@ -41,7 +49,13 @@ const Description = () => {
     moviesAPI.getImagesMovie(+movie_id).then((res) => {
       setImages(res);
     });
-  }, []);
+    moviesAPI.getRecommendedMovies(+movie_id).then((res) => {
+      setRecommended(res.slice(0, 6));
+    });
+    moviesAPI.getSimilarMovies(+movie_id).then((res) => {
+      setSimilar(res.slice(0, 6));
+    });
+  }, [movie_id]);
 
   if (!movieDesc) return <Preloader />;
 
@@ -61,6 +75,7 @@ const Description = () => {
       />
       <CastAndCrew cast={cast} />
       <Multimedia videos={videos} images={images} />
+      <RecommendedAndSimilar recommended={recommended} similar={similar} />
     </div>
   );
 };
