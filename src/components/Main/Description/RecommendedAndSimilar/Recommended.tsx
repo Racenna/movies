@@ -1,11 +1,11 @@
 import { NavLink } from 'react-router-dom';
 import { RecommendationsAndSimilarResult } from '../../../../api/movieAPI/types';
 
-type Prop = {
+type Props = {
   recommended: Array<RecommendationsAndSimilarResult>,
 };
 
-const Recommended = ({ recommended }: Prop) => {
+const Recommended = ({ recommended }: Props) => {
   const emptyStyle = recommended.length === 0 ? 'empty' : '';
   return (
     <div className={`recommended ${emptyStyle}`}>

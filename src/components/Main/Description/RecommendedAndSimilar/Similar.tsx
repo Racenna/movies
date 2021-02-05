@@ -1,11 +1,11 @@
 import { NavLink } from 'react-router-dom';
 import { RecommendationsAndSimilarResult } from '../../../../api/movieAPI/types';
 
-type Prop = {
+type Props = {
   similar: Array<RecommendationsAndSimilarResult>,
 };
 
-const Similar = ({ similar }: Prop) => {
+const Similar = ({ similar }: Props) => {
   const emptyStyle = similar.length === 0 ? 'empty' : '';
 
   return (

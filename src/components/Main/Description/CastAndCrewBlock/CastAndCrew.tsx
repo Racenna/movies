@@ -1,11 +1,11 @@
 // cast={cast} crew={crew}
 import { Cast } from '../../../../api/movieAPI/types';
 
-type Prop = {
+type Props = {
   cast: Array<Cast>,
 };
 
-const CastAndCrew = ({ cast }: Prop) => {
+const CastAndCrew = ({ cast }: Props) => {
   const shortCastList = cast.slice(0, 5);
   return (
     <div className="description-cast">

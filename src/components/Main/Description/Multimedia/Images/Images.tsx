@@ -3,11 +3,11 @@ import { ImageType } from '../../../../../api/movieAPI/types';
 import Image from './Image';
 import ModalImage from './ModalImage';
 
-type Prop = {
+type Props = {
   images: Array<ImageType>,
 };
 
-const Images = ({ images }: Prop) => {
+const Images = ({ images }: Props) => {
   const [isActive, setIsActive] = useState(false);
   const [imageIndex, setImageIndex] = useState(0);
 

@@ -1,7 +1,7 @@
 import { Genre } from '../../../../api/movieAPI/types';
 import Genres from './Genres';
 
-type Prop = {
+type Props = {
   poster_path: string | null,
   title: string,
   overview: string | null,
@@ -25,7 +25,7 @@ const DescriptionBlock = ({
   status,
   vote_average,
   vote_count,
-}: Prop) => {
+}: Props) => {
   const poster = `${process.env.REACT_APP_IMG_BASE_URL}${poster_path}`;
   const date = release_date.slice(0, 4);
 

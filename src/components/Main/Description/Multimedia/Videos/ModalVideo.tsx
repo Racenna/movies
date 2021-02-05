@@ -1,10 +1,10 @@
-type Prop = {
+type Props = {
   isActive: boolean,
   videoKey: string,
   closeVideo: () => void,
 };
 
-const ModalVideo = ({ isActive, videoKey, closeVideo }: Prop) => {
+const ModalVideo = ({ isActive, videoKey, closeVideo }: Props) => {
   const style = isActive ? 'active' : 'inactive';
   return (
     <div className={`modal-video ${style}`}>

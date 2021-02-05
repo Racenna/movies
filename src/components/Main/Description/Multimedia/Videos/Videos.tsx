@@ -3,11 +3,11 @@ import { VideoType } from '../../../../../api/movieAPI/types';
 import Video from './Video';
 import ModalVideo from './ModalVideo';
 
-type Prop = {
+type Props = {
   videos: Array<VideoType>,
 };
 
-const Videos = ({ videos }: Prop) => {
+const Videos = ({ videos }: Props) => {
   const [isActive, setIsActive] = useState(false);
   const [videoKey, setVideoKey] = useState('');
 

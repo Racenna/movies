@@ -1,6 +1,6 @@
 import { ImageType } from '../../../../../api/movieAPI/types';
 
-type Prop = {
+type Props = {
   isActive: boolean,
   image: ImageType,
   closeImage: () => void,
@@ -14,7 +14,7 @@ const ModalImage = ({
   closeImage,
   previousImage,
   nextImage,
-}: Prop) => {
+}: Props) => {
   if (!image) return <div></div>;
 
   const style = isActive ? 'active' : 'inactive';

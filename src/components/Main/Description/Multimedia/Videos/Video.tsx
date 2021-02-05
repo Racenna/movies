@@ -1,10 +1,10 @@
-type Prop = {
+type Props = {
   videoKey: string,
   name: string,
   openVideo: (value: string) => void,
 };
 
-const Video = ({ name, videoKey, openVideo }: Prop) => {
+const Video = ({ name, videoKey, openVideo }: Props) => {
   return (
     <div className="video">
       <img src={`https://img.youtube.com/vi/${videoKey}/0.jpg`} />
