@@ -30,34 +30,29 @@ const Description = () => {
   const [similar, setSimilar] = useState<
     Array<RecommendationsAndSimilarResult>
   >([]);
+  const [isLoading, setIsLoading] = useState(true);
   const { movie_id } = useParams<Params>();
 
   useEffect(() => {
-    moviesAPI.getMovieDetail(+movie_id).then((res) => {
-      setMovieDesc(res);
-    });
-    moviesAPI.getCastMovie(+movie_id).then((res) => {
+    setIsLoading(true);
+    moviesAPI.getAllMovieDetail(+movie_id).then((res) => {
+      setMovieDesc(res.detail);
       setCast(
-        res.cast.filter((item) => {
-          return item.profile_path !== null ? true : false;
-        })
+        res.castAndCrew.cast.filter((item) =>
+          item.profile_path !== null ? true : false
+        )
       );
-    });
-    moviesAPI.getVideosMovie(+movie_id).then((res) => {
-      setVideos(res.results);
-    });
-    moviesAPI.getImagesMovie(+movie_id).then((res) => {
-      setImages(res);
-    });
-    moviesAPI.getRecommendedMovies(+movie_id).then((res) => {
-      setRecommended(res.slice(0, 6));
-    });
-    moviesAPI.getSimilarMovies(+movie_id).then((res) => {
-      setSimilar(res.slice(0, 6));
+      setVideos(res.videos.results);
+      setImages(res.images);
+      setRecommended(res.recommendations.slice(0, 6));
+      setSimilar(res.similar.slice(0, 6));
+      setIsLoading(false);
     });
   }, [movie_id]);
 
-  if (!movieDesc) return <Preloader />;
+  // if (!movieDesc) return <Preloader />;
+  if (isLoading || !movieDesc) return <Preloader />;
+  console.log(setIsLoading);
 
   return (
     <div className="description">
