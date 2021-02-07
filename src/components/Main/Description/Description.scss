@@ -1,0 +1,505 @@
+@import '../../../sass/variables.scss';
+
+.description {
+	grid-area: main;
+	height: 100vh;
+	padding: 25px 0 100px 20px;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	line-height: 1.2;
+
+	&-block {
+		display: flex;
+		flex-direction: column;
+
+		padding-bottom: 10px;
+		margin-bottom: 10px;
+		border-bottom: 1px solid $secondaryColor;
+
+		.title {
+			font-size: 36px;
+
+			padding-bottom: 10px;
+			margin-bottom: 10px;
+			border-bottom: 1px solid $secondaryColor;
+		}
+
+		.detail {
+			display: flex;
+			
+			&-poster {
+				margin-right: 20px;
+	
+				img {
+					width: 250px;
+					height: 375px;
+					border-radius: 6px;
+				}
+			}
+
+			&-text {
+				min-width: 100px;
+	
+				.info {
+					padding-bottom: 10px;
+					margin-bottom: 10px;
+					border-bottom: 1px solid $secondaryColor;
+	
+					&-item {
+						margin-bottom: 6px;
+					}
+	
+					span {
+						color: $secondaryColor;
+					}
+				}
+				
+				.genres {
+					display: flex;
+					flex-direction: row;
+					flex-wrap: wrap;
+					align-items: center;
+	
+					&-item {
+						margin-right: 8px;
+						padding: 5px 8px;
+						border: 2px solid $secondaryColor;
+						border-radius: 4px;
+						
+						user-select: none;
+	
+						&:hover {
+							cursor: pointer;
+							background-color: $secondaryColor;
+						}
+					}
+	
+				}
+			}
+		}
+	}
+
+	&-cast {
+		padding-bottom: 10px;
+		margin-bottom: 10px;
+		border-bottom: 1px solid $secondaryColor;
+		
+		&-title {
+			font-size: 28px;
+		}
+
+		.more {
+			margin-right: 20px;
+			float: right;
+			transition: .3s ease;
+
+			&:hover {
+				cursor: pointer;
+				color: $secondaryColor;
+			}
+		}
+
+		.cast {
+			margin-top: 10px;
+			padding-bottom: 10px;
+			display: flex;
+			overflow-x: scroll;
+
+			&-item {
+				display: flex;
+				flex-flow: column nowrap;
+				align-items: center;
+				text-align: center;
+				min-width: 150px;
+				width: 150px;
+				border-radius: 6px;
+				overflow: hidden;
+				margin-right: 15px;
+				background-color: $lightGrayColor;
+				transition: .3s ease;
+
+				img {
+					width: 100%;
+					height: 225px;
+				}
+
+				.cast-name {
+					margin: 10px 0;
+				}
+
+				&:hover {
+					cursor: pointer;
+					background-color: $hoverLightGrayColor;
+				}
+			}
+		}
+
+	}
+
+	&-multimedia {
+		padding-bottom: 10px;
+		margin-bottom: 10px;
+		border-bottom: 2px solid $secondaryColor;
+
+		.videos {
+			&.empty {
+				display: none;
+			}
+
+			&-title {
+				font-size: 28px;
+				margin-bottom: 10px;
+			}
+			
+			&-content {
+				display: flex;
+				flex-flow: row nowrap;
+				overflow-x: scroll;
+				padding-bottom: 5px;
+	
+					.video {
+						position: relative;
+						margin-right: 25px;
+
+						img {
+							object-fit: cover;
+							height: 160px;
+							width: 285px;
+						}
+	
+						.preview-title {
+							display: block;
+							padding-top: 3px;
+							width: 260px;
+							white-space: nowrap;
+							overflow: hidden;
+							text-overflow: ellipsis;
+						}
+	
+						.fade {
+							cursor: pointer;
+							display: flex;
+							justify-content: center;
+							align-items: center;
+							position: absolute;
+							height: 160px;
+							width: 285px;
+							top: 0;
+							left: 0;
+							transition: .3s ease;
+							
+							.play-button {
+								border-style: solid;
+								border-width: 25px 0px 25px 50px;
+								border-color: transparent transparent transparent #ffffff;
+								opacity: .8;
+								transition: .3s ease;
+							}
+	
+							&:hover {
+								background-color: #44444477;
+	
+								.play-button {
+									border-color: transparent transparent transparent $secondaryColor;
+								}
+							}
+	
+						}
+					}
+			}
+
+			.modal-video.active {
+				z-index: 3;
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background-color: $modalColor;
+
+				user-select: none;
+
+				.close-button {
+					cursor: pointer;
+					margin: 3vh 12vw 3vh 88vw;
+					display: flex;
+					justify-content: space-around;
+					flex-flow: column nowrap;
+					width: 30px;
+					height: 30px;
+
+					&:hover {
+						.line-1, .line-2 {
+							background-color: #cccccc;
+						}
+					}
+
+					.line-1, .line-2 {
+						width: 40px;
+						height: 4px;
+						background-color: #fff;
+						border-radius: 6px;
+						transition: .2s ease;
+					}
+
+					.line-1 {
+						transform: rotate(-45deg) translate(-9px, 1px)
+					}
+
+					.line-2 {
+						transform: rotate(45deg) translate(-9px, -1px)
+					}
+
+				}
+
+				.video-wrapper {
+					position: relative;
+					height: 0;
+					padding-bottom: 94vh;
+					width: 80vw;
+					margin: auto;
+					iframe {
+						position: absolute;
+						width: 100%;
+						height: 80%;
+					}
+				}
+			}
+			
+
+			.modal-video.inactive {
+			  display: none;
+			}
+		}
+
+		.images {
+			display: flex;
+			flex-flow: column nowrap;
+
+			&.empty {
+				display: none;
+			}
+
+			&-title {
+				font-size: 28px;
+				margin-bottom: 10px;
+			}
+
+			&-content {
+				display: flex;
+				flex-flow: row nowrap;
+				overflow-x: scroll;
+				align-items: center;
+				padding-bottom: 5px;
+				
+				user-select: none;
+
+				.image {
+					margin-right: 20px;
+					.backdrop-img {
+						border-radius: 8px;
+						height: 170px;
+						width: 255px;
+						transition: .3s ease;
+
+						&:hover {
+							cursor: pointer;
+							opacity: .6;
+						}
+					}
+
+					.poster-img {
+						border-radius: 8px;
+						height: 255px;
+						width: 170px;
+						transition: .3s ease;
+
+						&:hover {
+							cursor: pointer;
+							opacity: .6;
+						}
+					}
+				}
+			}
+
+			.modal-image.active {
+				z-index: 3;
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100vw;
+				height: 100vh;
+				background-color: #2e2e2ee1;
+				
+				user-select: none;
+
+				.close-button {
+					cursor: pointer;
+					margin: 3vh 12vw 3vh 88vw;
+					display: flex;
+					justify-content: space-around;
+					flex-flow: column nowrap;
+					width: 30px;
+					height: 30px;
+
+					&:hover {
+						.line-1, .line-2 {
+							background-color: #cccccc;
+						}
+					}
+
+					.line-1, .line-2 {
+						width: 40px;
+						height: 4px;
+						background-color: #fff;
+						border-radius: 6px;
+						transition: .2s ease;
+					}
+
+					.line-1 {
+						transform: rotate(-45deg) translate(-9px, 1px)
+					}
+
+					.line-2 {
+						transform: rotate(45deg) translate(-9px, -1px)
+					}
+
+				}
+
+				.centered-img {
+					display:flex;
+					justify-content: space-between;
+					align-items: center;
+					height: 675px;
+					margin: 5vh;
+
+					.backdrop-img {
+						border-radius: 8px;
+						height: 450px;
+						width: 675px;
+					}
+	
+					.poster-img {
+						border-radius: 8px;
+						height: 675px;
+						width: 450px;
+					}
+
+					.arrow-button {
+						display: flex;
+						justify-content: center;
+						align-items: center;
+						width: 70px;
+						height: 70px;
+						background-color: transparent;
+						font-size: 40px;
+						transition: .3s ease;
+						
+						&:hover {
+							cursor: pointer;
+							background-color: #000000;
+						}
+					}
+				}
+			}
+			
+
+			.modal-image.inactive {
+			  display: none;
+			}
+		}
+	}
+
+	.recommended-and-similar {
+
+		.recommended {
+			&.empty {
+				display: none;
+			}
+
+			&-title {
+				font-size: 28px;
+				margin-bottom: 10px;
+			}
+
+			&-content {
+				display: flex;
+				flex-flow: row nowrap;
+				overflow-x: scroll;
+				padding-bottom: 5px;
+
+				.item {
+					margin-right: 20px;
+					text-align: center;
+
+					&-title {
+						margin-top: 5px;
+					}
+
+					img {
+						border-radius: 8px;
+						height: 300px;
+						width: 200px;
+						transition: .3s ease;
+	
+						&:hover {
+							opacity: .65;
+						}
+					}
+
+					a {
+						color: inherit;
+					
+						&:hover {color: $secondaryColor}
+					}
+				}
+			}
+		}
+
+		.similar {
+			&.empty {
+				display: none;
+			}
+
+			&-title {
+				font-size: 28px;
+				margin-bottom: 10px;
+			}
+
+			&-content {
+				display: flex;
+				flex-flow: row nowrap;
+				overflow-x: scroll;
+				padding-bottom: 5px;
+
+				.item {
+					margin-right: 20px;
+					text-align: center;
+
+					&-title {
+						margin-top: 5px;
+					}
+
+					img {
+						border-radius: 8px;
+						height: 300px;
+						width: 200px;
+						transition: .3s ease;
+	
+						&:hover {
+							opacity: .65;
+						}
+					}
+
+					a {
+						color: inherit;
+					
+						&:hover {color: $secondaryColor}
+					}
+				}
+			}
+		}
+	}
+
+
+}

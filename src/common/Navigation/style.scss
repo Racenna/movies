@@ -1,0 +1,24 @@
+@import '../../sass/variables.scss';
+
+li {
+	& .active {
+		border-left: 5px solid $secondaryColor;
+	}
+	
+	& a {
+		display: block;
+		color: #fff;
+		padding: 20px 50px;
+		margin: 15px 0;
+
+		&.active {
+			padding-left: 50px - 5px;
+			color: $secondaryColor;
+		}
+	
+		&:hover:not(.active) {
+			background-color: $hoverLightGrayColor;
+			color: #fff;
+		}
+	}
+}
