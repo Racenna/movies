@@ -12,10 +12,12 @@ const ModalVideo = ({ isActive, videoKey, closeVideo }: Props) => {
         <div className="line-1"></div>
         <div className="line-2"></div>
       </div>
-      <iframe
-        src={`https://www.youtube.com/embed/${videoKey}`}
-        allowFullScreen
-      ></iframe>
+      <div className="video-wrapper">
+        <iframe
+          src={`https://www.youtube.com/embed/${videoKey}`}
+          allowFullScreen
+        ></iframe>
+      </div>
     </div>
   );
 };

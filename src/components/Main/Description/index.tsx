@@ -37,11 +37,12 @@ const Description = () => {
     setIsLoading(true);
     moviesAPI.getAllMovieDetail(+movie_id).then((res) => {
       setMovieDesc(res.detail);
-      setCast(
-        res.castAndCrew.cast.filter((item) =>
-          item.profile_path !== null ? true : false
-        )
-      );
+      // setCast(
+      //   res.castAndCrew.cast.filter((item) =>
+      //     item.profile_path !== null ? true : false
+      //   )
+      // );
+      setCast(res.castAndCrew.cast);
       setVideos(res.videos.results);
       setImages(res.images);
       setRecommended(res.recommendations.slice(0, 6));
@@ -50,9 +51,7 @@ const Description = () => {
     });
   }, [movie_id]);
 
-  // if (!movieDesc) return <Preloader />;
   if (isLoading || !movieDesc) return <Preloader />;
-  console.log(setIsLoading);
 
   return (
     <div className="description">

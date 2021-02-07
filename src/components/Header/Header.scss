@@ -1,6 +1,7 @@
 @import '../../sass/variables.scss';
 @import '../../sass/mixins.scss';
 
+
 .header {
 	grid-area: header;
 	display: flex;
@@ -82,7 +83,7 @@
 				&.inactive {
 					@include menuButton;
 				}
-	
+				
 				&.active {
 					@include menuButton;
 		
@@ -95,7 +96,7 @@
 					}
 					.line-3 {
 						-webkit-transform: rotate(45deg) translate(-8px, -8px);
-						transform: rotate(45deg) translate(-8px, -8px);
+						transform: rotate(45deg) translate(-9px, -8px);
 					}
 				}
 			}
@@ -113,7 +114,7 @@
 				padding-top: $headerHeight;
 				width: 300px;
 				height: 100vh;
-				background-color: $navbarColor;
+				background-color: $lightGrayColor;
 				z-index: 2;
 				transition: left .4s ease-in-out;
 			}
@@ -124,7 +125,7 @@
 				width: 300px;
 				height: 100vh;
 				padding-top: $headerHeight;
-				background-color: $navbarColor;
+				background-color: $lightGrayColor;
 				z-index: 2;
 				transition: left .4s ease-in-out;
 			}

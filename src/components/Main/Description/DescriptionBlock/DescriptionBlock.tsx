@@ -27,35 +27,53 @@ const DescriptionBlock = ({
   vote_count,
 }: Props) => {
   const poster = `${process.env.REACT_APP_IMG_BASE_URL}${poster_path}`;
-  const date = release_date.slice(0, 4);
+  const months = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ];
+  const date = new Date(release_date);
+  const month = months[date.getMonth()];
+  const day = date.getDate();
+  const year = date.getFullYear();
 
   return (
     <div className="description-block">
-      <div className="description-block-poster">
-        <img src={poster} alt="bg-image" />
-      </div>
-      <div className="description-block-text">
-        <div className="title">{title}</div>
-        <div className="info">
-          <div className="info-item">
-            <span>Original title:</span> {original_title}
-          </div>
-          <div className="info-item">
-            <span>Release:</span> {date}
-          </div>
-          <div className="info-item">
-            <span>Runtime:</span> {runtime} min
-          </div>
-          <div className="info-item">
-            <span>Status:</span> {status}
-          </div>
-          <div className="info-item">
-            <span>Vote average:</span> {vote_average} ({vote_count})
-          </div>
-          <Genres genres={genres} />
+      <div className="title">{title}</div>
+      <div className="detail">
+        <div className="detail-poster">
+          <img src={poster} alt={title} />
         </div>
-        <div className="overview">{overview}</div>
-        {/* <div className="cast"></div> */}
+        <div className="detail-text">
+          <div className="info">
+            <div className="info-item">
+              <span>Original title:</span> {original_title}
+            </div>
+            <div className="info-item">
+              <span>Release:</span> {`${month} ${day} ${year}`}
+            </div>
+            <div className="info-item">
+              <span>Runtime:</span> {runtime} min
+            </div>
+            <div className="info-item">
+              <span>Status:</span> {status}
+            </div>
+            <div className="info-item">
+              <span>Vote average:</span> {vote_average}/10 ({vote_count})
+            </div>
+            <Genres genres={genres} />
+          </div>
+          <div className="overview">{overview}</div>
+        </div>
       </div>
     </div>
   );

@@ -7,7 +7,6 @@ type GenresProp = {
 const Genres = ({ genres }: GenresProp) => {
   return (
     <div className="genres">
-      <span>Genres:</span>
       {genres.map((genre) => {
         return (
           <div key={genre.id} className="genres-item">
