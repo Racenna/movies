@@ -24,11 +24,13 @@ const ModalImage = ({
         <div className="line-1"></div>
         <div className="line-2"></div>
       </div>
-      <div className="centered-img">
+      <div className="centered-image">
         <div className="arrow-button" onClick={previousImage}>
           &#10094;
         </div>
-        <img className={imgStyle} src={imgPath} />
+        <div className="image-container">
+          <img className={imgStyle} src={imgPath} />
+        </div>
         <div className="arrow-button" onClick={nextImage}>
           &#10095;
         </div>
