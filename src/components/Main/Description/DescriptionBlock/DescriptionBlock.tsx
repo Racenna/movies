@@ -1,12 +1,13 @@
-import { Genre } from '../../../../api/movieAPI/types';
-import Genres from './Genres';
+import { GenreType } from '../../../../api/movieAPI/types';
+import Genres from './Genres/Genres';
+import Poster from './Poster';
 
 type Props = {
   poster_path: string | null,
   title: string,
   overview: string | null,
   original_title: string,
-  genres: Array<Genre>,
+  genres: Array<GenreType>,
   release_date: string,
   runtime: number | null,
   status: string,
@@ -26,7 +27,6 @@ const DescriptionBlock = ({
   vote_average,
   vote_count,
 }: Props) => {
-  const poster = `${process.env.REACT_APP_IMG_BASE_URL}${poster_path}`;
   const months = [
     'January',
     'February',
@@ -50,9 +50,7 @@ const DescriptionBlock = ({
     <div className="description-block">
       <div className="title">{title}</div>
       <div className="detail">
-        <div className="detail-poster">
-          <img src={poster} alt={title} />
-        </div>
+        <Poster poster_path={poster_path} title={title} />
         <div className="detail-text">
           <div className="info">
             <div className="info-item">

@@ -8,7 +8,7 @@ export type MovieDetail = {
     backdrop_path: string,
   } | null,
   budget: number,
-  genres: Array<Genre>,
+  genres: Array<GenreType>,
   homepage: string | null,
   id: number,
   imdb_id: string | null,
@@ -42,7 +42,7 @@ export type MovieDetail = {
   vote_count: number,
 };
 
-export type Genre = {
+export type GenreType = {
   id: number,
   name: string,
 };
