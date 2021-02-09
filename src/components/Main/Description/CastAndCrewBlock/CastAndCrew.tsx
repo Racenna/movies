@@ -1,6 +1,6 @@
 // cast={cast} crew={crew}
 import { Cast } from '../../../../api/movieAPI/types';
-import noImage from '../../../../assets/svg/no_image.svg';
+import CastCard from './CastCard';
 
 type Props = {
   cast: Array<Cast>,
@@ -12,19 +12,13 @@ const CastAndCrew = ({ cast }: Props) => {
       <span className="description-cast-title">Cast</span>
       <span className="more">See all</span>
       <div className="cast">
-        {cast.map((item) => {
-          const profile = item.profile_path
-            ? `${process.env.REACT_APP_IMG_BASE_URL}${item.profile_path}`
-            : `${noImage}`;
-          return (
-            <div className="cast-item" key={item.id}>
-              <div>
-                <img src={profile} />
-              </div>
-              <div className="cast-name">{item.name}</div>
-            </div>
-          );
-        })}
+        {cast.map((item) => (
+          <CastCard
+            key={item.id}
+            profile_path={item.profile_path}
+            name={item.name}
+          />
+        ))}
       </div>
     </div>
   );
