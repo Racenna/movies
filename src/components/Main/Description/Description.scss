@@ -35,6 +35,19 @@
 					height: 375px;
 					border-radius: 6px;
 				}
+
+				.empty-poster {
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					width: 250px;
+					height: 375px;
+					border-radius: 6px;
+					font-size: 28px;
+					color: #ffffff;
+					background-color: #363636;
+					user-select: none;
+				}
 			}
 
 			&-text {

@@ -15,6 +15,7 @@ const ModalImage = ({
   previousImage,
   nextImage,
 }: Props) => {
+  if (!image) return <div></div>;
   const style = isActive ? 'active' : 'inactive';
   const imgPath = `${process.env.REACT_APP_IMG_BASE_URL}${image.file_path}`;
   const imgStyle = image.width > image.height ? 'backdrop-img' : 'poster-img';

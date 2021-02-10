@@ -7,12 +7,15 @@ type MovieProp = {
 };
 
 const Movie = ({ poster_path, title, id }: MovieProp) => {
-  const posterURL = `${process.env.REACT_APP_IMG_BASE_URL}${poster_path}`;
-
+  const poster = poster_path ? (
+    <img src={`${process.env.REACT_APP_IMG_BASE_URL}${poster_path}`} />
+  ) : (
+    <div className="empty-poster">No Image</div>
+  );
   return (
     <div className="main-content-item">
       <NavLink to={`/movie/description/${id}`} className="item-image">
-        <img src={posterURL} />
+        {poster}
       </NavLink>
       <div className="item-description">
         <div className="item-description-title">

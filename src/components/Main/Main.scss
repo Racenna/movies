@@ -36,6 +36,22 @@
 						opacity: .65;
 					}
 				}
+
+				.empty-poster {
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					width: 200px;
+					height: 300px;
+					border-radius: 8px;
+					transition: .3s ease;
+					color: #ffffff;
+					background-color: #363636;
+
+					&:hover {
+						background-color: #444444;
+					}
+				}
 			}
 
 			.item-description {
@@ -78,6 +94,11 @@
 	
 				.item-image {
 					img {
+						height: 270px;
+						width: 180px;
+					}
+
+					.empty-poster {
 						height: 270px;
 						width: 180px;
 					}

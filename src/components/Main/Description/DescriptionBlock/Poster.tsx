@@ -4,11 +4,19 @@ type Props = {
 };
 
 const Poster = ({ poster_path, title }: Props) => {
-  const poster = `${process.env.REACT_APP_IMG_BASE_URL}${poster_path}`;
+  const poster = poster_path ? (
+    <img
+      src={`${process.env.REACT_APP_IMG_BASE_URL}${poster_path}`}
+      alt={title}
+    />
+  ) : (
+    <div className="empty-poster">No Image</div>
+  );
 
   return (
     <div className="detail-poster">
-      <img src={poster} alt={title} />
+      {poster}
+      {/* <img src={poster} alt={title} /> */}
     </div>
   );
 };
