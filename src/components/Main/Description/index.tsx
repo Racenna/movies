@@ -37,11 +37,6 @@ const Description = () => {
     setIsLoading(true);
     moviesAPI.getAllMovieDetail(+movie_id).then((res) => {
       setMovieDesc(res.detail);
-      // setCast(
-      //   res.castAndCrew.cast.filter((item) =>
-      //     item.profile_path !== null ? true : false
-      //   )
-      // );
       setCast(res.castAndCrew.cast);
       setVideos(res.videos.results);
       setImages(res.images);

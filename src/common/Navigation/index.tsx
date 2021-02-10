@@ -15,7 +15,7 @@ const Navigation = () => {
         </NavLink>
       </li>
       <li>
-        <NavLink to="/trending" activeClassName="active">
+        <NavLink to="/trending?page=1" activeClassName="active">
           Trending
         </NavLink>
       </li>

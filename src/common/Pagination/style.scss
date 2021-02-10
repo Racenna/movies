@@ -1,0 +1,40 @@
+@import '../../sass/variables.scss';
+
+.pagination {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+	margin-top: 25px;
+
+	a {
+		color: #ffffff;
+		border: 1px solid $secondaryColor;
+		padding: 0 5px;
+		margin-right: 5px;
+		margin-bottom: 5px;
+		min-height: 30px;
+		min-width: 30px;
+		border-radius: 6px;
+		transition: .3s ease;
+
+		&:hover {
+			background-color: $hoverLightGrayColor;
+		}
+
+		&.active {
+			background-color: $secondaryColor;
+		}
+
+		&.prev-disable, &.next-disable {
+			display: none;
+		}
+
+		div {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 100%;
+			height: 100%;
+		}
+	}
+}

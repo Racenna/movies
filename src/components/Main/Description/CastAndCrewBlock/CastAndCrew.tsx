@@ -1,4 +1,3 @@
-// cast={cast} crew={crew}
 import { Cast } from '../../../../api/movieAPI/types';
 import CastCard from './CastCard';
 
