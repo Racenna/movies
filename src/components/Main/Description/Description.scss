@@ -505,3 +505,20 @@
 		}
 	}
 }
+
+@media (max-width: 550px) {
+	.description {
+		&-block {
+			.detail {
+				display: flex;
+				flex-flow: column nowrap;
+				align-items: center;
+
+				&-poster {
+					margin-right: 0;
+					margin-bottom: 20px;
+				}
+			}
+		}
+	}
+}
