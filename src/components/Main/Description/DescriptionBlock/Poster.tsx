@@ -13,12 +13,7 @@ const Poster = ({ poster_path, title }: Props) => {
     <div className="empty-poster">No Image</div>
   );
 
-  return (
-    <div className="detail-poster">
-      {poster}
-      {/* <img src={poster} alt={title} /> */}
-    </div>
-  );
+  return <div className="detail-poster">{poster}</div>;
 };
 
 export default Poster;
