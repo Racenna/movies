@@ -34,7 +34,6 @@ const Trending = () => {
         setIsLoading(false);
       });
     }
-    console.log(page);
   }, [location]);
 
   const onPageChange = (page: number) => {

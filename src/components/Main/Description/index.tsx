@@ -4,6 +4,7 @@ import { moviesAPI } from '../../../api/movieAPI/movieAPI';
 import {
   MovieDetail,
   Cast,
+  Crew,
   VideoType,
   ImageType,
   RecommendationsAndSimilarResult,
@@ -22,6 +23,7 @@ type Params = {
 const Description = () => {
   const [movieDesc, setMovieDesc] = useState<MovieDetail | null>(null);
   const [cast, setCast] = useState<Array<Cast>>([]);
+  const [crew, setCrew] = useState<Array<Crew>>([]);
   const [videos, setVideos] = useState<Array<VideoType>>([]);
   const [images, setImages] = useState<Array<ImageType>>([]);
   const [recommended, setRecommended] = useState<
@@ -38,6 +40,7 @@ const Description = () => {
     moviesAPI.getAllMovieDetail(+movie_id).then((res) => {
       setMovieDesc(res.detail);
       setCast(res.castAndCrew.cast);
+      setCrew(res.castAndCrew.crew);
       setVideos(res.videos.results);
       setImages(res.images);
       setRecommended(res.recommendations.slice(0, 6));
@@ -62,7 +65,7 @@ const Description = () => {
         vote_average={movieDesc.vote_average}
         vote_count={movieDesc.vote_count}
       />
-      <CastAndCrew cast={cast} />
+      <CastAndCrew cast={cast} crew={crew} />
       <Multimedia videos={videos} images={images} />
       <RecommendedAndSimilar recommended={recommended} similar={similar} />
     </div>
