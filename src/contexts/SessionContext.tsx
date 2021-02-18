@@ -1,13 +1,13 @@
 import { createContext, useCallback, useState } from 'react';
 
 type ContextType = {
-  session_id: string,
+  session_id: string | null,
   signIn: () => void,
   signOut: () => void,
 };
 
 export const SessionContext = createContext<ContextType>({
-  session_id: '',
+  session_id: null,
   signIn: () => {},
   signOut: () => {},
 });
@@ -17,14 +17,20 @@ type Props = {
 };
 
 const CounterContextProvider = ({ children }: Props) => {
-  const [session_id, setSession_id] = useState('');
+  const defaultSessionId = localStorage.getItem('session_id')
+    ? localStorage.getItem('session_id')
+    : null;
+
+  const [session_id, setSession_id] = useState(defaultSessionId);
 
   const signIn = useCallback(() => {
-    setSession_id('some00fake00session124id');
+    localStorage.setItem('session_id', '11khh1kj2khk31kh23k');
+    setSession_id(localStorage.getItem('session_id'));
   }, []);
 
   const signOut = useCallback(() => {
-    setSession_id('');
+    localStorage.removeItem('session_id');
+    setSession_id(null);
   }, []);
 
   return (
