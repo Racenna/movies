@@ -2,7 +2,7 @@
 
 li {
 	& .active {
-		border-left: 5px solid $secondaryColor;
+		border-left: 3px solid $secondaryColor;
 	}
 	
 	& a {
@@ -12,12 +12,12 @@ li {
 		margin: 15px 0;
 
 		&.active {
-			padding-left: 50px - 5px;
+			padding-left: 50px - 3px;
 			color: $secondaryColor;
 		}
 	
 		&:hover:not(.active) {
-			background-color: $hoverLightGrayColor;
+			background-color: $lightGrayColor;
 			color: #fff;
 		}
 	}

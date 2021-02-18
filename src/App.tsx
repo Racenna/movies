@@ -3,25 +3,28 @@ import Header from './components/Header';
 import Navbar from './components/Navbar';
 import Trending from './components/Main/Trending';
 import Description from './components/Main/Description';
+import SessionContextProvider from './contexts/SessionContext';
 import './App.scss';
 
 const App = () => {
   return (
     <Router>
-      <div className="App">
-        <Header />
-        <Navbar />
-        <Switch>
-          <Route exact path="/genres">
-            <div className="main">Genres</div>
-          </Route>
-          <Route exact path="/categories">
-            <div className="main">Categories</div>
-          </Route>
-          <Route exact path="/trending" component={Trending} />
-          <Route path="/movie/description/:movie_id" component={Description} />
-        </Switch>
-      </div>
+      <SessionContextProvider>
+        <div className="App">
+          <Header />
+          <Navbar />
+          <Switch>
+            <Route exact path="/profile">
+              <div className="main">Profile</div>
+            </Route>
+            <Route exact path="/trending" component={Trending} />
+            <Route
+              path="/movie/description/:movie_id"
+              component={Description}
+            />
+          </Switch>
+        </div>
+      </SessionContextProvider>
     </Router>
   );
 };

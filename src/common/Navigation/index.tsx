@@ -5,13 +5,8 @@ const Navigation = () => {
   return (
     <ul>
       <li>
-        <NavLink to="/genres" activeClassName="active">
-          Genres
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to="/categories" activeClassName="active">
-          Categories
+        <NavLink to="/profile" activeClassName="active">
+          Profile
         </NavLink>
       </li>
       <li>
