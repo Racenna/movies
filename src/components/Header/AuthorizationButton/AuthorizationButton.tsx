@@ -1,15 +1,10 @@
 type Props = {
-  signIn: () => void,
+  handleSignIn: () => void,
 };
 
-const AuthorizationButton = ({ signIn }: Props) => {
+const AuthorizationButton = ({ handleSignIn }: Props) => {
   return (
-    <button
-      className="sign-in-button"
-      onClick={() => {
-        signIn();
-      }}
-    >
+    <button className="sign-in-button" onClick={handleSignIn}>
       Sign in
     </button>
   );

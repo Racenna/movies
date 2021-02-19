@@ -1,5 +1,9 @@
 import { instance } from '../api';
-import { CreateSessionResponse, RequestTokenResponse } from './types';
+import {
+  CreateSessionResponse,
+  DeleteSessionResponse,
+  RequestTokenResponse,
+} from './types';
 
 export const authenticationAPI = {
   async getRequestToken() {
@@ -18,6 +22,19 @@ export const authenticationAPI = {
       }
     );
 
-    return response.data.session_id;
+    return response.data;
+  },
+
+  async deleteSession(session_id: string) {
+    const response = await instance.delete<DeleteSessionResponse>(
+      `authentication/session`,
+      {
+        data: {
+          session_id,
+        },
+      }
+    );
+
+    return response.data.success;
   },
 };

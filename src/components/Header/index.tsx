@@ -5,10 +5,16 @@ import HeaderMenu from './HeaderMenu/HeaderMenu';
 import AuthorizationButton from './AuthorizationButton/AuthorizationButton';
 import ProfileButton from './ProfileButton/ProfileButton';
 import { SessionContext } from '../../contexts/SessionContext';
+import { authenticationAPI } from '../../api/authenticationAPI/authenticationAPI';
 import './Header.scss';
 
 const Header = () => {
-  const { session_id, signIn, signOut } = useContext(SessionContext);
+  const { session_id, signOut } = useContext(SessionContext);
+
+  const handleSignIn = async () => {
+    const request_token = await authenticationAPI.getRequestToken();
+    window.location.href = `https://www.themoviedb.org/authenticate/${request_token}?redirect_to=http://localhost:3000/approved`;
+  };
   return (
     <header className="header">
       <HeaderMenu />
@@ -16,7 +22,7 @@ const Header = () => {
       <HeaderSearch />
       <div className="header-authorization">
         {!session_id ? (
-          <AuthorizationButton signIn={signIn} />
+          <AuthorizationButton handleSignIn={handleSignIn} />
         ) : (
           <ProfileButton signOut={signOut} />
         )}

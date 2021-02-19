@@ -8,3 +8,7 @@ export type CreateSessionResponse = {
   success: boolean,
   session_id: string,
 };
+
+export type DeleteSessionResponse = {
+  success: boolean,
+};

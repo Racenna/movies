@@ -2,7 +2,7 @@ import { createContext, useCallback, useState } from 'react';
 
 type ContextType = {
   session_id: string | null,
-  signIn: () => void,
+  signIn: (value: string) => void,
   signOut: () => void,
 };
 
@@ -16,17 +16,19 @@ type Props = {
   children: React.ReactNode,
 };
 
-const CounterContextProvider = ({ children }: Props) => {
-  const defaultSessionId = localStorage.getItem('session_id')
-    ? localStorage.getItem('session_id')
-    : null;
+const SessionContextProvider = ({ children }: Props) => {
+  const defaultSessionId = localStorage.getItem('session_id');
 
   const [session_id, setSession_id] = useState(defaultSessionId);
 
-  const signIn = useCallback(() => {
-    localStorage.setItem('session_id', '11khh1kj2khk31kh23k');
+  const signIn = (value: string) => {
+    if (session_id) {
+      console.error(`Authentication denied: session exist`);
+      return;
+    }
+    localStorage.setItem('session_id', value);
     setSession_id(localStorage.getItem('session_id'));
-  }, []);
+  };
 
   const signOut = useCallback(() => {
     localStorage.removeItem('session_id');
@@ -40,4 +42,4 @@ const CounterContextProvider = ({ children }: Props) => {
   );
 };
 
-export default CounterContextProvider;
+export default SessionContextProvider;

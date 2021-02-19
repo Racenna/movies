@@ -3,6 +3,8 @@ import Header from './components/Header';
 import Navbar from './components/Navbar';
 import Trending from './components/Main/Trending';
 import Description from './components/Main/Description';
+import Profile from './components/Main/Profile/Profile';
+import Approve from './components/Main/Approve/Approve';
 import SessionContextProvider from './contexts/SessionContext';
 import './App.scss';
 
@@ -14,9 +16,8 @@ const App = () => {
           <Header />
           <Navbar />
           <Switch>
-            <Route exact path="/profile">
-              <div className="main">Profile</div>
-            </Route>
+            <Route exact path="/profile" component={Profile} />
+            <Route exact path="/approved" component={Approve} />
             <Route exact path="/trending" component={Trending} />
             <Route
               path="/movie/description/:movie_id"
