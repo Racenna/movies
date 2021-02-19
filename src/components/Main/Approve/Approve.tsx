@@ -29,6 +29,12 @@ const ProfileApprove = () => {
     } else {
       console.error(`Authentication denied`);
     }
+
+    const redirect = localStorage.getItem('pageBeforeSignIn');
+    if (redirect) {
+      localStorage.removeItem('pageBeforeSignIn');
+      window.location.href = redirect;
+    }
   }, [location]);
 
   if (isApproved) return <div className="main">Authentication approved</div>;
