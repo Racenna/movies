@@ -15,6 +15,14 @@ const Header = () => {
     const request_token = await authenticationAPI.getRequestToken();
     window.location.href = `https://www.themoviedb.org/authenticate/${request_token}?redirect_to=http://localhost:3000/approved`;
   };
+
+  const handleSignOut = async () => {
+    if (!session_id) return;
+
+    const isSuccess = await authenticationAPI.deleteSession(session_id);
+
+    if (isSuccess) signOut();
+  };
   return (
     <header className="header">
       <HeaderMenu />
@@ -24,7 +32,7 @@ const Header = () => {
         {!session_id ? (
           <AuthorizationButton handleSignIn={handleSignIn} />
         ) : (
-          <ProfileButton signOut={signOut} />
+          <ProfileButton handleSignOut={handleSignOut} />
         )}
       </div>
     </header>
