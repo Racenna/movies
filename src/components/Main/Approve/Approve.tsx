@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { Redirect, useLocation } from 'react-router-dom';
 import { authenticationAPI } from '../../../api/authenticationAPI/authenticationAPI';
 import { SessionContext } from '../../../contexts/SessionContext';
 
@@ -31,7 +31,8 @@ const ProfileApprove = () => {
     }
   }, [location]);
 
-  if (isApproved) return <div className="main">Authentication approved</div>;
+  if (isApproved)
+    return <Redirect to={localStorage.getItem('prevPage') || ''} />;
 
   return <div className="main">Authentication denied</div>;
 };

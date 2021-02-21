@@ -1,4 +1,4 @@
-import { createContext, useCallback, useState } from 'react';
+import { createContext, useState } from 'react';
 
 type ContextType = {
   session_id: string | null,
@@ -30,10 +30,10 @@ const SessionContextProvider = ({ children }: Props) => {
     setSession_id(localStorage.getItem('session_id'));
   };
 
-  const signOut = useCallback(() => {
+  const signOut = () => {
     localStorage.removeItem('session_id');
     setSession_id(null);
-  }, []);
+  };
 
   return (
     <SessionContext.Provider value={{ session_id, signIn, signOut }}>
