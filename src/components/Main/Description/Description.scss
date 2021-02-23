@@ -16,8 +16,24 @@
 		margin-bottom: 10px;
 		border-bottom: 1px solid $secondaryColor;
 
-		.title {
-			font-size: 36px;
+		.desc-header {
+			display: flex;
+			justify-content: space-between;
+
+			.title {
+				font-size: 36px;
+			}
+
+			.like-button {
+				cursor: pointer;
+				font-size: 36px;
+				margin-right: 15px;
+				transition: .3s ease;
+				
+				&.active {
+					color: $secondaryColor;
+				}
+			}
 
 			padding-bottom: 10px;
 			margin-bottom: 10px;

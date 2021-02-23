@@ -2,6 +2,9 @@ import { GenreType } from '../../../../api/movieAPI/types';
 import Genres from './Genres/Genres';
 import Poster from './Poster';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useState } from 'react';
+
 type Props = {
   poster_path: string | null,
   title: string,
@@ -46,9 +49,22 @@ const DescriptionBlock = ({
   const day = date.getDate();
   const year = date.getFullYear();
 
+  const [like, setLike] = useState(false);
+
+  const clickLikeHandler = () => {
+    setLike(!like);
+  };
+
   return (
     <div className="description-block">
-      <div className="title">{title}</div>
+      <div className="desc-header">
+        <div className="title">{title}</div>
+        <FontAwesomeIcon
+          className={`like-button ${like ? 'active' : ''}`}
+          icon={['fas', 'heart']}
+          onClick={clickLikeHandler}
+        />
+      </div>
       <div className="detail">
         <Poster poster_path={poster_path} title={title} />
         <div className="detail-text">
