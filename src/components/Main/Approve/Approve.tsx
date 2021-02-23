@@ -34,7 +34,7 @@ const ProfileApprove = () => {
   if (isApproved)
     return <Redirect to={localStorage.getItem('prevPage') || ''} />;
 
-  return <div className="main">Authentication denied</div>;
+  return <div className="main">Authentication</div>;
 };
 
 export default ProfileApprove;

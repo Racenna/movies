@@ -9,16 +9,14 @@ type Props = {
 const ProfileButton = ({ handleSignOut }: Props) => {
   const [isActive, setIsActive] = useState(false);
   const active = isActive ? 'active' : '';
-  console.log(() => {
-    handleSignOut;
-  });
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const node = useRef<any>();
+  const divEl = useRef<HTMLDivElement>(null);
 
   const handleClick = (e: MouseEvent) => {
-    if (node.current.contains(e.target)) {
-      return;
+    if (divEl.current) {
+      if (e.target instanceof HTMLElement && divEl.current.contains(e.target)) {
+        return;
+      }
     }
 
     setIsActive(false);
@@ -30,10 +28,10 @@ const ProfileButton = ({ handleSignOut }: Props) => {
     return () => {
       document.removeEventListener('click', handleClick);
     };
-  }, [node]);
+  }, [divEl]);
 
   return (
-    <div ref={node} className="profile-button">
+    <div ref={divEl} className="profile-button">
       <img
         className="avatar"
         src={noImage}
