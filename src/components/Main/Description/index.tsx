@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { moviesAPI } from '../../../api/movieAPI/movieAPI';
 import {
@@ -14,6 +14,8 @@ import DescriptionBlock from './DescriptionBlock/DescriptionBlock';
 import CastAndCrew from './CastAndCrewBlock/CastAndCrew';
 import Multimedia from './Multimedia/Multimedia';
 import RecommendedAndSimilar from './RecommendedAndSimilar/RecommendedAndSimilar';
+import { accountAPI } from '../../../api/accountAPI/accountAPI';
+import { SessionContext } from '../../../contexts/SessionContext';
 import './Description.scss';
 
 type Params = {
@@ -22,6 +24,7 @@ type Params = {
 
 const Description = () => {
   const [movieDesc, setMovieDesc] = useState<MovieDetail | null>(null);
+  const [favoriteIds, setFavoriteIds] = useState<Array<number>>([]);
   const [cast, setCast] = useState<Array<Cast>>([]);
   const [crew, setCrew] = useState<Array<Crew>>([]);
   const [videos, setVideos] = useState<Array<VideoType>>([]);
@@ -34,6 +37,8 @@ const Description = () => {
   >([]);
   const [isLoading, setIsLoading] = useState(true);
   const { movie_id } = useParams<Params>();
+
+  const { session_id } = useContext(SessionContext);
 
   useEffect(() => {
     setIsLoading(true);
@@ -48,6 +53,30 @@ const Description = () => {
       setIsLoading(false);
     });
   }, [movie_id]);
+
+  useEffect(() => {
+    if (session_id) {
+      accountAPI.getFavoriteIds(session_id).then((res) => {
+        setFavoriteIds(res);
+      });
+    }
+  }, [session_id]);
+
+  const favoriteHandler = (isFavorite: boolean) => {
+    if (session_id) {
+      accountAPI.markAsFavorite(
+        {
+          media_type: 'movie',
+          media_id: +movie_id,
+          favorite: isFavorite,
+        },
+        session_id
+      );
+      accountAPI.getFavoriteIds(session_id).then((res) => {
+        setFavoriteIds(res);
+      });
+    }
+  };
 
   if (isLoading || !movieDesc) return <Preloader />;
 
@@ -64,6 +93,9 @@ const Description = () => {
         status={movieDesc.status}
         vote_average={movieDesc.vote_average}
         vote_count={movieDesc.vote_count}
+        session_id={session_id}
+        isFavorite={favoriteIds.includes(+movie_id)}
+        favoriteHandler={favoriteHandler}
       />
       <CastAndCrew cast={cast} crew={crew} />
       <Multimedia videos={videos} images={images} />

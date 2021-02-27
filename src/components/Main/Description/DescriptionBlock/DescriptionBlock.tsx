@@ -1,9 +1,7 @@
 import { GenreType } from '../../../../api/movieAPI/types';
 import Genres from './Genres/Genres';
 import Poster from './Poster';
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useState } from 'react';
+import FavoriteButton from './FavoriteButton';
 
 type Props = {
   poster_path: string | null,
@@ -16,6 +14,9 @@ type Props = {
   status: string,
   vote_average: number,
   vote_count: number,
+  session_id: string | null,
+  isFavorite: boolean,
+  favoriteHandler: (isFavorite: boolean) => void,
 };
 
 const DescriptionBlock = ({
@@ -29,6 +30,9 @@ const DescriptionBlock = ({
   status,
   vote_average,
   vote_count,
+  session_id,
+  isFavorite,
+  favoriteHandler,
 }: Props) => {
   const months = [
     'January',
@@ -49,21 +53,16 @@ const DescriptionBlock = ({
   const day = date.getDate();
   const year = date.getFullYear();
 
-  const [like, setLike] = useState(false);
-
-  const clickLikeHandler = () => {
-    setLike(!like);
-  };
-
   return (
     <div className="description-block">
       <div className="desc-header">
         <div className="title">{title}</div>
-        <FontAwesomeIcon
-          className={`like-button ${like ? 'active' : ''}`}
-          icon={['fas', 'heart']}
-          onClick={clickLikeHandler}
-        />
+        {session_id && (
+          <FavoriteButton
+            isFavorite={isFavorite}
+            favoriteHandler={favoriteHandler}
+          />
+        )}
       </div>
       <div className="detail">
         <Poster poster_path={poster_path} title={title} />

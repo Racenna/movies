@@ -1,7 +1,6 @@
 @import '../../sass/variables.scss';
 @import '../../sass/mixins.scss';
 
-
 .header {
 	grid-area: header;
 	display: flex;
@@ -23,7 +22,6 @@
 	}
 
 	&-search {
-		// width: calc(100vw - 10vw);
 		min-width: calc(100vw - 120px - 200px);
 		height: $headerHeight;
 		display: flex;
