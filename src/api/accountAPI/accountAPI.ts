@@ -3,6 +3,7 @@ import {
   MarkFavoriteRequest,
   MarkFavoriteResponse,
   FavoriteListResponse,
+  AccountResponse,
 } from './types';
 
 export const accountAPI = {
@@ -39,5 +40,13 @@ export const accountAPI = {
     }
 
     return result;
+  },
+
+  async getAccount(session_id: string) {
+    const response = await instance.get<AccountResponse>(`account`, {
+      params: { session_id },
+    });
+
+    return response.data;
   },
 };

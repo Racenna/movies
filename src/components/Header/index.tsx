@@ -35,7 +35,10 @@ const Header = () => {
         {!session_id ? (
           <AuthorizationButton handleSignIn={handleSignIn} />
         ) : (
-          <ProfileButton handleSignOut={handleSignOut} />
+          <ProfileButton
+            session_id={session_id}
+            handleSignOut={handleSignOut}
+          />
         )}
       </div>
     </header>

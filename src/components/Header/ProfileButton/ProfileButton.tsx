@@ -1,12 +1,15 @@
 import { useEffect, useRef, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { accountAPI } from '../../../api/accountAPI/accountAPI';
 import noImage from '../../../assets/svg/no_image.svg';
 
 type Props = {
+  session_id: string,
   handleSignOut: () => void,
 };
 
-const ProfileButton = ({ handleSignOut }: Props) => {
+const ProfileButton = ({ session_id, handleSignOut }: Props) => {
+  const [avatar, setAvatar] = useState<string | null>(null);
   const [isActive, setIsActive] = useState(false);
   const active = isActive ? 'active' : '';
 
@@ -30,11 +33,17 @@ const ProfileButton = ({ handleSignOut }: Props) => {
     };
   }, [divEl]);
 
+  useEffect(() => {
+    accountAPI.getAccount(session_id).then((res) => {
+      setAvatar(res.avatar.tmdb.avatar_path);
+    });
+  }, [session_id]);
+
   return (
     <div ref={divEl} className="profile-button">
       <img
         className="avatar"
-        src={noImage}
+        src={avatar ? process.env.REACT_APP_IMG_BASE_URL + avatar : noImage}
         onClick={() => {
           setIsActive(true);
         }}

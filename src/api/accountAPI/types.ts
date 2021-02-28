@@ -25,6 +25,25 @@ export type FavoriteListResponse = {
   total_results: number,
 };
 
+export type AccountResponse = {
+  avatar: Avatar,
+  id: number,
+  iso_639_1: string,
+  iso_3166_1: string,
+  name: string,
+  include_adult: boolean,
+  username: string,
+};
+
+type Avatar = {
+  gravatar: {
+    hash: string,
+  },
+  tmdb: {
+    avatar_path: string | null,
+  },
+};
+
 export type MarkFavoriteRequest = {
   media_type: 'movie' | 'tv',
   media_id: number,

@@ -1,7 +1,6 @@
 import { GenreType } from '../../../../api/movieAPI/types';
 import Genres from './Genres/Genres';
-import Poster from './Poster';
-import FavoriteButton from './FavoriteButton';
+import Poster from './Poster/Poster';
 
 type Props = {
   poster_path: string | null,
@@ -48,6 +47,7 @@ const DescriptionBlock = ({
     'November',
     'December',
   ];
+
   const date = new Date(release_date);
   const month = months[date.getMonth()];
   const day = date.getDate();
@@ -57,22 +57,23 @@ const DescriptionBlock = ({
     <div className="description-block">
       <div className="desc-header">
         <div className="title">{title}</div>
-        {session_id && (
-          <FavoriteButton
-            isFavorite={isFavorite}
-            favoriteHandler={favoriteHandler}
-          />
-        )}
       </div>
       <div className="detail">
-        <Poster poster_path={poster_path} title={title} />
+        <Poster
+          poster_path={poster_path}
+          title={title}
+          session_id={session_id}
+          isFavorite={isFavorite}
+          favoriteHandler={favoriteHandler}
+        />
         <div className="detail-text">
           <div className="info">
             <div className="info-item">
               <span>Original title:</span> {original_title}
             </div>
             <div className="info-item">
-              <span>Release:</span> {`${month} ${day} ${year}`}
+              <span>Release:</span>{' '}
+              {release_date ? `${month} ${day} ${year}` : 'No release date'}
             </div>
             <div className="info-item">
               <span>Runtime:</span> {runtime} min
