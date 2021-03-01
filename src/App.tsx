@@ -6,6 +6,7 @@ import Description from './components/Main/Description';
 import Profile from './components/Main/Profile/Profile';
 import Approve from './components/Main/Approve/Approve';
 import SessionContextProvider from './contexts/SessionContext';
+import ProtectedRoute from './common/ProtectedRoute';
 import './App.scss';
 
 const App = () => {
@@ -16,7 +17,7 @@ const App = () => {
           <Header />
           <Navbar />
           <Switch>
-            <Route exact path="/profile" component={Profile} />
+            <ProtectedRoute path="/profile" component={Profile} exact={true} />
             <Route exact path="/approved" component={Approve} />
             <Route exact path="/trending" component={Trending} />
             <Route
