@@ -21,6 +21,19 @@ export const accountAPI = {
     return response.data;
   },
 
+  async getFavoriteList(
+    session_id: string,
+    media_type: 'movies' | 'tv' = 'movies',
+    page: number
+  ) {
+    const response = await instance.get<FavoriteListResponse>(
+      `account/{account_id}/favorite/${media_type}`,
+      { params: { session_id, page } }
+    );
+
+    return response.data;
+  },
+
   async getFavoriteIds(
     session_id: string,
     media_type: 'movies' | 'tv' = 'movies'

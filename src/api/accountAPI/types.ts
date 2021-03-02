@@ -5,24 +5,26 @@ export type MarkFavoriteResponse = {
 
 export type FavoriteListResponse = {
   page: number,
-  results: Array<{
-    poster_path: string | null,
-    adult: boolean,
-    overview: string,
-    release_date: string,
-    genre_ids: Array<number>,
-    id: number,
-    original_title: string,
-    original_language: string,
-    title: string,
-    backdrop_path: string | null,
-    popularity: number,
-    vote_count: number,
-    video: boolean,
-    vote_average: number,
-  }>,
+  results: Array<FavoriteMovie>,
   total_pages: number,
   total_results: number,
+};
+
+export type FavoriteMovie = {
+  poster_path: string | null,
+  adult: boolean,
+  overview: string,
+  release_date: string,
+  genre_ids: Array<number>,
+  id: number,
+  original_title: string,
+  original_language: string,
+  title: string,
+  backdrop_path: string | null,
+  popularity: number,
+  vote_count: number,
+  video: boolean,
+  vote_average: number,
 };
 
 export type AccountResponse = {

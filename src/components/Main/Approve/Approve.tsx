@@ -3,7 +3,7 @@ import { Redirect, useLocation } from 'react-router-dom';
 import { authenticationAPI } from '../../../api/authenticationAPI/authenticationAPI';
 import { SessionContext } from '../../../contexts/SessionContext';
 
-const ProfileApprove = () => {
+const Approve = () => {
   const [isApproved, setIsApproved] = useState(false);
   const location = useLocation();
   const { signIn } = useContext(SessionContext);
@@ -37,4 +37,4 @@ const ProfileApprove = () => {
   return <div className="main">Authentication</div>;
 };
 
-export default ProfileApprove;
+export default Approve;

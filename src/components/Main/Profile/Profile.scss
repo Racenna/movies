@@ -1,0 +1,60 @@
+@import '../../../sass/variables.scss';
+
+.profile {
+	grid-area: main;
+	height: calc(100vh - 70px);
+	padding: 25px 0 0px 20px;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	line-height: 1.2;
+
+	&-detail {
+		display: flex;
+		width: 100%;
+		align-items: center;
+
+		padding-bottom: 10px;
+		margin-bottom: 10px;
+		border-bottom: 1px solid $secondaryColor;
+
+		
+		.avatar {
+			background-color: $hoverLightGrayColor;
+			border-radius: 100%;
+			margin-right: 25px;
+
+			img {
+				width: 100px;
+				height: 100px;
+				border-radius: 100%;
+			}
+		}
+
+		.username {
+			font-size: 38px;
+		}
+	}
+
+	&-navigation {
+		display: flex;
+
+		padding-bottom: 10px;
+		margin-bottom: 10px;
+		border-bottom: 1px solid $secondaryColor;
+
+		.navigation-item {
+			cursor: pointer;
+			margin: 0 16px 0 0;
+			padding: 8px 5px;
+			color: #ffffff;
+			
+			&:hover {
+				color: $secondaryColor;
+			}
+
+			&.active {
+				border-bottom: 2px solid $secondaryColor;
+			}
+		}
+	}
+}

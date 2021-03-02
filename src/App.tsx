@@ -3,7 +3,7 @@ import Header from './components/Header';
 import Navbar from './components/Navbar';
 import Trending from './components/Main/Trending';
 import Description from './components/Main/Description';
-import Profile from './components/Main/Profile/Profile';
+import Profile from './components/Main/Profile';
 import Approve from './components/Main/Approve/Approve';
 import SessionContextProvider from './contexts/SessionContext';
 import ProtectedRoute from './common/ProtectedRoute';
@@ -17,7 +17,11 @@ const App = () => {
           <Header />
           <Navbar />
           <Switch>
-            <ProtectedRoute path="/profile" component={Profile} exact={true} />
+            <ProtectedRoute
+              path="/profile/:typeList?"
+              component={Profile}
+              exact={false}
+            />
             <Route exact path="/approved" component={Approve} />
             <Route exact path="/trending" component={Trending} />
             <Route
