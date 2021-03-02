@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useCallback, useContext, useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { accountAPI } from '../../../api/accountAPI/accountAPI';
 import { AccountResponse, FavoriteMovie } from '../../../api/accountAPI/types';
@@ -18,7 +18,25 @@ const Profile = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [favoriteList, setFavoriteList] = useState<Array<FavoriteMovie>>([]);
 
+  const [page, setPage] = useState(1);
+  const [totalPage, setTotalPage] = useState(1);
+
   const { typeList } = useParams<Params>();
+
+  const observer = useRef<IntersectionObserver | null>(null);
+  const lastListElementRef = useCallback(
+    (node: HTMLDivElement) => {
+      if (isLoading) return;
+      if (observer.current) observer.current.disconnect();
+      observer.current = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting && page < totalPage) {
+          setPage((prevPage) => prevPage + 1);
+        }
+      });
+      if (node) observer.current.observe(node);
+    },
+    [isLoading, totalPage]
+  );
 
   useEffect(() => {
     if (session_id) {
@@ -29,13 +47,22 @@ const Profile = () => {
   }, []);
 
   useEffect(() => {
+    setPage(1);
+    setTotalPage(1);
+    setFavoriteList([]);
+  }, [typeList]);
+
+  useEffect(() => {
     setIsLoading(true);
     switch (typeList) {
       case undefined: {
         accountAPI
-          .getFavoriteList(session_id || '', 'movies', 1)
+          .getFavoriteList(session_id || '', 'movies', page)
           .then((res) => {
-            setFavoriteList(res.results);
+            setFavoriteList((prevList) => {
+              return [...prevList, ...res.results];
+            });
+            setTotalPage(res.total_pages);
             setIsLoading(false);
           });
         break;
@@ -56,7 +83,7 @@ const Profile = () => {
         break;
       }
     }
-  }, [typeList]);
+  }, [typeList, page]);
 
   return (
     <div className="profile">
@@ -66,6 +93,7 @@ const Profile = () => {
         <ProfileFavoriteList
           favoriteList={favoriteList}
           isLoading={isLoading}
+          lastListElementRef={lastListElementRef}
         />
       )}
       {typeList === 'watch-list' && (
