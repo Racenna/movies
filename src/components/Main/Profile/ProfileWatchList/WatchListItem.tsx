@@ -7,16 +7,16 @@ type Props = {
   release_date: string,
   id: number,
   lastListElementRef?: (node: HTMLDivElement) => void,
-  handleRemoveFavoriteItem: (id: number) => void,
+  handleRemoveWatchListItem: (id: number) => void,
 };
 
-const FavoriteItem = ({
+const WatchListItem = ({
   title,
   poster_path,
   release_date,
   id,
   lastListElementRef,
-  handleRemoveFavoriteItem,
+  handleRemoveWatchListItem,
 }: Props) => {
   const poster = poster_path ? (
     <img src={`${process.env.REACT_APP_IMG_BASE_URL}${poster_path}`} />
@@ -38,9 +38,9 @@ const FavoriteItem = ({
         <div className="item-description-release">{date}</div>
         <div>
           <FontAwesomeIcon
-            className="like-button"
-            icon={['fas', 'heart']}
-            onClick={() => handleRemoveFavoriteItem(id)}
+            className="watch-list-button"
+            icon={['fas', 'bookmark']}
+            onClick={() => handleRemoveWatchListItem(id)}
           />
         </div>
       </div>
@@ -48,4 +48,4 @@ const FavoriteItem = ({
   );
 };
 
-export default FavoriteItem;
+export default WatchListItem;

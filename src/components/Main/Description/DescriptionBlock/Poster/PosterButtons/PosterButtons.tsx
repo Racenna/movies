@@ -5,17 +5,24 @@ import ListButton from './ListButton';
 
 type Props = {
   isFavorite: boolean,
-  favoriteHandler: (isFavorite: boolean) => void,
+  isWatchList: boolean,
+  handleFavorite: (isFavorite: boolean) => void,
+  handleWatchList: (isWatchList: boolean) => void,
 };
 
-const PosterButtons = ({ isFavorite, favoriteHandler }: Props) => {
+const PosterButtons = ({
+  isFavorite,
+  isWatchList,
+  handleFavorite,
+  handleWatchList,
+}: Props) => {
   return (
     <div className="poster-buttons">
-      <FavoriteButton
-        isFavorite={isFavorite}
-        favoriteHandler={favoriteHandler}
+      <FavoriteButton isFavorite={isFavorite} handleFavorite={handleFavorite} />
+      <WatchListButton
+        isWatchList={isWatchList}
+        handleWatchList={handleWatchList}
       />
-      <WatchListButton />
       <RateButton />
       <ListButton />
     </div>

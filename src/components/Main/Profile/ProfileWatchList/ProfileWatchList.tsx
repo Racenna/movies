@@ -1,44 +1,44 @@
 import { Movie } from '../../../../api/accountAPI/types';
 import Preloader from '../../../../common/Preloader';
-import FavoriteItem from './FavoriteItem';
+import WatchListItem from './WatchListItem';
 
 type Props = {
-  favoriteList: Array<Movie>,
+  watchList: Array<Movie>,
   isLoading: boolean,
   lastListElementRef: (node: HTMLDivElement) => void,
-  handleRemoveFavoriteItem: (id: number) => void,
+  handleRemoveWatchListItem: (id: number) => void,
 };
 
-const ProfileFavoriteList = ({
-  favoriteList,
+const ProfileWatchList = ({
+  watchList,
   isLoading,
   lastListElementRef,
-  handleRemoveFavoriteItem,
+  handleRemoveWatchListItem,
 }: Props) => {
   return (
     <div className="profile-list-items">
-      {favoriteList.map((item, index) => {
-        if (favoriteList.length === index + 1) {
+      {watchList.map((item, index) => {
+        if (watchList.length === index + 1) {
           return (
-            <FavoriteItem
+            <WatchListItem
               key={item.id}
               id={item.id}
               title={item.title}
               poster_path={item.poster_path}
               release_date={item.release_date}
               lastListElementRef={lastListElementRef}
-              handleRemoveFavoriteItem={handleRemoveFavoriteItem}
+              handleRemoveWatchListItem={handleRemoveWatchListItem}
             />
           );
         } else {
           return (
-            <FavoriteItem
+            <WatchListItem
               key={item.id}
               id={item.id}
               title={item.title}
               poster_path={item.poster_path}
               release_date={item.release_date}
-              handleRemoveFavoriteItem={handleRemoveFavoriteItem}
+              handleRemoveWatchListItem={handleRemoveWatchListItem}
             />
           );
         }
@@ -48,4 +48,4 @@ const ProfileFavoriteList = ({
   );
 };
 
-export default ProfileFavoriteList;
+export default ProfileWatchList;

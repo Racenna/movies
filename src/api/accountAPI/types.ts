@@ -1,17 +1,17 @@
-export type MarkFavoriteResponse = {
+export type PostResponse = {
   success: boolean,
   status_code: number,
   status_message: string,
 };
 
-export type FavoriteListResponse = {
+export type ListResponse = {
   page: number,
-  results: Array<FavoriteMovie>,
+  results: Array<Movie>,
   total_pages: number,
   total_results: number,
 };
 
-export type FavoriteMovie = {
+export type Movie = {
   poster_path: string | null,
   adult: boolean,
   overview: string,
@@ -51,4 +51,10 @@ export type MarkFavoriteRequest = {
   media_type: 'movie' | 'tv',
   media_id: number,
   favorite: boolean,
+};
+
+export type MarkWatchListRequest = {
+  media_type: 'movie' | 'tv',
+  media_id: number,
+  watchlist: boolean,
 };

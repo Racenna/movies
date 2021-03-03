@@ -82,6 +82,10 @@
 						&:hover {
 							color: #9575CD;
 						}
+						
+						&.active {
+							color: #9575CD;
+						}
 					}
 
 					.rate-button {
@@ -91,6 +95,10 @@
 						&:hover {
 							color: #FFD54F;
 						}
+
+						&.active {
+							color: #FFD54F;
+						}
 					}
 
 					.list-button {
@@ -98,6 +106,10 @@
 						transition: .3s ease;
 	
 						&:hover {
+							color: #64B5F6;
+						}
+
+						&.active {
 							color: #64B5F6;
 						}
 					}

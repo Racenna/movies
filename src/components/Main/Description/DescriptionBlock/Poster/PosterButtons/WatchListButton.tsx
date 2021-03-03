@@ -1,8 +1,17 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const WatchListButton = () => {
+type Props = {
+  isWatchList: boolean,
+  handleWatchList: (isWatchList: boolean) => void,
+};
+
+const WatchListButton = ({ isWatchList, handleWatchList }: Props) => {
   return (
-    <FontAwesomeIcon className="watch-list-button" icon={['fas', 'bookmark']} />
+    <FontAwesomeIcon
+      className={`watch-list-button ${isWatchList ? 'active' : ''}`}
+      icon={['fas', 'bookmark']}
+      onClick={() => handleWatchList(!isWatchList)}
+    />
   );
 };
 

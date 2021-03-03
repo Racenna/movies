@@ -1,12 +1,13 @@
 import { useCallback, useContext, useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { accountAPI } from '../../../api/accountAPI/accountAPI';
-import { AccountResponse, FavoriteMovie } from '../../../api/accountAPI/types';
+import { AccountResponse, Movie } from '../../../api/accountAPI/types';
 import { SessionContext } from '../../../contexts/SessionContext';
 import ProfileDetail from './ProfileDetail/ProfileDetail';
 import ProfileNavigation from './ProfileNavigation/ProfileNavigation';
 import ProfileFavoriteList from './ProfileFavoriteList/ProfileFavoriteList';
 import './Profile.scss';
+import ProfileWatchList from './ProfileWatchList/ProfileWatchList';
 
 type Params = {
   typeList: 'watch-list' | 'rated' | 'lists' | undefined,
@@ -16,7 +17,8 @@ const Profile = () => {
   const { session_id } = useContext(SessionContext);
   const [profile, setProfile] = useState<AccountResponse | null>(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [favoriteList, setFavoriteList] = useState<Array<FavoriteMovie>>([]);
+  const [favoriteList, setFavoriteList] = useState<Array<Movie>>([]);
+  const [watchList, setWatchList] = useState<Array<Movie>>([]);
 
   const [page, setPage] = useState(1);
   const [totalPage, setTotalPage] = useState(1);
@@ -38,7 +40,7 @@ const Profile = () => {
     [isLoading, totalPage]
   );
 
-  const removeFavoriteItem = (id: number) => {
+  const handleRemoveFavoriteItem = (id: number) => {
     if (session_id) {
       accountAPI
         .markAsFavorite(
@@ -61,6 +63,29 @@ const Profile = () => {
     }
   };
 
+  const handleRemoveWatchListItem = (id: number) => {
+    if (session_id) {
+      accountAPI
+        .MarkToWatchList(
+          {
+            watchlist: false,
+            media_id: id,
+            media_type: 'movie',
+          },
+          session_id
+        )
+        .then((res) => {
+          if (res.success) {
+            setWatchList((prevList) => {
+              return prevList.filter((item) => {
+                return item.id !== id;
+              });
+            });
+          }
+        });
+    }
+  };
+
   useEffect(() => {
     if (session_id) {
       accountAPI.getAccount(session_id).then((res) => {
@@ -73,37 +98,43 @@ const Profile = () => {
     setPage(1);
     setTotalPage(1);
     setFavoriteList([]);
+    setWatchList([]);
   }, [typeList]);
 
   useEffect(() => {
     setIsLoading(true);
-    switch (typeList) {
-      case undefined: {
-        accountAPI
-          .getFavoriteList(session_id || '', 'movies', page)
-          .then((res) => {
+    if (session_id) {
+      switch (typeList) {
+        case undefined: {
+          accountAPI.getFavoriteList(session_id, 'movies', page).then((res) => {
             setFavoriteList((prevList) => {
               return [...prevList, ...res.results];
             });
             setTotalPage(res.total_pages);
             setIsLoading(false);
           });
-        break;
-      }
-      case 'watch-list': {
-        console.log(2);
-        setFavoriteList([]);
-        break;
-      }
-      case 'rated': {
-        console.log(3);
-        setFavoriteList([]);
-        break;
-      }
-      case 'lists': {
-        console.log(4);
-        setFavoriteList([]);
-        break;
+          break;
+        }
+        case 'watch-list': {
+          accountAPI.getWatchList(session_id, 'movies', page).then((res) => {
+            setWatchList((prevList) => {
+              return [...prevList, ...res.results];
+            });
+            setTotalPage(res.total_pages);
+            setIsLoading(false);
+          });
+          break;
+        }
+        case 'rated': {
+          console.log(3);
+          setFavoriteList([]);
+          break;
+        }
+        case 'lists': {
+          console.log(4);
+          setFavoriteList([]);
+          break;
+        }
       }
     }
   }, [typeList, page]);
@@ -117,15 +148,16 @@ const Profile = () => {
           favoriteList={favoriteList}
           isLoading={isLoading}
           lastListElementRef={lastListElementRef}
-          removeFavoriteItem={removeFavoriteItem}
+          handleRemoveFavoriteItem={handleRemoveFavoriteItem}
         />
       )}
       {typeList === 'watch-list' && (
-        <div className="profile-list-items">
-          <div>watch-list 1</div>
-          <div>watch-list 2</div>
-          <div>watch-list 3</div>
-        </div>
+        <ProfileWatchList
+          watchList={watchList}
+          isLoading={isLoading}
+          lastListElementRef={lastListElementRef}
+          handleRemoveWatchListItem={handleRemoveWatchListItem}
+        />
       )}
       {typeList === 'rated' && (
         <div className="profile-list-items">

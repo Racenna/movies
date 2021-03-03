@@ -2,15 +2,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 type Props = {
   isFavorite: boolean,
-  favoriteHandler: (isFavorite: boolean) => void,
+  handleFavorite: (isFavorite: boolean) => void,
 };
 
-const FavoriteButton = ({ isFavorite, favoriteHandler }: Props) => {
+const FavoriteButton = ({ isFavorite, handleFavorite }: Props) => {
   return (
     <FontAwesomeIcon
       className={`like-button ${isFavorite ? 'active' : ''}`}
       icon={['fas', 'heart']}
-      onClick={() => favoriteHandler(!isFavorite)}
+      onClick={() => handleFavorite(!isFavorite)}
     />
   );
 };

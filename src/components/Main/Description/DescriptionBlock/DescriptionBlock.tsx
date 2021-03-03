@@ -15,7 +15,9 @@ type Props = {
   vote_count: number,
   session_id: string | null,
   isFavorite: boolean,
-  favoriteHandler: (isFavorite: boolean) => void,
+  isWatchList: boolean,
+  handleFavorite: (isFavorite: boolean) => void,
+  handleWatchList: (isWatchList: boolean) => void,
 };
 
 const DescriptionBlock = ({
@@ -31,7 +33,9 @@ const DescriptionBlock = ({
   vote_count,
   session_id,
   isFavorite,
-  favoriteHandler,
+  isWatchList,
+  handleFavorite,
+  handleWatchList,
 }: Props) => {
   const months = [
     'January',
@@ -64,7 +68,9 @@ const DescriptionBlock = ({
           title={title}
           session_id={session_id}
           isFavorite={isFavorite}
-          favoriteHandler={favoriteHandler}
+          isWatchList={isWatchList}
+          handleFavorite={handleFavorite}
+          handleWatchList={handleWatchList}
         />
         <div className="detail-text">
           <div className="info">
