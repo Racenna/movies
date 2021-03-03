@@ -14,7 +14,6 @@ const Items = ({ items }: Props) => {
           poster_path={value.poster_path}
           title={value.title}
           release_date={value.release_date}
-          overview={value.overview}
           id={value.id}
         />
       ))}

@@ -4,11 +4,10 @@ type Props = {
   poster_path: string | null,
   title: string,
   release_date: string,
-  overview: string,
   id: number,
 };
 
-const Item = ({ poster_path, title, release_date, overview, id }: Props) => {
+const Item = ({ poster_path, title, release_date, id }: Props) => {
   const poster = poster_path ? (
     <img src={`${process.env.REACT_APP_IMG_BASE_URL}${poster_path}`} />
   ) : (
@@ -26,9 +25,6 @@ const Item = ({ poster_path, title, release_date, overview, id }: Props) => {
           <NavLink to={`/movie/description/${id}`}>{title}</NavLink>
         </div>
         <div className="item-description-release">{date}</div>
-        <div className="item-description-overview" title={overview}>
-          {overview}
-        </div>
       </div>
     </div>
   );

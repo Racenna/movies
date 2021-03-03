@@ -5,8 +5,8 @@ import { AccountResponse, FavoriteMovie } from '../../../api/accountAPI/types';
 import { SessionContext } from '../../../contexts/SessionContext';
 import ProfileDetail from './ProfileDetail/ProfileDetail';
 import ProfileNavigation from './ProfileNavigation/ProfileNavigation';
-import './Profile.scss';
 import ProfileFavoriteList from './ProfileFavoriteList/ProfileFavoriteList';
+import './Profile.scss';
 
 type Params = {
   typeList: 'watch-list' | 'rated' | 'lists' | undefined,
@@ -37,6 +37,29 @@ const Profile = () => {
     },
     [isLoading, totalPage]
   );
+
+  const removeFavoriteItem = (id: number) => {
+    if (session_id) {
+      accountAPI
+        .markAsFavorite(
+          {
+            favorite: false,
+            media_id: id,
+            media_type: 'movie',
+          },
+          session_id
+        )
+        .then((res) => {
+          if (res.success) {
+            setFavoriteList((prevList) => {
+              return prevList.filter((item) => {
+                return item.id !== id;
+              });
+            });
+          }
+        });
+    }
+  };
 
   useEffect(() => {
     if (session_id) {
@@ -94,6 +117,7 @@ const Profile = () => {
           favoriteList={favoriteList}
           isLoading={isLoading}
           lastListElementRef={lastListElementRef}
+          removeFavoriteItem={removeFavoriteItem}
         />
       )}
       {typeList === 'watch-list' && (

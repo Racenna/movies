@@ -74,10 +74,6 @@
 				&-release {
 					display: none;
 				}
-
-				&-overview {
-					display: none;
-				}
 			}
 		}
 	}
@@ -194,15 +190,6 @@
 					&-release {
 						display: block;
 						opacity: .7;
-					}
-					
-					&-overview {
-						display: block;
-						opacity: .7;
-						width: calc(100% - 140px);
-						text-overflow: ellipsis;
-						overflow: hidden;
-						white-space: nowrap;
 					}
 				}
 			}
