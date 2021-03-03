@@ -7,12 +7,13 @@ import reportWebVitals from './reportWebVitals';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import {
-  faCheckSquare,
-  faCoffee,
   faHeart,
+  faBookmark,
+  faStar,
+  faList,
 } from '@fortawesome/free-solid-svg-icons';
 
-library.add(fab, faCheckSquare, faCoffee, faHeart);
+library.add(fab, faHeart, faBookmark, faStar, faList);
 
 ReactDOM.render(
   <React.StrictMode>

@@ -1,4 +1,7 @@
 import FavoriteButton from './FavoriteButton';
+import WatchListButton from './WatchListButton';
+import RateButton from './RateButton';
+import ListButton from './ListButton';
 
 type Props = {
   isFavorite: boolean,
@@ -12,6 +15,9 @@ const PosterButtons = ({ isFavorite, favoriteHandler }: Props) => {
         isFavorite={isFavorite}
         favoriteHandler={favoriteHandler}
       />
+      <WatchListButton />
+      <RateButton />
+      <ListButton />
     </div>
   );
 };

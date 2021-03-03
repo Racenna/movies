@@ -59,14 +59,46 @@
 					min-width: 250px;
 					min-height: 40px;
 					background-color: #151515;
+					font-size: 22px;
 
 
 					.like-button {
 						cursor: pointer;
 						transition: .3s ease;
+
+						&:hover {
+							color: $secondaryColor;
+						}
 						
 						&.active {
 							color: $secondaryColor;
+						}
+					}
+
+					.watch-list-button {
+						cursor: pointer;
+						transition: .3s ease;
+
+						&:hover {
+							color: #9575CD;
+						}
+					}
+
+					.rate-button {
+						cursor: pointer;
+						transition: .3s ease;
+
+						&:hover {
+							color: #FFD54F;
+						}
+					}
+
+					.list-button {
+						cursor: pointer;
+						transition: .3s ease;
+	
+						&:hover {
+							color: #64B5F6;
 						}
 					}
 				}
