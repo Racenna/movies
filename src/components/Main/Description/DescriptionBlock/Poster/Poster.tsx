@@ -6,8 +6,11 @@ type Props = {
   session_id: string | null,
   isFavorite: boolean,
   isWatchList: boolean,
+  rating: number,
   handleFavorite: (isFavorite: boolean) => void,
   handleWatchList: (isWatchList: boolean) => void,
+  handleRate: (value: number) => void,
+  handleDeleteRating: () => void,
 };
 
 const Poster = ({
@@ -16,8 +19,11 @@ const Poster = ({
   session_id,
   isFavorite,
   isWatchList,
+  rating,
   handleFavorite,
   handleWatchList,
+  handleRate,
+  handleDeleteRating,
 }: Props) => {
   const poster = poster_path ? (
     <img
@@ -35,8 +41,11 @@ const Poster = ({
         <PosterButtons
           isFavorite={isFavorite}
           isWatchList={isWatchList}
+          rating={rating}
           handleFavorite={handleFavorite}
           handleWatchList={handleWatchList}
+          handleRate={handleRate}
+          handleDeleteRating={handleDeleteRating}
         />
       )}
     </div>

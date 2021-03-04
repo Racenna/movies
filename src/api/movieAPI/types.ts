@@ -137,3 +137,20 @@ export type RecommendationsAndSimilarResult = {
   video: boolean,
   vote_average: number,
 };
+
+export type AccountStatesResponse = {
+  id: number,
+  favorite: boolean,
+  watchlist: boolean,
+  rated: Rated | boolean,
+};
+
+export type Rated = {
+  value: number,
+};
+
+export type PostResponse = {
+  success: boolean,
+  status_code: number,
+  status_message: string,
+};

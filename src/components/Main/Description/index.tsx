@@ -24,8 +24,9 @@ type Params = {
 
 const Description = () => {
   const [movieDesc, setMovieDesc] = useState<MovieDetail | null>(null);
-  const [favoriteIds, setFavoriteIds] = useState<Array<number>>([]);
-  const [watchListIds, setWatchListIds] = useState<Array<number>>([]);
+  const [isFavorite, setIsFavorite] = useState(false);
+  const [isWatchList, setIsWatchList] = useState(false);
+  const [rating, setRating] = useState(0);
   const [cast, setCast] = useState<Array<Cast>>([]);
   const [crew, setCrew] = useState<Array<Crew>>([]);
   const [videos, setVideos] = useState<Array<VideoType>>([]);
@@ -57,11 +58,14 @@ const Description = () => {
 
   useEffect(() => {
     if (session_id) {
-      accountAPI.getFavoriteIds(session_id).then((res) => {
-        setFavoriteIds(res);
-      });
-      accountAPI.getWatchListIds(session_id).then((res) => {
-        setWatchListIds(res);
+      moviesAPI.getAccountStates(+movie_id, session_id).then((res) => {
+        setIsFavorite(res.favorite);
+        setIsWatchList(res.watchlist);
+        if (typeof res.rated === 'boolean') {
+          setRating(0);
+        } else {
+          setRating(res.rated.value);
+        }
       });
     }
   }, [session_id]);
@@ -79,8 +83,8 @@ const Description = () => {
         )
         .then((res) => {
           if (res.success) {
-            accountAPI.getFavoriteIds(session_id).then((res) => {
-              setFavoriteIds(res);
+            moviesAPI.getAccountStates(+movie_id, session_id).then((res) => {
+              setIsFavorite(res.favorite);
             });
           }
         });
@@ -100,11 +104,49 @@ const Description = () => {
         )
         .then((res) => {
           if (res.success) {
-            accountAPI.getWatchListIds(session_id).then((res) => {
-              setWatchListIds(res);
+            moviesAPI.getAccountStates(+movie_id, session_id).then((res) => {
+              setIsWatchList(res.watchlist);
             });
           }
         });
+    }
+  };
+
+  const handleRate = (value: number) => {
+    if (session_id) {
+      moviesAPI.rateMovie(session_id, +movie_id, value).then((res) => {
+        if (res.success) {
+          //? I put a delay because i received old data in the response from the server
+          setTimeout(() => {
+            moviesAPI.getAccountStates(+movie_id, session_id).then((res) => {
+              if (typeof res.rated === 'boolean') {
+                setRating(0);
+              } else {
+                setRating(res.rated.value);
+              }
+              setIsWatchList(res.watchlist);
+            });
+          }, 1000);
+        }
+      });
+    }
+  };
+
+  const handleDeleteRating = () => {
+    if (session_id) {
+      moviesAPI.deleteRating(session_id, +movie_id).then((res) => {
+        if (res.success) {
+          setTimeout(() => {
+            moviesAPI.getAccountStates(+movie_id, session_id).then((res) => {
+              if (typeof res.rated === 'boolean') {
+                setRating(0);
+              } else {
+                setRating(res.rated.value);
+              }
+            });
+          }, 1000);
+        }
+      });
     }
   };
 
@@ -124,10 +166,13 @@ const Description = () => {
         vote_average={movieDesc.vote_average}
         vote_count={movieDesc.vote_count}
         session_id={session_id}
-        isFavorite={favoriteIds.includes(+movie_id)}
-        isWatchList={watchListIds.includes(+movie_id)}
+        isFavorite={isFavorite}
+        isWatchList={isWatchList}
+        rating={rating}
         handleFavorite={handleFavorite}
         handleWatchList={handleWatchList}
+        handleRate={handleRate}
+        handleDeleteRating={handleDeleteRating}
       />
       <CastAndCrew cast={cast} crew={crew} />
       <Multimedia videos={videos} images={images} />
