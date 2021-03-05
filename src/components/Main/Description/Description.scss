@@ -130,57 +130,6 @@
 						align-items: center;
 						background-color: $modalColor;
 						z-index: 3;
-
-						.modal-rating {
-							display: flex;
-							flex-direction: column;
-							align-items: center;
-							background-color: $gray;
-							min-width: 375px;
-							width: 45%;
-							padding: 20px;
-
-							.rating-title {
-								margin-bottom: 20px;
-							}
-
-							.rating-items {
-								display: flex;
-								justify-content: space-around;
-								display: flex;
-								width: 100%;
-								font-size: 30px;
-								cursor: pointer;
-								transform: rotate(180deg);
-
-								.rating-star {
-									width: 100%;
-									transform: rotate(180deg);
-
-									&.rated {
-										color: #FFD54F;
-									}
-								}
-
-								&:hover .rating-star {
-									color: #ffffff;
-								}
-								
-								.rating-star:hover,
-								.rating-star:hover ~ .rating-star {
-									color: #FFD54F;
-								}
-
-								.remove-rating {
-									font-size: 90%;
-
-									&:hover {
-										color: $secondaryColor;
-									}
-								}
-							}
-	
-						}
 					}
 				}
 

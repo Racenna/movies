@@ -1,4 +1,4 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import StarRating from '../../../../../../common/StarRating';
 
 type Props = {
   isActive: boolean,
@@ -15,20 +15,6 @@ const ModalRate = ({
   handleRate,
   handleDeleteRating,
 }: Props) => {
-  const maxStar = 10;
-  const result: Array<JSX.Element> = [];
-
-  for (let value = maxStar; value > 0; value--) {
-    result.push(
-      <FontAwesomeIcon
-        key={value}
-        className={`rating-star ${value <= rating ? 'rated' : ''}`}
-        icon={['fas', 'star']}
-        onClick={() => handleRate(value)}
-      />
-    );
-  }
-
   return (
     <div
       className={`modal-window ${isActive ? 'active' : ''}`}
@@ -36,22 +22,11 @@ const ModalRate = ({
         handleActive(false);
       }}
     >
-      <div
-        className="modal-rating"
-        onClick={(event) => {
-          event.stopPropagation();
-        }}
-      >
-        <div className="rating-title">Set your rating</div>
-        <div className="rating-items">
-          {result}
-          <FontAwesomeIcon
-            className="remove-rating"
-            icon={['fas', 'minus-square']}
-            onClick={handleDeleteRating}
-          />
-        </div>
-      </div>
+      <StarRating
+        rating={rating}
+        handleRate={handleRate}
+        handleDeleteRating={handleDeleteRating}
+      />
     </div>
   );
 };
