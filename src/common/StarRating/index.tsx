@@ -3,8 +3,8 @@ import './style.scss';
 
 type Props = {
   rating: number,
-  handleRate: (value: number) => void,
-  handleDeleteRating?: () => void,
+  handleRate: (value: number) => void | ((value: number, id: number) => void),
+  handleDeleteRating?: () => void | ((id: number) => void),
 };
 
 const StarRating = ({ rating, handleRate, handleDeleteRating }: Props) => {

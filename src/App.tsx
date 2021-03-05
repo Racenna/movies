@@ -1,4 +1,9 @@
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Redirect,
+  Route,
+  Switch,
+} from 'react-router-dom';
 import Header from './components/Header';
 import Navbar from './components/Navbar';
 import Trending from './components/Main/Trending';
@@ -17,6 +22,11 @@ const App = () => {
           <Header />
           <Navbar />
           <Switch>
+            <Route
+              exact
+              path="/"
+              component={() => <Redirect to="/trending" />}
+            />
             <ProtectedRoute
               path="/profile/:typeList?"
               component={Profile}

@@ -34,11 +34,18 @@ const FavoriteItem = ({
       <div className="item-description">
         <div className="item-description-title">
           <NavLink to={`/movie/description/${id}`}>{title}</NavLink>
+          <FontAwesomeIcon
+            className="remove-button"
+            title="Remove from favorite"
+            icon={['fas', 'trash-alt']}
+            onClick={() => handleRemoveFavoriteItem(id)}
+          />
         </div>
         <div className="item-description-release">{date}</div>
         <div>
           <FontAwesomeIcon
             className="like-button"
+            title="Remove from favorite"
             icon={['fas', 'heart']}
             onClick={() => handleRemoveFavoriteItem(id)}
           />

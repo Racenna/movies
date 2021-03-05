@@ -26,6 +26,7 @@ export type Movie = {
   vote_count: number,
   video: boolean,
   vote_average: number,
+  rating?: number,
 };
 
 export type AccountResponse = {

@@ -50,7 +50,9 @@ const ProfileButton = ({ session_id, handleSignOut }: Props) => {
       />
       <ul className={`dropdown-menu ${active}`}>
         <li>
-          <NavLink to="/profile">Profile</NavLink>
+          <NavLink to="/profile" onClick={() => setIsActive(false)}>
+            Profile
+          </NavLink>
         </li>
         <li onClick={handleSignOut}>Logout</li>
       </ul>

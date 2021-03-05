@@ -62,6 +62,19 @@ export const accountAPI = {
     return response.data;
   },
 
+  async getRatedList(
+    session_id: string,
+    media_type: 'movies' | 'tv' = 'movies',
+    page: number
+  ) {
+    const response = await instance.get<ListResponse>(
+      `account/{account_id}/rated/${media_type}`,
+      { params: { session_id, page } }
+    );
+
+    return response.data;
+  },
+
   async getAccount(session_id: string) {
     const response = await instance.get<AccountResponse>(`account`, {
       params: { session_id },
