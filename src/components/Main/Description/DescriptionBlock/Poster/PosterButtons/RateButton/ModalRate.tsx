@@ -1,9 +1,9 @@
-import StarRating from '../../../../../../common/StarRating';
+import StarRating from '../../../../../../../common/StarRating';
 
 type Props = {
   isActive: boolean,
   rating: number,
-  handleActive: (activeState: boolean) => void,
+  closeModal: () => void,
   handleRate: (value: number) => void,
   handleDeleteRating: () => void,
 };
@@ -11,16 +11,14 @@ type Props = {
 const ModalRate = ({
   isActive,
   rating,
-  handleActive,
+  closeModal,
   handleRate,
   handleDeleteRating,
 }: Props) => {
   return (
     <div
       className={`modal-window ${isActive ? 'active' : ''}`}
-      onClick={() => {
-        handleActive(false);
-      }}
+      onClick={closeModal}
     >
       <StarRating
         rating={rating}

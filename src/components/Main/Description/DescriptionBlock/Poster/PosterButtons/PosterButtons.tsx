@@ -1,9 +1,7 @@
-import { useState } from 'react';
 import FavoriteButton from './FavoriteButton';
 import WatchListButton from './WatchListButton';
-import RateButton from './RateButton';
-import ListButton from './ListButton';
-import ModalRate from './ModalRate';
+import RateButton from './RateButton/RateButton';
+import ListButton from './ListButton/ListButton';
 
 type Props = {
   isFavorite: boolean,
@@ -24,11 +22,6 @@ const PosterButtons = ({
   handleRate,
   handleDeleteRating,
 }: Props) => {
-  const [isActive, setIsActive] = useState(false);
-
-  const handleActive = (activeState: boolean) => {
-    setIsActive(activeState);
-  };
   return (
     <div className="poster-buttons">
       <FavoriteButton isFavorite={isFavorite} handleFavorite={handleFavorite} />
@@ -36,15 +29,12 @@ const PosterButtons = ({
         isWatchList={isWatchList}
         handleWatchList={handleWatchList}
       />
-      <RateButton rating={rating} handleActive={handleActive} />
-      <ListButton />
-      <ModalRate
+      <RateButton
         rating={rating}
-        isActive={isActive}
-        handleActive={handleActive}
         handleRate={handleRate}
         handleDeleteRating={handleDeleteRating}
       />
+      <ListButton />
     </div>
   );
 };
