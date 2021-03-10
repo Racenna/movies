@@ -44,7 +44,7 @@ export type CustomList = {
   iso_639_1: string,
   list_type: string,
   name: string,
-  poster_path: null,
+  poster_path: string | null,
 };
 
 export type AccountResponse = {
