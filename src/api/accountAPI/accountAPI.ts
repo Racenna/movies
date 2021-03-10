@@ -5,6 +5,7 @@ import {
   MarkWatchListRequest,
   PostResponse,
   ListResponse,
+  CreatedListResponse,
 } from './types';
 
 export const accountAPI = {
@@ -69,6 +70,15 @@ export const accountAPI = {
   ) {
     const response = await instance.get<ListResponse>(
       `account/{account_id}/rated/${media_type}`,
+      { params: { session_id, page } }
+    );
+
+    return response.data;
+  },
+
+  async getCreatedLists(session_id: string, page: number) {
+    const response = await instance.get<CreatedListResponse>(
+      `account/{account_id}/lists`,
       { params: { session_id, page } }
     );
 

@@ -2,7 +2,11 @@ import { useCallback, useContext, useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { accountAPI } from '../../../api/accountAPI/accountAPI';
 import { moviesAPI } from '../../../api/movieAPI/movieAPI';
-import { AccountResponse, Movie } from '../../../api/accountAPI/types';
+import {
+  AccountResponse,
+  CustomList,
+  Movie,
+} from '../../../api/accountAPI/types';
 import { SessionContext } from '../../../contexts/SessionContext';
 import ProfileDetail from './ProfileDetail/ProfileDetail';
 import ProfileNavigation from './ProfileNavigation/ProfileNavigation';
@@ -10,6 +14,7 @@ import ProfileFavoriteList from './ProfileFavoriteList/ProfileFavoriteList';
 import ProfileWatchList from './ProfileWatchList/ProfileWatchList';
 import ProfileRatedList from './ProfileRatedList/ProfileRatedList';
 import './Profile.scss';
+import ProfileCustomLists from './ProfileCustomLists/ProfileCustomLists';
 
 type Params = {
   typeList: 'watch-list' | 'rated' | 'lists' | undefined,
@@ -22,6 +27,7 @@ const Profile = () => {
   const [favoriteList, setFavoriteList] = useState<Array<Movie>>([]);
   const [watchList, setWatchList] = useState<Array<Movie>>([]);
   const [ratedList, setRatedList] = useState<Array<Movie>>([]);
+  const [customLists, setCustomLists] = useState<Array<CustomList>>([]);
 
   const [page, setPage] = useState(1);
   const [totalPage, setTotalPage] = useState(1);
@@ -145,6 +151,7 @@ const Profile = () => {
     setFavoriteList([]);
     setWatchList([]);
     setRatedList([]);
+    setCustomLists([]);
   }, [typeList]);
 
   useEffect(() => {
@@ -182,8 +189,13 @@ const Profile = () => {
           break;
         }
         case 'lists': {
-          console.log(4);
-          setFavoriteList([]);
+          accountAPI.getCreatedLists(session_id, page).then((res) => {
+            setCustomLists((prevList) => {
+              return [...prevList, ...res.results];
+            });
+            setTotalPage(res.total_pages);
+            setIsLoading(false);
+          });
           break;
         }
       }
@@ -220,11 +232,11 @@ const Profile = () => {
         />
       )}
       {typeList === 'lists' && (
-        <div className="profile-list-items">
-          <div>lists 1</div>
-          <div>lists 2</div>
-          <div>lists 3</div>
-        </div>
+        <ProfileCustomLists
+          customLists={customLists}
+          isLoading={isLoading}
+          lastListElementRef={lastListElementRef}
+        />
       )}
     </div>
   );

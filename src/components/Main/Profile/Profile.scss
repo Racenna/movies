@@ -178,4 +178,39 @@
 			}
 		}
 	}
+
+	&-custom-lists {
+		display: flex;
+		flex-flow: column nowrap;
+		// justify-content: flex-start;
+
+		.list {
+			padding: 6px;
+			border-top: 1px solid $hoverLightGrayColor;			
+
+			&:last-child {
+				border-bottom: 1px solid $hoverLightGrayColor;
+			}
+
+
+			&-name {
+				font-size: 21px;
+				margin-right: 10px;
+			}
+
+			&-items-count {
+				font-size: 14px;
+				opacity: .7;
+			}
+
+			&-description {
+				margin-top: 10px;
+			}
+
+			&:hover {
+				cursor: pointer;
+				background-color: $hoverLightGrayColor;
+			}
+		}
+	}
 }

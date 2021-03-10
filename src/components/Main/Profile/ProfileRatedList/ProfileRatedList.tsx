@@ -32,7 +32,6 @@ const ProfileRatedList = ({
               lastListElementRef={lastListElementRef}
               handleRateItem={handleRateItem}
               handleDeleteRatingItem={handleDeleteRatingItem}
-              // handleRemoveWatchListItem={handleRemoveWatchListItem}
             />
           );
         } else if (item.rating) {
@@ -46,7 +45,6 @@ const ProfileRatedList = ({
               rating={item.rating}
               handleRateItem={handleRateItem}
               handleDeleteRatingItem={handleDeleteRatingItem}
-              // handleRemoveWatchListItem={handleRemoveWatchListItem}
             />
           );
         }
