@@ -7,6 +7,7 @@ type Props = {
   isFavorite: boolean,
   isWatchList: boolean,
   rating: number,
+  release_date: string,
   handleFavorite: (isFavorite: boolean) => void,
   handleWatchList: (isWatchList: boolean) => void,
   handleRate: (value: number) => void,
@@ -20,6 +21,7 @@ const Poster = ({
   isFavorite,
   isWatchList,
   rating,
+  release_date,
   handleFavorite,
   handleWatchList,
   handleRate,
@@ -42,6 +44,7 @@ const Poster = ({
           isFavorite={isFavorite}
           isWatchList={isWatchList}
           rating={rating}
+          release_date={release_date}
           handleFavorite={handleFavorite}
           handleWatchList={handleWatchList}
           handleRate={handleRate}

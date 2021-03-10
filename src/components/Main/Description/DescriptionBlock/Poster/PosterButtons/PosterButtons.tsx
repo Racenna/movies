@@ -7,6 +7,7 @@ type Props = {
   isFavorite: boolean,
   isWatchList: boolean,
   rating: number,
+  release_date: string,
   handleFavorite: (isFavorite: boolean) => void,
   handleWatchList: (isWatchList: boolean) => void,
   handleRate: (value: number) => void,
@@ -17,6 +18,7 @@ const PosterButtons = ({
   isFavorite,
   isWatchList,
   rating,
+  release_date,
   handleFavorite,
   handleWatchList,
   handleRate,
@@ -29,11 +31,13 @@ const PosterButtons = ({
         isWatchList={isWatchList}
         handleWatchList={handleWatchList}
       />
-      <RateButton
-        rating={rating}
-        handleRate={handleRate}
-        handleDeleteRating={handleDeleteRating}
-      />
+      {new Date() > new Date(release_date) && (
+        <RateButton
+          rating={rating}
+          handleRate={handleRate}
+          handleDeleteRating={handleDeleteRating}
+        />
+      )}
       <ListButton />
     </div>
   );

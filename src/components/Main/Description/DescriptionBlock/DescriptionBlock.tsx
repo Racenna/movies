@@ -76,6 +76,7 @@ const DescriptionBlock = ({
           isFavorite={isFavorite}
           isWatchList={isWatchList}
           rating={rating}
+          release_date={release_date}
           handleFavorite={handleFavorite}
           handleWatchList={handleWatchList}
           handleRate={handleRate}
