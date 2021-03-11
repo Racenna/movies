@@ -54,7 +54,6 @@
 		justify-content: center;
 		align-items: center;
 		background-color: transparent;
-		// width: 10vw;
 		width: 120px;
 		color: #ffffff;
 		font-size: 20px;
@@ -92,7 +91,6 @@
 				display: none;
 			}
 
-			// & .dropdown-menu {
 			& .dropdown-menu.active {
 				display: block;
 				position: fixed;
@@ -149,14 +147,6 @@
 					}
 				}
 			}
-
-			// & summary::-webkit-details-marker {
-			// 	display: none;
-			// }
-
-			// & > summary {
-			// 	list-style: none;
-			// }
 		}
 
 	}

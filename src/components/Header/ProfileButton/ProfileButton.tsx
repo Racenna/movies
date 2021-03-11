@@ -11,7 +11,6 @@ type Props = {
 const ProfileButton = ({ session_id, handleSignOut }: Props) => {
   const [avatar, setAvatar] = useState<string | null>(null);
   const [isActive, setIsActive] = useState(false);
-  const active = isActive ? 'active' : '';
 
   const divEl = useRef<HTMLDivElement>(null);
 
@@ -48,7 +47,7 @@ const ProfileButton = ({ session_id, handleSignOut }: Props) => {
           setIsActive(true);
         }}
       />
-      <ul className={`dropdown-menu ${active}`}>
+      <ul className={`dropdown-menu ${isActive ? 'active' : ''}`}>
         <li>
           <NavLink to="/profile" onClick={() => setIsActive(false)}>
             Profile

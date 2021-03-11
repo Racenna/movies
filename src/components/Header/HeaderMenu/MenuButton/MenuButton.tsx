@@ -1,14 +1,13 @@
 type MenuButtonPropsType = {
-  style: string,
-  activeChange: (value: boolean) => void,
   isActive: boolean,
+  activeChange: (value: boolean) => void,
 };
 
-const MenuButton = ({ style, activeChange, isActive }: MenuButtonPropsType) => {
+const MenuButton = ({ activeChange, isActive }: MenuButtonPropsType) => {
   return (
     <div className="menu-box">
       <div
-        className={`menu-box-button ${style}`}
+        className={`menu-box-button ${isActive ? 'active' : 'inactive'}`}
         onClick={() => activeChange(!isActive)}
       >
         <div className="line-1"></div>
