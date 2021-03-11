@@ -109,10 +109,6 @@
 						&:hover {
 							color: #64B5F6;
 						}
-
-						&.active {
-							color: #64B5F6;
-						}
 					}
 				}
 
@@ -130,6 +126,60 @@
 						align-items: center;
 						background-color: $modalColor;
 						z-index: 3;
+
+						.lists-wrapper {
+							width: 60%;
+							background-color: $darkGray;
+							padding: 15px 10px;
+							border-radius: 6px;
+
+							.lists-title {
+								display: flex;
+								justify-content: center;
+								margin-bottom: 10px;
+							}
+
+							.list {
+								display: flex;
+								justify-content: space-between;
+								align-items: center;
+								padding: 6px;
+								border-top: 1px solid $hoverLightGrayColor;
+
+								
+								&:last-child {
+									border-bottom: 1px solid $hoverLightGrayColor;
+								}
+								
+								&-name {
+									font-size: 21px;
+									margin-right: 10px;
+								}
+
+								&-items-count {
+									font-size: 14px;
+									opacity: .7;
+								}
+
+								&:hover {
+									background-color: $hoverLightGrayColor;
+								}
+
+								button {
+									background-color: $primaryColor;
+									padding: 5px;
+									font-size: 18px;
+									color: white;
+									border: 1px solid $secondaryColor;
+									border-radius: 6px;
+									transition: .1s ease;
+
+									&:hover {
+										background-color: $secondaryColor;
+									}
+								}
+							}
+						}
 					}
 				}
 

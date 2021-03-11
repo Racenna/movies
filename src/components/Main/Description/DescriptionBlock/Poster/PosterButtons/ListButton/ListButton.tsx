@@ -1,8 +1,14 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from 'react';
+import { CustomList } from '../../../../../../../api/accountAPI/types';
 import ModalList from './ModalList';
 
-const ListButton = () => {
+type Props = {
+  customLists: Array<CustomList>,
+  handleAddToList: (id: number | string) => void,
+};
+
+const ListButton = ({ customLists, handleAddToList }: Props) => {
   const [isActive, setIsActive] = useState(false);
   return (
     <>
@@ -11,7 +17,15 @@ const ListButton = () => {
         icon={['fas', 'list']}
         onClick={() => setIsActive(true)}
       />
-      <ModalList isActive={isActive} closeModal={() => setIsActive(false)} />
+      <ModalList
+        customLists={customLists}
+        isActive={isActive}
+        closeModal={() => setIsActive(false)}
+        handleAddToList={(id: number | string) => {
+          setIsActive(false);
+          handleAddToList(id);
+        }}
+      />
     </>
   );
 };

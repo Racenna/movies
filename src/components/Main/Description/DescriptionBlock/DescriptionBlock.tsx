@@ -1,3 +1,4 @@
+import { CustomList } from '../../../../api/accountAPI/types';
 import { GenreType } from '../../../../api/movieAPI/types';
 import Genres from './Genres/Genres';
 import Poster from './Poster/Poster';
@@ -17,10 +18,12 @@ type Props = {
   isFavorite: boolean,
   isWatchList: boolean,
   rating: number,
+  customLists: Array<CustomList>,
   handleFavorite: (isFavorite: boolean) => void,
   handleWatchList: (isWatchList: boolean) => void,
   handleRate: (value: number) => void,
   handleDeleteRating: () => void,
+  handleAddToList: (id: number | string) => void,
 };
 
 const DescriptionBlock = ({
@@ -38,10 +41,12 @@ const DescriptionBlock = ({
   isFavorite,
   isWatchList,
   rating,
+  customLists,
   handleFavorite,
   handleWatchList,
   handleRate,
   handleDeleteRating,
+  handleAddToList,
 }: Props) => {
   const months = [
     'January',
@@ -76,11 +81,13 @@ const DescriptionBlock = ({
           isFavorite={isFavorite}
           isWatchList={isWatchList}
           rating={rating}
+          customLists={customLists}
           release_date={release_date}
           handleFavorite={handleFavorite}
           handleWatchList={handleWatchList}
           handleRate={handleRate}
           handleDeleteRating={handleDeleteRating}
+          handleAddToList={handleAddToList}
         />
         <div className="detail-text">
           <div className="info">

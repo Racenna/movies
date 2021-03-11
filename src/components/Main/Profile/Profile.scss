@@ -182,7 +182,6 @@
 	&-custom-lists {
 		display: flex;
 		flex-flow: column nowrap;
-		// justify-content: flex-start;
 
 		.list {
 			padding: 6px;
@@ -201,10 +200,6 @@
 			&-items-count {
 				font-size: 14px;
 				opacity: .7;
-			}
-
-			&-description {
-				margin-top: 10px;
 			}
 
 			&:hover {

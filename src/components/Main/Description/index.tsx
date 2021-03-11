@@ -16,7 +16,9 @@ import Multimedia from './Multimedia/Multimedia';
 import RecommendedAndSimilar from './RecommendedAndSimilar/RecommendedAndSimilar';
 import { accountAPI } from '../../../api/accountAPI/accountAPI';
 import { SessionContext } from '../../../contexts/SessionContext';
+import { CustomList } from '../../../api/accountAPI/types';
 import './Description.scss';
+import { listsAPI } from '../../../api/listsAPI/listsAPI';
 
 type Params = {
   movie_id: string,
@@ -27,6 +29,7 @@ const Description = () => {
   const [isFavorite, setIsFavorite] = useState(false);
   const [isWatchList, setIsWatchList] = useState(false);
   const [rating, setRating] = useState(0);
+  const [customLists, setCustomLists] = useState<Array<CustomList>>([]);
   const [cast, setCast] = useState<Array<Cast>>([]);
   const [crew, setCrew] = useState<Array<Crew>>([]);
   const [videos, setVideos] = useState<Array<VideoType>>([]);
@@ -66,6 +69,9 @@ const Description = () => {
         } else {
           setRating(res.rated.value);
         }
+      });
+      accountAPI.getCreatedLists(session_id, 1).then((res) => {
+        setCustomLists(res.results);
       });
     }
   }, [session_id]);
@@ -150,6 +156,18 @@ const Description = () => {
     }
   };
 
+  const handleAddToList = (id: number | string) => {
+    if (session_id) {
+      listsAPI.addMovie(id, +movie_id, session_id).then((res) => {
+        if (res.success) {
+          accountAPI.getCreatedLists(session_id, 1).then((res) => {
+            setCustomLists(res.results);
+          });
+        }
+      });
+    }
+  };
+
   if (isLoading || !movieDesc) return <Preloader />;
 
   return (
@@ -169,10 +187,12 @@ const Description = () => {
         isFavorite={isFavorite}
         isWatchList={isWatchList}
         rating={rating}
+        customLists={customLists}
         handleFavorite={handleFavorite}
         handleWatchList={handleWatchList}
         handleRate={handleRate}
         handleDeleteRating={handleDeleteRating}
+        handleAddToList={handleAddToList}
       />
       <CastAndCrew cast={cast} crew={crew} />
       <Multimedia videos={videos} images={images} />

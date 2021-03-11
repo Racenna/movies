@@ -1,3 +1,4 @@
+import { CustomList } from '../../../../../api/accountAPI/types';
 import PosterButtons from './PosterButtons/PosterButtons';
 
 type Props = {
@@ -7,11 +8,13 @@ type Props = {
   isFavorite: boolean,
   isWatchList: boolean,
   rating: number,
+  customLists: Array<CustomList>,
   release_date: string,
   handleFavorite: (isFavorite: boolean) => void,
   handleWatchList: (isWatchList: boolean) => void,
   handleRate: (value: number) => void,
   handleDeleteRating: () => void,
+  handleAddToList: (id: number | string) => void,
 };
 
 const Poster = ({
@@ -21,11 +24,13 @@ const Poster = ({
   isFavorite,
   isWatchList,
   rating,
+  customLists,
   release_date,
   handleFavorite,
   handleWatchList,
   handleRate,
   handleDeleteRating,
+  handleAddToList,
 }: Props) => {
   const poster = poster_path ? (
     <img
@@ -44,11 +49,13 @@ const Poster = ({
           isFavorite={isFavorite}
           isWatchList={isWatchList}
           rating={rating}
+          customLists={customLists}
           release_date={release_date}
           handleFavorite={handleFavorite}
           handleWatchList={handleWatchList}
           handleRate={handleRate}
           handleDeleteRating={handleDeleteRating}
+          handleAddToList={handleAddToList}
         />
       )}
     </div>
