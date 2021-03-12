@@ -23,7 +23,7 @@ type Props = {
   handleWatchList: (isWatchList: boolean) => void,
   handleRate: (value: number) => void,
   handleDeleteRating: () => void,
-  handleAddToList: (id: number | string) => void,
+  handleAddToList: (id: number | string, name: string) => void,
 };
 
 const DescriptionBlock = ({

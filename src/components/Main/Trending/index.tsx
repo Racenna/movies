@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { trendingAPI } from '../../../api/trendingAPI/trendingAPI';
 import { TrendingResults } from '../../../api/trendingAPI/types';
-import { useLocation } from 'react-router-dom';
-import Items from './Items/Items';
 import Pagination from '../../../common/Pagination';
 import Preloader from '../../../common/Preloader';
+import Items from './Items/Items';
 import '../Main.scss';
 
 const Trending = () => {

@@ -1,6 +1,9 @@
 import { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
+import { StatusCodes } from '../../../api/statusCodes';
 import { moviesAPI } from '../../../api/movieAPI/movieAPI';
+import { accountAPI } from '../../../api/accountAPI/accountAPI';
+import { listsAPI } from '../../../api/listsAPI/listsAPI';
 import {
   MovieDetail,
   Cast,
@@ -14,11 +17,10 @@ import DescriptionBlock from './DescriptionBlock/DescriptionBlock';
 import CastAndCrew from './CastAndCrewBlock/CastAndCrew';
 import Multimedia from './Multimedia/Multimedia';
 import RecommendedAndSimilar from './RecommendedAndSimilar/RecommendedAndSimilar';
-import { accountAPI } from '../../../api/accountAPI/accountAPI';
 import { SessionContext } from '../../../contexts/SessionContext';
 import { CustomList } from '../../../api/accountAPI/types';
+import { toast } from 'react-toastify';
 import './Description.scss';
-import { listsAPI } from '../../../api/listsAPI/listsAPI';
 
 type Params = {
   movie_id: string,
@@ -40,6 +42,7 @@ const Description = () => {
   const [similar, setSimilar] = useState<
     Array<RecommendationsAndSimilarResult>
   >([]);
+
   const [isLoading, setIsLoading] = useState(true);
   const { movie_id } = useParams<Params>();
 
@@ -92,7 +95,17 @@ const Description = () => {
             moviesAPI.getAccountStates(+movie_id, session_id).then((res) => {
               setIsFavorite(res.favorite);
             });
+            if (res.status_code === StatusCodes.Success) {
+              toast.dark('Movie added to favorites');
+            } else if (res.status_code === StatusCodes.Delete) {
+              toast.dark('Movie removed from favorites');
+            }
+          } else {
+            throw new Error(res.status_message);
           }
+        })
+        .catch((error: Error) => {
+          toast.error(error.message);
         });
     }
   };
@@ -113,58 +126,102 @@ const Description = () => {
             moviesAPI.getAccountStates(+movie_id, session_id).then((res) => {
               setIsWatchList(res.watchlist);
             });
+            if (res.status_code === StatusCodes.Success) {
+              toast.dark('Movie added to watchlist');
+            } else if (res.status_code === StatusCodes.Delete) {
+              toast.dark('Movie removed from watchlist');
+            }
+          } else {
+            throw new Error(res.status_message);
           }
+        })
+        .catch((error: Error) => {
+          toast.error(error.message);
         });
     }
   };
 
   const handleRate = (value: number) => {
     if (session_id) {
-      moviesAPI.rateMovie(session_id, +movie_id, value).then((res) => {
-        if (res.success) {
-          //? I put a delay because i received old data in the response from the server
-          setTimeout(() => {
-            moviesAPI.getAccountStates(+movie_id, session_id).then((res) => {
-              if (typeof res.rated === 'boolean') {
-                setRating(0);
-              } else {
-                setRating(res.rated.value);
+      moviesAPI
+        .rateMovie(session_id, +movie_id, value)
+        .then((res) => {
+          if (res.success) {
+            setTimeout(() => {
+              moviesAPI.getAccountStates(+movie_id, session_id).then((res) => {
+                if (typeof res.rated === 'boolean') {
+                  setRating(0);
+                } else {
+                  setRating(res.rated.value);
+                }
+                setIsWatchList(res.watchlist);
+              });
+
+              if (res.status_code === StatusCodes.Success) {
+                toast.dark('You have rated the movie');
+              } else if (res.status_code === StatusCodes.Update) {
+                toast.dark('You have updated the rating for a movie');
               }
-              setIsWatchList(res.watchlist);
-            });
-          }, 1000);
-        }
-      });
+            }, 1000);
+          } else {
+            throw new Error(res.status_message);
+          }
+        })
+        .catch((error: Error) => {
+          toast.error(error.message);
+        });
     }
   };
 
   const handleDeleteRating = () => {
     if (session_id) {
-      moviesAPI.deleteRating(session_id, +movie_id).then((res) => {
-        if (res.success) {
-          setTimeout(() => {
-            moviesAPI.getAccountStates(+movie_id, session_id).then((res) => {
-              if (typeof res.rated === 'boolean') {
-                setRating(0);
-              } else {
-                setRating(res.rated.value);
+      moviesAPI
+        .deleteRating(session_id, +movie_id)
+        .then((res) => {
+          if (res.success) {
+            setTimeout(() => {
+              moviesAPI.getAccountStates(+movie_id, session_id).then((res) => {
+                if (typeof res.rated === 'boolean') {
+                  setRating(0);
+                } else {
+                  setRating(res.rated.value);
+                }
+              });
+
+              if (res.status_code === StatusCodes.Delete) {
+                toast.dark('You have removed the rating from a movie');
               }
-            });
-          }, 1000);
-        }
-      });
+            }, 1000);
+          } else {
+            throw new Error(res.status_message);
+          }
+        })
+        .catch((error: Error) => {
+          toast.error(error.message);
+        });
     }
   };
 
-  const handleAddToList = (id: number | string) => {
+  const handleAddToList = (id: number | string, name: string) => {
     if (session_id) {
-      listsAPI.addMovie(id, +movie_id, session_id).then((res) => {
-        if (res.success) {
-          accountAPI.getCreatedLists(session_id, 1).then((res) => {
-            setCustomLists(res.results);
-          });
-        }
-      });
+      listsAPI
+        .addMovie(id, +movie_id, session_id)
+        .then((res) => {
+          if (res.success) {
+            accountAPI.getCreatedLists(session_id, 1).then((res) => {
+              setCustomLists(res.results);
+            });
+
+            if (res.status_code === StatusCodes.Update) {
+              toast.dark(`Added to list '${name}'`);
+            }
+          } else {
+            throw new Error(res.status_message);
+          }
+        })
+        .catch((error: Error) => {
+          toast.error(error.message);
+        });
     }
   };
 

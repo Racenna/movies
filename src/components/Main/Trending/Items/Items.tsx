@@ -1,5 +1,5 @@
-import Item from './Item';
 import { TrendingResults } from '../../../../api/trendingAPI/types';
+import Item from './Item';
 
 type Props = {
   items: Array<TrendingResults>,

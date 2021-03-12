@@ -4,7 +4,7 @@ type Props = {
   isActive: boolean,
   customLists: Array<CustomList>,
   closeModal: () => void,
-  handleAddToList: (id: number | string) => void,
+  handleAddToList: (id: number | string, name: string) => void,
 };
 
 const ModalList = ({
@@ -29,7 +29,7 @@ const ModalList = ({
               <span className="list-name">{item.name}</span>
               <span className="list-items-count">items: {item.item_count}</span>
             </div>
-            <button onClick={() => handleAddToList(item.id)}>
+            <button onClick={() => handleAddToList(item.id, item.name)}>
               Add to list
             </button>
           </div>

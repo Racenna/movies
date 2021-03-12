@@ -5,7 +5,7 @@ import ModalList from './ModalList';
 
 type Props = {
   customLists: Array<CustomList>,
-  handleAddToList: (id: number | string) => void,
+  handleAddToList: (id: number | string, name: string) => void,
 };
 
 const ListButton = ({ customLists, handleAddToList }: Props) => {
@@ -21,9 +21,9 @@ const ListButton = ({ customLists, handleAddToList }: Props) => {
         customLists={customLists}
         isActive={isActive}
         closeModal={() => setIsActive(false)}
-        handleAddToList={(id: number | string) => {
+        handleAddToList={(id: number | string, name: string) => {
           setIsActive(false);
-          handleAddToList(id);
+          handleAddToList(id, name);
         }}
       />
     </>

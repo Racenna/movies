@@ -13,11 +13,7 @@ export const accountAPI = {
     const response = await instance.post<PostResponse>(
       `account/{account_id}/favorite`,
       payload,
-      {
-        params: {
-          session_id,
-        },
-      }
+      { params: { session_id } }
     );
 
     return response.data;
@@ -40,11 +36,7 @@ export const accountAPI = {
     const response = await instance.post<PostResponse>(
       `account/{account_id}/watchlist`,
       payload,
-      {
-        params: {
-          session_id,
-        },
-      }
+      { params: { session_id } }
     );
 
     return response.data;

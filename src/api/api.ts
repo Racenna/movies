@@ -6,4 +6,7 @@ export const instance = axios.create({
     Authorization: `Bearer ${process.env.REACT_APP_API_TOKEN}`,
     'Content-Type': 'application/json;charset=utf-8',
   },
+  validateStatus: (status) => {
+    return status < 500;
+  },
 });

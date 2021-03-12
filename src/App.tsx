@@ -4,6 +4,7 @@ import {
   Route,
   Switch,
 } from 'react-router-dom';
+import { ToastContainer, Zoom } from 'react-toastify';
 import Header from './components/Header';
 import Navbar from './components/Navbar';
 import Trending from './components/Main/Trending';
@@ -13,6 +14,7 @@ import Approve from './components/Main/Approve/Approve';
 import SessionContextProvider from './contexts/SessionContext';
 import ProtectedRoute from './common/ProtectedRoute';
 import './App.scss';
+import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
   return (
@@ -40,6 +42,12 @@ const App = () => {
             />
           </Switch>
         </div>
+        <ToastContainer
+          position="bottom-right"
+          autoClose={3000}
+          newestOnTop
+          transition={Zoom}
+        />
       </SessionContextProvider>
     </Router>
   );
