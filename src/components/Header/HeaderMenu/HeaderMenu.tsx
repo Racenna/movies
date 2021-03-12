@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import MenuButton from './MenuButton/MenuButton';
 import MenuBar from './MenuBar/MenuBar';
 
@@ -9,16 +9,12 @@ const HeaderMenu = () => {
     setIsActive(status);
   };
 
-  const style = isActive ? 'active' : 'inactive';
+  // const style = isActive ? 'active' : 'inactive';
 
   return (
     <>
-      <MenuButton
-        style={style}
-        activeChange={clickHandler}
-        isActive={isActive}
-      />
-      <MenuBar style={style} activeChange={clickHandler} />
+      <MenuButton activeChange={clickHandler} isActive={isActive} />
+      <MenuBar isActive={isActive} activeChange={clickHandler} />
     </>
   );
 };

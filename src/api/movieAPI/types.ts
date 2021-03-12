@@ -8,7 +8,7 @@ export type MovieDetail = {
     backdrop_path: string,
   } | null,
   budget: number,
-  genres: Array<Genre>,
+  genres: Array<GenreType>,
   homepage: string | null,
   id: number,
   imdb_id: string | null,
@@ -42,7 +42,7 @@ export type MovieDetail = {
   vote_count: number,
 };
 
-export type Genre = {
+export type GenreType = {
   id: number,
   name: string,
 };
@@ -136,4 +136,21 @@ export type RecommendationsAndSimilarResult = {
   vote_count: number,
   video: boolean,
   vote_average: number,
+};
+
+export type AccountStatesResponse = {
+  id: number,
+  favorite: boolean,
+  watchlist: boolean,
+  rated: Rated | boolean,
+};
+
+export type Rated = {
+  value: number,
+};
+
+export type PostResponse = {
+  success: boolean,
+  status_code: number,
+  status_message: string,
 };

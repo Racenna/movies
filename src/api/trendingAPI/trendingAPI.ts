@@ -2,9 +2,9 @@ import { Trending } from './types';
 import { instance } from '../api';
 
 export const trendingAPI = {
-  async getTrendingMoviesDay() {
+  async getTrendingMoviesDay(page: number) {
     const response = await instance.get<Trending>(
-      `trending/movie/day?page=1?language=en`
+      `trending/movie/day?page=${page}?language=en`
     );
     return response.data;
   },

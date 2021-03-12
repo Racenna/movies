@@ -4,6 +4,27 @@ import './index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fab } from '@fortawesome/free-brands-svg-icons';
+import {
+  faHeart,
+  faBookmark,
+  faStar,
+  faList,
+  faMinusSquare,
+  faTrashAlt,
+} from '@fortawesome/free-solid-svg-icons';
+
+library.add(
+  fab,
+  faHeart,
+  faBookmark,
+  faStar,
+  faList,
+  faMinusSquare,
+  faTrashAlt
+);
+
 ReactDOM.render(
   <React.StrictMode>
     <App />

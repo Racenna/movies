@@ -1,17 +1,29 @@
-import { Genre } from '../../../../api/movieAPI/types';
-import Genres from './Genres';
+import { CustomList } from '../../../../api/accountAPI/types';
+import { GenreType } from '../../../../api/movieAPI/types';
+import Genres from './Genres/Genres';
+import Poster from './Poster/Poster';
 
 type Props = {
   poster_path: string | null,
   title: string,
   overview: string | null,
   original_title: string,
-  genres: Array<Genre>,
+  genres: Array<GenreType>,
   release_date: string,
   runtime: number | null,
   status: string,
   vote_average: number,
   vote_count: number,
+  session_id: string | null,
+  isFavorite: boolean,
+  isWatchList: boolean,
+  rating: number,
+  customLists: Array<CustomList>,
+  handleFavorite: (isFavorite: boolean) => void,
+  handleWatchList: (isWatchList: boolean) => void,
+  handleRate: (value: number) => void,
+  handleDeleteRating: () => void,
+  handleAddToList: (id: number | string, name: string) => void,
 };
 
 const DescriptionBlock = ({
@@ -25,8 +37,17 @@ const DescriptionBlock = ({
   status,
   vote_average,
   vote_count,
+  session_id,
+  isFavorite,
+  isWatchList,
+  rating,
+  customLists,
+  handleFavorite,
+  handleWatchList,
+  handleRate,
+  handleDeleteRating,
+  handleAddToList,
 }: Props) => {
-  const poster = `${process.env.REACT_APP_IMG_BASE_URL}${poster_path}`;
   const months = [
     'January',
     'February',
@@ -41,6 +62,7 @@ const DescriptionBlock = ({
     'November',
     'December',
   ];
+
   const date = new Date(release_date);
   const month = months[date.getMonth()];
   const day = date.getDate();
@@ -48,18 +70,33 @@ const DescriptionBlock = ({
 
   return (
     <div className="description-block">
-      <div className="title">{title}</div>
+      <div className="desc-header">
+        <div className="title">{title}</div>
+      </div>
       <div className="detail">
-        <div className="detail-poster">
-          <img src={poster} alt={title} />
-        </div>
+        <Poster
+          poster_path={poster_path}
+          title={title}
+          session_id={session_id}
+          isFavorite={isFavorite}
+          isWatchList={isWatchList}
+          rating={rating}
+          customLists={customLists}
+          release_date={release_date}
+          handleFavorite={handleFavorite}
+          handleWatchList={handleWatchList}
+          handleRate={handleRate}
+          handleDeleteRating={handleDeleteRating}
+          handleAddToList={handleAddToList}
+        />
         <div className="detail-text">
           <div className="info">
             <div className="info-item">
               <span>Original title:</span> {original_title}
             </div>
             <div className="info-item">
-              <span>Release:</span> {`${month} ${day} ${year}`}
+              <span>Release:</span>{' '}
+              {release_date ? `${month} ${day} ${year}` : 'No release date'}
             </div>
             <div className="info-item">
               <span>Runtime:</span> {runtime} min

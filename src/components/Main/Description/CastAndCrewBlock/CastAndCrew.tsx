@@ -1,31 +1,45 @@
-// cast={cast} crew={crew}
-import { Cast } from '../../../../api/movieAPI/types';
-import noImage from '../../../../assets/svg/no_image.svg';
+import { useState } from 'react';
+import { Cast, Crew } from '../../../../api/movieAPI/types';
+import CastCard from './CastCard';
+import ModalCastAndCrew from './ModalCastAndCrew/ModalCastAndCrew';
 
 type Props = {
   cast: Array<Cast>,
+  crew: Array<Crew>,
 };
 
-const CastAndCrew = ({ cast }: Props) => {
+const CastAndCrew = ({ cast, crew }: Props) => {
+  const [isActive, setIsActive] = useState(false);
+
+  const openModal = () => {
+    setIsActive(true);
+  };
+
+  const closeModal = () => {
+    setIsActive(false);
+  };
+
   return (
     <div className="description-cast">
       <span className="description-cast-title">Cast</span>
-      <span className="more">See all</span>
+      <span className="more" onClick={openModal}>
+        See all
+      </span>
       <div className="cast">
-        {cast.map((item) => {
-          const profile = item.profile_path
-            ? `${process.env.REACT_APP_IMG_BASE_URL}${item.profile_path}`
-            : `${noImage}`;
-          return (
-            <div className="cast-item" key={item.id}>
-              <div>
-                <img src={profile} />
-              </div>
-              <div className="cast-name">{item.name}</div>
-            </div>
-          );
-        })}
+        {cast.slice(0, 10).map((item) => (
+          <CastCard
+            key={item.credit_id}
+            profile_path={item.profile_path}
+            name={item.name}
+          />
+        ))}
       </div>
+      <ModalCastAndCrew
+        cast={cast}
+        crew={crew}
+        isActive={isActive}
+        closeModal={closeModal}
+      />
     </div>
   );
 };

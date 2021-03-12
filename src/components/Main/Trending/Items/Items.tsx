@@ -1,11 +1,11 @@
-import Item from './Item';
 import { TrendingResults } from '../../../../api/trendingAPI/types';
+import Item from './Item';
 
-type MoviesProp = {
+type Props = {
   items: Array<TrendingResults>,
 };
 
-const Movies = ({ items }: MoviesProp) => {
+const Items = ({ items }: Props) => {
   return (
     <div className="main-content">
       {items.map((value) => (
@@ -13,6 +13,7 @@ const Movies = ({ items }: MoviesProp) => {
           key={value.id}
           poster_path={value.poster_path}
           title={value.title}
+          release_date={value.release_date}
           id={value.id}
         />
       ))}
@@ -20,4 +21,4 @@ const Movies = ({ items }: MoviesProp) => {
   );
 };
 
-export default Movies;
+export default Items;

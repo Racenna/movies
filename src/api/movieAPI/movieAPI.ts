@@ -1,10 +1,12 @@
 import { instance } from '../api';
 import {
+  AccountStatesResponse,
   CastAndCrew,
   ImagesMovie,
   MovieDetail,
   RecommendationsAndSimilarMovie,
   VideosMovie,
+  PostResponse,
 } from './types';
 
 export const moviesAPI = {
@@ -40,5 +42,35 @@ export const moviesAPI = {
       recommendations,
       similar,
     };
+  },
+
+  async getAccountStates(movie_id: number, session_id: string) {
+    const response = await instance.get<AccountStatesResponse>(
+      `movie/${movie_id}/account_states`,
+      { params: { session_id } }
+    );
+
+    return response.data;
+  },
+
+  async rateMovie(session_id: string, movie_id: number, value: number) {
+    const response = await instance.post<PostResponse>(
+      `movie/${movie_id}/rating`,
+      { value },
+      { params: { session_id } }
+    );
+
+    return response.data;
+  },
+
+  async deleteRating(session_id: string, movie_id: number) {
+    const response = await instance.delete<PostResponse>(
+      `movie/${movie_id}/rating`,
+      {
+        params: { session_id },
+      }
+    );
+
+    return response.data;
   },
 };

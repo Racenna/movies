@@ -15,6 +15,7 @@ const ModalImage = ({
   previousImage,
   nextImage,
 }: Props) => {
+  if (!image) return <div></div>;
   const style = isActive ? 'active' : 'inactive';
   const imgPath = `${process.env.REACT_APP_IMG_BASE_URL}${image.file_path}`;
   const imgStyle = image.width > image.height ? 'backdrop-img' : 'poster-img';
@@ -24,11 +25,13 @@ const ModalImage = ({
         <div className="line-1"></div>
         <div className="line-2"></div>
       </div>
-      <div className="centered-img">
+      <div className="centered-image">
         <div className="arrow-button" onClick={previousImage}>
           &#10094;
         </div>
-        <img className={imgStyle} src={imgPath} />
+        <div className="image-container">
+          <img className={imgStyle} src={imgPath} />
+        </div>
         <div className="arrow-button" onClick={nextImage}>
           &#10095;
         </div>

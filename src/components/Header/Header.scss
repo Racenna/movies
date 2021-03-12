@@ -1,18 +1,19 @@
 @import '../../sass/variables.scss';
 @import '../../sass/mixins.scss';
 
-
 .header {
 	grid-area: header;
 	display: flex;
+	background-color: $gray;
 
-	.header-logo {
+	&-logo {
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		min-width: $logoNavbarWidth;
 		width: $logoNavbarWidth;
-		background-color: $secondaryColor;
+		color: $secondaryColor;
+		border-bottom: 2px solid $secondaryColor;
 	
 		span {
 			font-size: 38px;
@@ -20,39 +21,134 @@
 		}
 	}
 
-	.header-search {
-		width: 100vw;
+	&-search {
+		min-width: calc(100vw - 120px - 200px);
 		height: $headerHeight;
 		display: flex;
-		flex-direction: column;
-	
-		&-box {
-			height: $headerHeight - 5px;
-	
-			input[type='text'] {
-				width: 100%;
-				height: inherit;
-				background-color: inherit;
-				color: inherit;
-				text-align: center;
-				font-size: 20px;
-			}
-	
-			input[type='text']::placeholder {
-				font-size: 20px;
-				color: white;
-				opacity: .45;
-			}
-	
-			input[type='text']:focus::placeholder {
-				color: transparent;
+		justify-content: center;
+		align-items: center;
+		
+		input[type='text'] {
+			width: 60%;
+			border-radius: 8px;
+			height: 50px;
+			background-color: $primaryColor;
+			color: inherit;
+			text-align: center;
+			font-size: 18px;
+		}
+
+		input[type='text']::placeholder {
+			font-size: 18px;
+			color: white;
+			opacity: .45;
+		}
+
+		input[type='text']:focus::placeholder {
+			color: transparent;
+		}
+	}
+
+	&-authorization {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background-color: transparent;
+		width: 120px;
+		color: #ffffff;
+		font-size: 20px;
+		user-select: none;
+		min-width: 70px;
+
+		.sign-in-button {
+			height: 50px;
+			border-radius: 6px;
+			width: 90%;
+			font-size: 18px;
+			border: 2px solid $secondaryColor;
+			background-color: $darkGray;
+			color: #ffffff;
+			transition: .2s ease;
+			
+			margin-right: 10px;
+
+			&:hover {
+				background-color: $secondaryColor;
 			}
 		}
-	
-		&-radial-gradient {
-			background: radial-gradient(53% 3px at center, $secondaryColor, $primaryColor);
-			height: $headerHeight - 65px;
+
+		.profile-button {
+
+			.avatar {
+				cursor: pointer;
+				background-color: $hoverLightGrayColor;
+				width: 50px;
+				height: 50px;
+				border-radius: 100%;
+			}
+
+			.dropdown-menu {
+				display: none;
+			}
+
+			& .dropdown-menu.active {
+				display: block;
+				position: fixed;
+				width: 160px;
+				right: 0;
+				left: auto;
+				z-index: 1;
+				background-color: $hoverLightGrayColor;
+				border: 1px solid #555555;
+				border-radius: 6px;
+				margin-top: 10px;
+				margin-right: 5px;
+				padding: 4px 0;
+
+				&:before {
+					content: "";
+					position: absolute;
+					display: inline-block;
+					border: 9px solid transparent;
+					border-bottom: 9px solid #555555;
+					top: -18px;
+					right: 44px;
+					left: auto;
+				}
+
+				&:after {
+					content: "";
+					position: absolute;
+					display: inline-block;
+					border: 8px solid transparent;
+					border-bottom: 8px solid $hoverLightGrayColor;
+					top: -16px;
+					right: 45px;
+					left: auto;
+				}
+
+				& li {
+					cursor: pointer;
+					padding: 4px 8px 4px 16px;
+
+					& a {
+						color: white;
+						padding: 0;
+						margin: 0;
+						border: none;
+
+						&:hover {
+							background-color: transparent;
+						}
+					}
+
+					&:hover {
+						background-color: $secondaryColor;
+					}
+				}
+			}
 		}
+
 	}
 
 	.menu {
@@ -143,8 +239,12 @@
 			}
 		}
 
-		.header-logo {
+		&-logo {
 			display: none;
+		}
+
+		&-search {
+			width: calc(100vw - 120px - 70px);
 		}
 	}
 }
