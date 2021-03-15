@@ -47,6 +47,18 @@
 		input[type='text']:focus::placeholder {
 			color: transparent;
 		}
+
+		.search-result {
+			position: fixed;
+			top: $headerHeight;
+			background-color: $secondaryColor;
+			overflow-y: scroll;
+			z-index: 10;
+			
+			& > div {
+				padding: 10px;
+			}
+		}
 	}
 
 	&-authorization {
