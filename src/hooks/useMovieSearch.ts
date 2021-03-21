@@ -5,7 +5,6 @@ import { toast } from 'react-toastify';
 
 const useMovieSearch = (query: string, page: number) => {
   const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(false);
   const [movies, setMovies] = useState<Array<MovieResultItem>>([]);
 
   useEffect(() => {
@@ -14,7 +13,6 @@ const useMovieSearch = (query: string, page: number) => {
 
   useEffect(() => {
     setIsLoading(true);
-    setError(false);
 
     searchAPI
       .searchMovies(query, page)
@@ -25,12 +23,11 @@ const useMovieSearch = (query: string, page: number) => {
         }
       })
       .catch((err: Error) => {
-        setError(true);
         toast.error(err.message);
       });
   }, [query, page]);
 
-  return { isLoading, error, movies };
+  return { isLoading, movies };
 };
 
 export default useMovieSearch;

@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { SessionContext } from '../../contexts/SessionContext';
 import { authenticationAPI } from '../../api/authenticationAPI/authenticationAPI';
 import HeaderLogo from './HeaderLogo/HeaderLogo';
-import HeaderSearch from './HeaderSearch/HeaderSearch';
+import HeaderSearch from './HeaderSearch/HeaderSearchs';
 import HeaderMenu from './HeaderMenu/HeaderMenu';
 import AuthorizationButton from './AuthorizationButton/AuthorizationButton';
 import ProfileButton from './ProfileButton/ProfileButton';
