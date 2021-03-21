@@ -23,7 +23,7 @@ const HeaderSearch = () => {
       if (e.target === searchInput.current) {
         resultDivBox.current.style.display = 'flex';
       } else if (
-        e.target instanceof HTMLElement &&
+        e.target instanceof HTMLDivElement &&
         resultDivBox.current.contains(e.target)
       ) {
         resultDivBox.current.style.display = 'flex';
