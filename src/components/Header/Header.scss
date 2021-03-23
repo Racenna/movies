@@ -22,81 +22,83 @@
 	}
 
 	&-search {
-		min-width: calc(100vw - 120px - 200px);
 		height: $headerHeight;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		
-		input[type='text'] {
-			width: 60%;
-			border-radius: 8px;
-			height: 50px;
-			background-color: $primaryColor;
-			color: inherit;
-			text-align: center;
+
+		&-btn {
+			height: 100%;
 			font-size: 18px;
+			color: #ffffff;
+			background: transparent;
+			transition: .3s ease;
+
+			&:hover {
+				color: $secondaryColor;
+			}
 		}
 
-		input[type='text']::placeholder {
-			font-size: 18px;
-			color: white;
-			opacity: .45;
-		}
-
-		input[type='text']:focus::placeholder {
-			color: transparent;
-		}
-
-		.search-result {
+		.search-box {
 			display: none;
 			position: fixed;
-			top: $headerHeight;
-			box-sizing: content-box;
-			min-width: 20%;
-			max-height: calc(80% - 70px);
-			background-color: $modalColor;
-			overflow-y: auto;
-			overflow-x: hidden;
+			top: 0;
+			left: 50%;
+    	transform: translate(-50%, 0);
+			width: 860px;
+			background-color: #111111;
 			z-index: 10;
-			padding: 20px 0 20px 0;
 
 			// if display flex
 			flex-flow: column nowrap;
 			justify-content: flex-start;
 
-			.no-result {
+			input[type='text'] {
+				min-height: 70px;
+				background-color: #111111;
+				color: #ffffff;
+				font-size: 24px;
+				border-bottom: 1px solid $hoverLightGrayColor;
 				padding-left: 20px;
 			}
 
-			.result {
-				display: flex;
-				flex-flow: row nowrap;
-				align-items: center;
-				height: 40px;
-				padding: 0 20px;
-				border-top: 1px solid $hoverLightGrayColor;
+			.search-result {
+				max-height: 330px;
+				overflow-y: scroll;
 
-				&:last-child {
-					border-bottom: 1px solid $hoverLightGrayColor;
+				.no-result {
+					padding: 20px;
 				}
-
-				&-title {
-					color: #ffffff;
-					margin-right: 20px;
-
-					&:hover {
-						color: $secondaryColor;
-					}
-				}
-
-				&-rating {
+	
+				.result {
 					display: flex;
+					flex-flow: row nowrap;
 					align-items: center;
-					.star {
-						color: #FFD54F;
-						font-size: 12px;
-						margin-right: 4px;
+					min-height: 50px;
+					// height: 40px;
+					padding: 0 20px;
+					line-height: 1.5;
+					border-top: 1px solid $hoverLightGrayColor;
+	
+					&:last-child {
+						border-bottom: 1px solid $hoverLightGrayColor;
+					}
+	
+					&-title {
+						color: #ffffff;
+						margin-right: 20px;
+	
+						&:hover {
+							color: $secondaryColor;
+						}
+					}
+	
+					&-rating {
+						display: flex;
+						align-items: center;
+						margin-left: auto;
+						.star {
+							color: #FFD54F;
+							font-size: 12px;
+							margin-right: 4px;
+						}
 					}
 				}
 			}
@@ -113,6 +115,7 @@
 		font-size: 20px;
 		user-select: none;
 		min-width: 70px;
+		margin-left: auto;
 
 		.sign-in-button {
 			height: 50px;

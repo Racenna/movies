@@ -13,6 +13,7 @@ import {
   faList,
   faMinusSquare,
   faTrashAlt,
+  faSearch,
 } from '@fortawesome/free-solid-svg-icons';
 
 library.add(
@@ -22,7 +23,8 @@ library.add(
   faStar,
   faList,
   faMinusSquare,
-  faTrashAlt
+  faTrashAlt,
+  faSearch
 );
 
 ReactDOM.render(
