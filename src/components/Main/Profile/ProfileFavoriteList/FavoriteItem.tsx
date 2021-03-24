@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 type Props = {
   title: string,
@@ -19,7 +20,10 @@ const FavoriteItem = ({
   handleRemoveFavoriteItem,
 }: Props) => {
   const poster = poster_path ? (
-    <img src={`${process.env.REACT_APP_IMG_BASE_URL}${poster_path}`} />
+    <LazyLoadImage
+      effect="black-and-white"
+      src={`${process.env.REACT_APP_IMG_BASE_URL}${poster_path}`}
+    />
   ) : (
     <div className="empty-poster">No Image</div>
   );
