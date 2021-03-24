@@ -26,7 +26,7 @@ const CastAndCrew = ({ cast, crew }: Props) => {
         See all
       </span>
       <div className="cast">
-        {cast.slice(0, 10).map((item) => (
+        {cast.slice(0, 20).map((item) => (
           <CastCard
             key={item.credit_id}
             profile_path={item.profile_path}

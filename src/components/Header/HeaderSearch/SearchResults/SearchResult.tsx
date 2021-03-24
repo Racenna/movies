@@ -1,4 +1,5 @@
 import { ChangeEvent, useState } from 'react';
+import Preloader from '../../../../common/Preloader';
 // import { MovieResultItem } from '../../../../api/searchAPI/types';
 import useMovieSearch from '../../../../hooks/useMovieSearch';
 import Result from './Result';
@@ -13,7 +14,7 @@ const SearchResults = ({ innerRef }: Props) => {
   const [query, setQuery] = useState('');
   const [page, setPage] = useState(1);
 
-  const { movies } = useMovieSearch(query, page);
+  const { movies, isLoading } = useMovieSearch(query, page);
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target) {
       setQuery(e.target.value);
@@ -29,21 +30,25 @@ const SearchResults = ({ innerRef }: Props) => {
         placeholder="search..."
         onChange={handleChange}
       />
-      <div className="search-result">
-        {!movies.length ? (
-          <div className="no-result">no results</div>
-        ) : (
-          movies.map((movie) => (
-            <Result
-              key={movie.id}
-              id={movie.id}
-              title={movie.title}
-              original_title={movie.original_title}
-              rating={movie.vote_average}
-            />
-          ))
-        )}
-      </div>
+      {isLoading && query.length > 0 ? (
+        <Preloader />
+      ) : (
+        <div className="search-result">
+          {!movies.length ? (
+            <div className="no-result">no results</div>
+          ) : (
+            movies.map((movie) => (
+              <Result
+                key={movie.id}
+                id={movie.id}
+                title={movie.title}
+                original_title={movie.original_title}
+                rating={movie.vote_average}
+              />
+            ))
+          )}
+        </div>
+      )}
     </div>
   );
 };
