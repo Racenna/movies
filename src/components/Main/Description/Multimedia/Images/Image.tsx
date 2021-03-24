@@ -1,3 +1,4 @@
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { ImageType } from '../../../../../api/movieAPI/types';
 
 type Props = {
@@ -12,7 +13,7 @@ const Image = ({ image, index, openImage }: Props) => {
 
   return (
     <div className="image">
-      <img
+      <LazyLoadImage
         src={imgPath}
         className={imgStyle}
         onClick={() => openImage(index)}

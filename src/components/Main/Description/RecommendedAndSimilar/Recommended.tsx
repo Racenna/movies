@@ -1,3 +1,4 @@
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { NavLink } from 'react-router-dom';
 import { RecommendationsAndSimilarResult } from '../../../../api/movieAPI/types';
 
@@ -17,7 +18,7 @@ const Recommended = ({ recommended }: Props) => {
             <div key={item.id}>
               <div className="item">
                 <NavLink to={`/movie/description/${item.id}`}>
-                  <img src={posterPath} />
+                  <LazyLoadImage src={posterPath} />
                 </NavLink>
                 <NavLink to={`/movie/description/${item.id}`}>
                   <div className="item-title">{item.title}</div>

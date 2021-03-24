@@ -1,3 +1,4 @@
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 import noImage from '../../../../../assets/svg/no_image.svg';
 
 type Props = {
@@ -14,7 +15,7 @@ const ModalCrew = ({ profile_path, name, department, job }: Props) => {
   return (
     <div className="item">
       <div className="item-poster">
-        <img src={profile} />
+        <LazyLoadImage src={profile} />
       </div>
       <div className="item-detail">
         <div>

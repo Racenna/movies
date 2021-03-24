@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 type Props = {
   poster_path: string | null,
@@ -9,7 +10,9 @@ type Props = {
 
 const Item = ({ poster_path, title, release_date, id }: Props) => {
   const poster = poster_path ? (
-    <img src={`${process.env.REACT_APP_IMG_BASE_URL}${poster_path}`} />
+    <LazyLoadImage
+      src={`${process.env.REACT_APP_IMG_BASE_URL}${poster_path}`}
+    />
   ) : (
     <div className="empty-poster">No Image</div>
   );

@@ -56,8 +56,8 @@ const Description = () => {
       setCrew(res.castAndCrew.crew);
       setVideos(res.videos.results);
       setImages(res.images);
-      setRecommended(res.recommendations.slice(0, 6));
-      setSimilar(res.similar.slice(0, 6));
+      setRecommended(res.recommendations);
+      setSimilar(res.similar);
       setIsLoading(false);
     });
   }, [movie_id]);

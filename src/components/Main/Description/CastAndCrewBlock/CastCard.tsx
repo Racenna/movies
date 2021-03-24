@@ -1,4 +1,5 @@
 import noImage from '../../../../assets/svg/no_image.svg';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 type Props = {
   profile_path: string | null,
@@ -12,7 +13,7 @@ const CastCard = ({ profile_path, name }: Props) => {
   return (
     <div className="cast-item">
       <div>
-        <img src={profile} />
+        <LazyLoadImage src={profile} />
       </div>
       <div className="cast-name">{name}</div>
     </div>

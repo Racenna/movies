@@ -1,3 +1,5 @@
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+
 type Props = {
   videoKey: string,
   name: string,
@@ -7,7 +9,7 @@ type Props = {
 const Video = ({ name, videoKey, openVideo }: Props) => {
   return (
     <div className="video">
-      <img src={`https://img.youtube.com/vi/${videoKey}/0.jpg`} />
+      <LazyLoadImage src={`https://img.youtube.com/vi/${videoKey}/0.jpg`} />
       <div
         className="fade"
         onClick={() => {

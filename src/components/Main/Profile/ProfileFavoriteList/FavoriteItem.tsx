@@ -21,7 +21,6 @@ const FavoriteItem = ({
 }: Props) => {
   const poster = poster_path ? (
     <LazyLoadImage
-      effect="black-and-white"
       src={`${process.env.REACT_APP_IMG_BASE_URL}${poster_path}`}
     />
   ) : (
