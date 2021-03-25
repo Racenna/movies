@@ -1,4 +1,4 @@
-export type ListDetail = {
+export type ListDetailType = {
   created_by: string,
   description: string,
   favorite_count: number,

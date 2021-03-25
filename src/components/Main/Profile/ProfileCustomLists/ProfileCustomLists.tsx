@@ -21,7 +21,6 @@ const ProfileCustomLists = ({
             <CustomListsItem
               key={item.id}
               id={item.id}
-              description={item.description}
               item_count={item.item_count}
               name={item.name}
               lastListElementRef={lastListElementRef}
@@ -32,7 +31,6 @@ const ProfileCustomLists = ({
             <CustomListsItem
               key={item.id}
               id={item.id}
-              description={item.description}
               item_count={item.item_count}
               name={item.name}
             />

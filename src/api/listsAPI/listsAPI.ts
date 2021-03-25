@@ -2,13 +2,15 @@ import { instance } from '../api';
 import {
   CreateListResponse,
   ItemStatus,
-  ListDetail,
+  ListDetailType,
   DefaultResponse,
 } from './types';
 
 export const listsAPI = {
   async getDetails(list_id: string | number) {
-    const response = await instance.get<ListDetail>(`list/${list_id}`);
+    const response = await instance.get<ListDetailType & DefaultResponse>(
+      `list/${list_id}`
+    );
 
     return response.data;
   },
