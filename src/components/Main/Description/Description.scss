@@ -230,7 +230,6 @@
 						user-select: none;
 	
 						&:hover {
-							cursor: pointer;
 							background-color: $secondaryColor;
 						}
 					}
@@ -250,15 +249,20 @@
 		}
 
 		.more {
+
 			margin-right: 20px;
 			float: right;
 			transition: .3s ease;
 
 			user-select: none;
 
+			border: 2px solid $secondaryColor;
+			border-radius: 6px;
+			padding: 4px 10px;
+
 			&:hover {
 				cursor: pointer;
-				color: $secondaryColor;
+				background-color: $secondaryColor;
 			}
 		}
 

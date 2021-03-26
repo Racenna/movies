@@ -12,7 +12,7 @@ type Props = {
   rating: number,
   lastListElementRef?: (node: HTMLDivElement) => void,
   handleRateItem: (value: number, id: number) => void,
-  handleDeleteRatingItem: (id: number) => void,
+  handleDeleteRatingItem: (id: number, name: string) => void,
 };
 const RatedListItem = ({
   title,
@@ -46,7 +46,7 @@ const RatedListItem = ({
             className="remove-button"
             title="remove from rated list"
             icon={['fas', 'trash-alt']}
-            onClick={() => handleDeleteRatingItem(id)}
+            onClick={() => handleDeleteRatingItem(id, title)}
           />
         </div>
         <div className="item-description-release">{date}</div>
@@ -68,7 +68,7 @@ const RatedListItem = ({
         <StarRating
           rating={rating}
           handleRate={(value: number) => handleRateItem(value, id)}
-          handleDeleteRating={() => handleDeleteRatingItem(id)}
+          handleDeleteRating={() => handleDeleteRatingItem(id, title)}
         />
       </div>
     </div>

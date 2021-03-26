@@ -6,7 +6,7 @@ type Props = {
   watchList: Array<Movie>,
   isLoading: boolean,
   lastListElementRef: (node: HTMLDivElement) => void,
-  handleRemoveWatchListItem: (id: number) => void,
+  handleRemoveWatchListItem: (id: number, name: string) => void,
 };
 
 const ProfileWatchList = ({

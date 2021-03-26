@@ -13,12 +13,6 @@
 		min-width: $logoNavbarWidth;
 		width: $logoNavbarWidth;
 		color: $secondaryColor;
-		border-bottom: 2px solid $secondaryColor;
-	
-		span {
-			font-size: 38px;
-			font-weight: 500;
-		}
 	}
 
 	&-search {

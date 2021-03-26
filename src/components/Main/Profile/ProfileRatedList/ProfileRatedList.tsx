@@ -7,7 +7,7 @@ type Props = {
   isLoading: boolean,
   lastListElementRef?: (node: HTMLDivElement) => void,
   handleRateItem: (value: number, id: number) => void,
-  handleDeleteRatingItem: (id: number) => void,
+  handleDeleteRatingItem: (id: number, name: string) => void,
 };
 
 const ProfileRatedList = ({
