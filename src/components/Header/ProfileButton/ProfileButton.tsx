@@ -48,11 +48,31 @@ const ProfileButton = ({ session_id, handleSignOut }: Props) => {
         }}
       />
       <ul className={`dropdown-menu ${isActive ? 'active' : ''}`}>
-        <li>
-          <NavLink to="/profile" onClick={() => setIsActive(false)}>
-            Profile
-          </NavLink>
-        </li>
+        <div className="block">
+          <li>
+            <NavLink to="/profile" onClick={() => setIsActive(false)}>
+              Favorite list
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/profile/watch-list"
+              onClick={() => setIsActive(false)}
+            >
+              Watchlist
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/profile/rated" onClick={() => setIsActive(false)}>
+              Rated list
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/profile/lists" onClick={() => setIsActive(false)}>
+              Custom lists
+            </NavLink>
+          </li>
+        </div>
         <li onClick={handleSignOut}>Logout</li>
       </ul>
     </div>

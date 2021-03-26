@@ -17,6 +17,7 @@ import ProfileCustomLists from './ProfileCustomLists/ProfileCustomLists';
 import './Profile.scss';
 import { StatusCodes } from '../../../api/statusCodes';
 import { toast } from 'react-toastify';
+import { listsAPI } from '../../../api/listsAPI/listsAPI';
 
 type Params = {
   typeList: 'watch-list' | 'rated' | 'lists' | undefined,
@@ -180,6 +181,64 @@ const Profile = () => {
     }
   };
 
+  const handleClearList = (list_id: number, name: string) => {
+    if (!session_id) return;
+
+    const isConfirm = confirm(`Do you really want to clear the ${name} list`);
+
+    if (!isConfirm) return;
+
+    listsAPI
+      .clearList(list_id.toString(), session_id, isConfirm)
+      .then((res) => {
+        if (res.success) {
+          setCustomLists((prevList) => {
+            return prevList.filter((list) => {
+              if (list.id === +list_id) {
+                list.item_count = 0;
+              }
+
+              return true;
+            });
+          });
+
+          if (res.status_code === StatusCodes.Update) {
+            toast.dark(`The ${name} list was cleared`);
+          }
+        } else {
+          throw new Error(res.status_message);
+        }
+      })
+      .catch((error: Error) => {
+        toast.error(error.message);
+      });
+  };
+
+  const handleDeleteList = (list_id: number, name: string) => {
+    if (!session_id) return;
+    if (!confirm(`Do you really want to delete the ${name} list`)) return;
+
+    listsAPI
+      .deleteList(list_id.toString(), session_id)
+      .then((res) => {
+        /**
+         * ! I really don't know why server is returning an error
+         * ! But this works
+         */
+        if (res.status_code === StatusCodes.ServerError) {
+          setCustomLists((prevList) => {
+            return prevList.filter((list) => list.id !== +list_id);
+          });
+          toast.dark(`The ${name} list was deleted`);
+        } else {
+          throw new Error(res.status_message);
+        }
+      })
+      .catch((error: Error) => {
+        toast.error(error.message);
+      });
+  };
+
   useEffect(() => {
     if (session_id) {
       accountAPI.getAccount(session_id).then((res) => {
@@ -279,6 +338,8 @@ const Profile = () => {
           customLists={customLists}
           isLoading={isLoading}
           lastListElementRef={lastListElementRef}
+          handleClearList={handleClearList}
+          handleDeleteList={handleDeleteList}
         />
       )}
     </div>

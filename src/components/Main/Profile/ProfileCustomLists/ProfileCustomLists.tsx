@@ -6,12 +6,16 @@ type Props = {
   customLists: Array<CustomList>,
   isLoading: boolean,
   lastListElementRef: (node: HTMLDivElement) => void,
+  handleClearList: (list_id: number, name: string) => void,
+  handleDeleteList: (list_id: number, name: string) => void,
 };
 
 const ProfileCustomLists = ({
   customLists,
   isLoading,
   lastListElementRef,
+  handleClearList,
+  handleDeleteList,
 }: Props) => {
   return (
     <div className="profile-custom-lists">
@@ -24,6 +28,8 @@ const ProfileCustomLists = ({
               item_count={item.item_count}
               name={item.name}
               lastListElementRef={lastListElementRef}
+              handleClearList={handleClearList}
+              handleDeleteList={handleDeleteList}
             />
           );
         } else {
@@ -33,6 +39,8 @@ const ProfileCustomLists = ({
               id={item.id}
               item_count={item.item_count}
               name={item.name}
+              handleClearList={handleClearList}
+              handleDeleteList={handleDeleteList}
             />
           );
         }

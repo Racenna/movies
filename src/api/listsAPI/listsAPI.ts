@@ -91,7 +91,7 @@ export const listsAPI = {
 
   async clearList(list_id: string, session_id: string, confirm: boolean) {
     const response = await instance.post<DefaultResponse>(
-      `list/${list_id}/remove_item`,
+      `list/${list_id}/clear`,
       null,
       {
         params: {
@@ -108,6 +108,10 @@ export const listsAPI = {
     const response = await instance.delete<DefaultResponse>(`list/${list_id}`, {
       params: {
         session_id,
+      },
+      validateStatus: (status) => {
+        if (status < 500 || status === 500) return true;
+        return false;
       },
     });
 
