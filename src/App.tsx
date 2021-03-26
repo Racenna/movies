@@ -20,7 +20,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
   return (
-    <Router>
+    <Router basename="/movies">
       <SessionContextProvider>
         <div className="App">
           <Header />
