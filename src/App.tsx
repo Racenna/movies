@@ -8,6 +8,8 @@ import { ToastContainer, Zoom } from 'react-toastify';
 import Header from './components/Header';
 import Navbar from './components/Navbar';
 import Trending from './components/Main/Trending';
+import ListDetail from './components/Main/List/ListDetail';
+import CreateList from './components/Main/List/CreateList';
 import Description from './components/Main/Description';
 import Profile from './components/Main/Profile';
 import Approve from './components/Main/Approve/Approve';
@@ -29,10 +31,12 @@ const App = () => {
               path="/"
               component={() => <Redirect to="/trending" />}
             />
+            <ProtectedRoute path="/profile/:typeList?" component={Profile} />
+            <ProtectedRoute path="/list/:listId" component={ListDetail} />
             <ProtectedRoute
-              path="/profile/:typeList?"
-              component={Profile}
-              exact={false}
+              path="/create-list"
+              component={CreateList}
+              exact={true}
             />
             <Route exact path="/approved" component={Approve} />
             <Route exact path="/trending" component={Trending} />

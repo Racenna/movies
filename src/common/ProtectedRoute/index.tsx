@@ -5,10 +5,10 @@ import { SessionContext } from '../../contexts/SessionContext';
 type Props = {
   component: React.FC,
   path: string,
-  exact: boolean,
+  exact?: boolean,
 };
 
-const ProtectedRoute = ({ component, path, exact }: Props) => {
+const ProtectedRoute = ({ component, path, exact = false }: Props) => {
   const session_id = !!useContext(SessionContext).session_id;
 
   return session_id ? (

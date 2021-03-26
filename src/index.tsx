@@ -14,6 +14,8 @@ import {
   faMinusSquare,
   faTrashAlt,
   faSearch,
+  faVideo,
+  faEraser,
 } from '@fortawesome/free-solid-svg-icons';
 
 library.add(
@@ -24,7 +26,9 @@ library.add(
   faList,
   faMinusSquare,
   faTrashAlt,
-  faSearch
+  faSearch,
+  faVideo,
+  faEraser
 );
 
 ReactDOM.render(

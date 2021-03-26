@@ -183,7 +183,57 @@
 		display: flex;
 		flex-flow: column nowrap;
 
+		.create-list {
+			display: flex;
+			justify-content: flex-end;
+			align-content: center;
+			width: 100%;
+			margin-bottom: 10px;
+
+			a {
+				height: 100%;
+				border: 2px solid $secondaryColor;
+				border-radius: 6px;
+				padding: 6px;
+				background-color: transparent;
+				color: #ffffff;
+				font-size: 21px;
+				transition: .2s ease;
+
+				&:hover {
+					background-color: $secondaryColor;
+				}
+
+			}
+		}
+		
+		.clear {
+			padding: 0 10px;
+			font-size: 30px;
+			margin-right: 10px;
+			color: #FF9800;
+			transition: .2s ease;
+
+			&:hover {
+				opacity: .6;
+			}
+		}
+
+		.delete {
+			padding: 0px 10px;
+			font-size: 30px;
+			margin-right: 10px;
+			color: $secondaryColor;
+			transition: .2s ease;
+
+			&:hover {
+				opacity: .6;
+			}
+		}
+
 		.list {
+			display: flex;
+			align-items: center;
 			padding: 6px;
 			border-top: 1px solid $hoverLightGrayColor;			
 

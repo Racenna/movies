@@ -2,13 +2,15 @@ import { instance } from '../api';
 import {
   CreateListResponse,
   ItemStatus,
-  ListDetail,
+  ListDetailType,
   DefaultResponse,
 } from './types';
 
 export const listsAPI = {
   async getDetails(list_id: string | number) {
-    const response = await instance.get<ListDetail>(`list/${list_id}`);
+    const response = await instance.get<ListDetailType & DefaultResponse>(
+      `list/${list_id}`
+    );
 
     return response.data;
   },
@@ -30,7 +32,9 @@ export const listsAPI = {
     description: string,
     language: string
   ) {
-    const response = await instance.post<CreateListResponse>(
+    const response = await instance.post<
+      CreateListResponse & { errors: Array<string> }
+    >(
       `list`,
       {
         name,
@@ -89,7 +93,7 @@ export const listsAPI = {
 
   async clearList(list_id: string, session_id: string, confirm: boolean) {
     const response = await instance.post<DefaultResponse>(
-      `list/${list_id}/remove_item`,
+      `list/${list_id}/clear`,
       null,
       {
         params: {
@@ -106,6 +110,10 @@ export const listsAPI = {
     const response = await instance.delete<DefaultResponse>(`list/${list_id}`, {
       params: {
         session_id,
+      },
+      validateStatus: (status) => {
+        if (status < 500 || status === 500) return true;
+        return false;
       },
     });
 

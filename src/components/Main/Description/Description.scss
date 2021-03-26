@@ -139,6 +139,19 @@
 								margin-bottom: 10px;
 							}
 
+							.create-list {
+								color: #ffffff;
+								border: 2px solid $secondaryColor;
+								padding: 4px 10px;
+								border-radius: 6px;
+								transition: .2s ease;
+								margin-bottom: 10px;
+								
+								&:hover {
+									background-color: $secondaryColor;
+								}
+							}
+
 							.list {
 								display: flex;
 								justify-content: space-between;
@@ -677,6 +690,24 @@
 	}
 
 	.recommended-and-similar {
+
+		.empty-poster {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			font-size: 28px;
+			color: #ffffff;
+			background-color: $lightGrayColor;
+			user-select: none;
+			border-radius: 8px;
+			height: 300px;
+			width: 200px;
+			transition: .3s ease;
+
+			&:hover {
+				background-color: $hoverLightGrayColor;
+			}
+		}
 
 		.recommended {
 			&.empty {

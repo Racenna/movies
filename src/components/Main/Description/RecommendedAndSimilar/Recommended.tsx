@@ -13,13 +13,17 @@ const Recommended = ({ recommended }: Props) => {
       <div className="recommended-title">Recommended</div>
       <div className="recommended-content">
         {recommended.map((item) => {
-          const posterPath = `${process.env.REACT_APP_IMG_BASE_URL}${item.poster_path}`;
+          const poster = item.poster_path ? (
+            <LazyLoadImage
+              src={`${process.env.REACT_APP_IMG_BASE_URL}${item.poster_path}`}
+            />
+          ) : (
+            <div className="empty-poster">No Image</div>
+          );
           return (
             <div key={item.id}>
               <div className="item">
-                <NavLink to={`/movie/description/${item.id}`}>
-                  <LazyLoadImage src={posterPath} />
-                </NavLink>
+                <NavLink to={`/movie/description/${item.id}`}>{poster}</NavLink>
                 <NavLink to={`/movie/description/${item.id}`}>
                   <div className="item-title">{item.title}</div>
                 </NavLink>
