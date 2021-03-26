@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import { CustomList } from '../../../../../../../api/accountAPI/types';
 
 type Props = {
@@ -23,6 +24,13 @@ const ModalList = ({
         onClick={(event) => event.stopPropagation()}
       >
         <span className="lists-title">Your lists</span>
+        <div
+          style={{ width: '100%', display: 'flex', justifyContent: 'center' }}
+        >
+          <NavLink className="create-list" to="/create-list">
+            Create List
+          </NavLink>
+        </div>
         {customLists.map((item) => (
           <div className="list" key={item.id}>
             <div>

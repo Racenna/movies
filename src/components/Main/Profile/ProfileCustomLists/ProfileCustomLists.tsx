@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import { CustomList } from '../../../../api/accountAPI/types';
 import Preloader from '../../../../common/Preloader';
 import CustomListsItem from './CustomListsItem';
@@ -19,6 +20,9 @@ const ProfileCustomLists = ({
 }: Props) => {
   return (
     <div className="profile-custom-lists">
+      <div className="create-list">
+        <NavLink to="/create-list">create list</NavLink>
+      </div>
       {customLists.map((item, index) => {
         if (customLists.length === index + 1) {
           return (

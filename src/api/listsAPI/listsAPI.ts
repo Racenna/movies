@@ -32,7 +32,9 @@ export const listsAPI = {
     description: string,
     language: string
   ) {
-    const response = await instance.post<CreateListResponse>(
+    const response = await instance.post<
+      CreateListResponse & { errors: Array<string> }
+    >(
       `list`,
       {
         name,
