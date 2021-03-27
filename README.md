@@ -2,6 +2,11 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## App available on
+https://movies-racenna.vercel.app \
+https://movies-git-master-racenna.vercel.app \
+https://movies-kohl.vercel.app
+
 ## Available Scripts
 
 In the project directory, you can run:
