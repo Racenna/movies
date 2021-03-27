@@ -16,7 +16,6 @@ const Header = () => {
   const handleSignIn = async () => {
     const request_token = await authenticationAPI.getRequestToken();
     localStorage.setItem('prevPage', location.pathname + location.search);
-    // window.location.href = `https://www.themoviedb.org/authenticate/${request_token}?redirect_to=${process.env.REACT_APP_URL}/approved`;
     window.location.href = `https://www.themoviedb.org/authenticate/${request_token}?redirect_to=${window.location.origin}/approved`;
   };
 

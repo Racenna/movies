@@ -1,7 +1,9 @@
+import logo from '../../../assets/svg/logo.svg';
+
 const HeaderLogo = () => {
   return (
     <div className="header-logo">
-      <span>Logo</span>
+      <img style={{ width: '180px' }} src={logo} />
     </div>
   );
 };

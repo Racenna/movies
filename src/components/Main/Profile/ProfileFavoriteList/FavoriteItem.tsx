@@ -8,7 +8,7 @@ type Props = {
   release_date: string,
   id: number,
   lastListElementRef?: (node: HTMLDivElement) => void,
-  handleRemoveFavoriteItem: (id: number) => void,
+  handleRemoveFavoriteItem: (id: number, name: string) => void,
 };
 
 const FavoriteItem = ({
@@ -41,7 +41,7 @@ const FavoriteItem = ({
             className="remove-button"
             title="Remove from favorite"
             icon={['fas', 'trash-alt']}
-            onClick={() => handleRemoveFavoriteItem(id)}
+            onClick={() => handleRemoveFavoriteItem(id, title)}
           />
         </div>
         <div className="item-description-release">{date}</div>
@@ -50,7 +50,7 @@ const FavoriteItem = ({
             className="like-button"
             title="Remove from favorite"
             icon={['fas', 'heart']}
-            onClick={() => handleRemoveFavoriteItem(id)}
+            onClick={() => handleRemoveFavoriteItem(id, title)}
           />
         </div>
       </div>

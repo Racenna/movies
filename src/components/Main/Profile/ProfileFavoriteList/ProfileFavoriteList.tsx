@@ -6,7 +6,7 @@ type Props = {
   favoriteList: Array<Movie>,
   isLoading: boolean,
   lastListElementRef: (node: HTMLDivElement) => void,
-  handleRemoveFavoriteItem: (id: number) => void,
+  handleRemoveFavoriteItem: (id: number, name: string) => void,
 };
 
 const ProfileFavoriteList = ({

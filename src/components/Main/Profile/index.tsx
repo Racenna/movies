@@ -52,133 +52,141 @@ const Profile = () => {
     [isLoading, totalPage]
   );
 
-  const handleRemoveFavoriteItem = (id: number) => {
-    if (session_id) {
-      accountAPI
-        .markAsFavorite(
-          {
-            favorite: false,
-            media_id: id,
-            media_type: 'movie',
-          },
-          session_id
-        )
-        .then((res) => {
-          if (res.success) {
-            setFavoriteList((prevList) => {
-              return prevList.filter((item) => item.id !== id);
-            });
+  const handleRemoveFavoriteItem = (id: number, name: string) => {
+    if (!session_id) return;
+    if (
+      !confirm(`Do you really want to delete the '${name}' from favorite list`)
+    )
+      return;
 
-            if (res.status_code === StatusCodes.Delete) {
-              toast.dark('Movie removed from favorites');
-            }
-          } else {
-            throw new Error(res.status_message);
+    accountAPI
+      .markAsFavorite(
+        {
+          favorite: false,
+          media_id: id,
+          media_type: 'movie',
+        },
+        session_id
+      )
+      .then((res) => {
+        if (res.success) {
+          setFavoriteList((prevList) => {
+            return prevList.filter((item) => item.id !== id);
+          });
+
+          if (res.status_code === StatusCodes.Delete) {
+            toast.dark('Movie removed from favorites');
           }
-        })
-        .catch((error: Error) => {
-          toast.error(error.message);
-        });
-    }
+        } else {
+          throw new Error(res.status_message);
+        }
+      })
+      .catch((error: Error) => {
+        toast.error(error.message);
+      });
   };
 
-  const handleRemoveWatchListItem = (id: number) => {
-    if (session_id) {
-      accountAPI
-        .MarkToWatchList(
-          {
-            watchlist: false,
-            media_id: id,
-            media_type: 'movie',
-          },
-          session_id
-        )
-        .then((res) => {
-          if (res.success) {
-            setWatchList((prevList) => {
-              return prevList.filter((item) => item.id !== id);
-            });
+  const handleRemoveWatchListItem = (id: number, name: string) => {
+    if (!session_id) return;
+    if (!confirm(`Do you really want to delete the '${name}' from watch list`))
+      return;
 
-            if (res.status_code === StatusCodes.Delete) {
-              toast.dark(`Movie removed from watchlist`);
-            }
-          } else {
-            throw new Error(res.status_message);
+    accountAPI
+      .MarkToWatchList(
+        {
+          watchlist: false,
+          media_id: id,
+          media_type: 'movie',
+        },
+        session_id
+      )
+      .then((res) => {
+        if (res.success) {
+          setWatchList((prevList) => {
+            return prevList.filter((item) => item.id !== id);
+          });
+
+          if (res.status_code === StatusCodes.Delete) {
+            toast.dark(`Movie removed from watchlist`);
           }
-        })
-        .catch((error: Error) => {
-          toast.error(error.message);
-        });
-    }
+        } else {
+          throw new Error(res.status_message);
+        }
+      })
+      .catch((error: Error) => {
+        toast.error(error.message);
+      });
   };
 
   const handleRateItem = (value: number, id: number) => {
-    if (session_id) {
-      moviesAPI
-        .rateMovie(session_id, id, value)
-        .then((res) => {
-          if (res.success) {
-            setTimeout(() => {
-              moviesAPI.getAccountStates(id, session_id).then((res) => {
-                if (typeof res.rated === 'boolean') {
-                  setRatedList((prevList) => {
-                    return prevList.filter((item) => item.id !== id);
-                  });
-                } else {
-                  setRatedList((prevList) => {
-                    return prevList.map((item) => {
-                      if (item.id === id && item.rating) {
-                        item.rating = value;
-                      }
-                      return item;
-                    });
-                  });
-                }
-              });
+    if (!session_id) return;
 
-              if (res.status_code === StatusCodes.Success) {
-                toast.dark('You have rated the movie');
-              } else if (res.status_code === StatusCodes.Update) {
-                toast.dark('You have updated the rating for a movie');
+    moviesAPI
+      .rateMovie(session_id, id, value)
+      .then((res) => {
+        if (res.success) {
+          setTimeout(() => {
+            moviesAPI.getAccountStates(id, session_id).then((res) => {
+              if (typeof res.rated === 'boolean') {
+                setRatedList((prevList) => {
+                  return prevList.filter((item) => item.id !== id);
+                });
+              } else {
+                setRatedList((prevList) => {
+                  return prevList.map((item) => {
+                    if (item.id === id && item.rating) {
+                      item.rating = value;
+                    }
+                    return item;
+                  });
+                });
               }
-            }, 1000);
-          } else {
-            throw new Error(res.status_message);
-          }
-        })
-        .catch((error: Error) => {
-          toast.error(error.message);
-        });
-    }
+            });
+
+            if (res.status_code === StatusCodes.Success) {
+              toast.dark('You have rated the movie');
+            } else if (res.status_code === StatusCodes.Update) {
+              toast.dark('You have updated the rating for a movie');
+            }
+          }, 1000);
+        } else {
+          throw new Error(res.status_message);
+        }
+      })
+      .catch((error: Error) => {
+        toast.error(error.message);
+      });
   };
 
-  const handleDeleteRatingItem = (id: number) => {
-    if (session_id) {
-      moviesAPI
-        .deleteRating(session_id, id)
-        .then((res) => {
-          if (res.success) {
-            setTimeout(() => {
-              moviesAPI.getAccountStates(id, session_id).then((res) => {
-                if (typeof res.rated === 'boolean') {
-                  setRatedList((prevList) => {
-                    return prevList.filter((item) => item.id !== id);
-                  });
-                }
-              });
+  const handleDeleteRatingItem = (id: number, name: string) => {
+    if (!session_id) return;
+    if (!confirm(`Do you really want to delete the '${name}' from rating list`))
+      return;
 
-              if (res.status_code === StatusCodes.Delete) {
-                toast.dark('You have removed the rating from a movie');
+    moviesAPI
+      .deleteRating(session_id, id)
+      .then((res) => {
+        if (res.success) {
+          setTimeout(() => {
+            moviesAPI.getAccountStates(id, session_id).then((res) => {
+              if (typeof res.rated === 'boolean') {
+                setRatedList((prevList) => {
+                  return prevList.filter((item) => item.id !== id);
+                });
               }
-            }, 1000);
-          } else {
-            throw new Error(res.status_message);
-          }
-        })
-        .catch((error: Error) => {
-          toast.error(error.message);
-        });
-    }
+            });
+
+            if (res.status_code === StatusCodes.Delete) {
+              toast.dark('You have removed the rating from a movie');
+            }
+          }, 1000);
+        } else {
+          throw new Error(res.status_message);
+        }
+      })
+      .catch((error: Error) => {
+        toast.error(error.message);
+      });
   };
 
   const handleClearList = (list_id: number, name: string) => {

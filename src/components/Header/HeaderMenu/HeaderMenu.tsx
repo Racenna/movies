@@ -9,8 +9,6 @@ const HeaderMenu = () => {
     setIsActive(status);
   };
 
-  // const style = isActive ? 'active' : 'inactive';
-
   return (
     <>
       <MenuButton activeChange={clickHandler} isActive={isActive} />

@@ -8,7 +8,7 @@ type Props = {
   release_date: string,
   id: number,
   lastListElementRef?: (node: HTMLDivElement) => void,
-  handleRemoveWatchListItem: (id: number) => void,
+  handleRemoveWatchListItem: (id: number, name: string) => void,
 };
 
 const WatchListItem = ({
@@ -41,7 +41,7 @@ const WatchListItem = ({
             className="remove-button"
             title="remove from watch list"
             icon={['fas', 'trash-alt']}
-            onClick={() => handleRemoveWatchListItem(id)}
+            onClick={() => handleRemoveWatchListItem(id, title)}
           />
         </div>
         <div className="item-description-release">{date}</div>
@@ -50,7 +50,7 @@ const WatchListItem = ({
             className="watch-list-button"
             title="remove from watch list"
             icon={['fas', 'bookmark']}
-            onClick={() => handleRemoveWatchListItem(id)}
+            onClick={() => handleRemoveWatchListItem(id, title)}
           />
         </div>
       </div>
