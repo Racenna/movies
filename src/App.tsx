@@ -13,6 +13,7 @@ import CreateList from './components/Main/List/CreateList';
 import Description from './components/Main/Description';
 import Profile from './components/Main/Profile';
 import Approve from './components/Main/Approve/Approve';
+import People from './components/Main/People';
 import SessionContextProvider from './contexts/SessionContext';
 import ProtectedRoute from './common/ProtectedRoute';
 import './App.scss';
@@ -44,7 +45,7 @@ const App = () => {
             />
             <ProtectedRoute
               path="/people/:people_id"
-              component={() => <div>people_page</div>}
+              component={People}
               exact={true}
             />
             <Route exact path="/approved" component={Approve} />
