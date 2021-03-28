@@ -24,6 +24,7 @@ const ModalCastAndCrew = ({ isActive, cast, crew, closeModal }: Props) => {
             {cast.map((item) => (
               <ModalCast
                 key={item.credit_id}
+                id={item.id}
                 profile_path={item.profile_path}
                 name={item.name}
                 character={item.character}
@@ -37,6 +38,7 @@ const ModalCastAndCrew = ({ isActive, cast, crew, closeModal }: Props) => {
             {crew.map((item) => (
               <ModalCrew
                 key={item.credit_id}
+                id={item.id}
                 profile_path={item.profile_path}
                 name={item.name}
                 department={item.department}

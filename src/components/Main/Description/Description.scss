@@ -284,6 +284,7 @@
 				margin-right: 15px;
 				background-color: $lightGrayColor;
 				transition: .3s ease;
+				color: #ffffff;
 
 				img {
 					width: 100%;
@@ -371,6 +372,10 @@
 					.list {
 						display: flex;
 						flex-flow: column nowrap;
+
+						a {
+							color: #ffffff;
+						}
 						
 						.item {
 							display: flex;
@@ -378,6 +383,12 @@
 							height: 200px;
 							overflow: hidden;
 							border-top: 1px solid $hoverLightGrayColor;
+
+							transition: .1s ease;
+
+							&:hover {
+								background-color: $lightGrayColor;
+							}
 
 							&:last-child {
 								border-bottom: 1px solid $hoverLightGrayColor;

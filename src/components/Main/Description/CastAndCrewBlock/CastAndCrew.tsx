@@ -29,6 +29,7 @@ const CastAndCrew = ({ cast, crew }: Props) => {
         {cast.slice(0, 20).map((item) => (
           <CastCard
             key={item.credit_id}
+            id={item.id}
             profile_path={item.profile_path}
             name={item.name}
           />

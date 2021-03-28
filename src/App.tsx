@@ -32,10 +32,19 @@ const App = () => {
               component={() => <Redirect to="/trending" />}
             />
             <ProtectedRoute path="/profile/:typeList?" component={Profile} />
-            <ProtectedRoute path="/list/:listId" component={ListDetail} />
+            <ProtectedRoute
+              path="/list/:listId"
+              component={ListDetail}
+              exact={true}
+            />
             <ProtectedRoute
               path="/create-list"
               component={CreateList}
+              exact={true}
+            />
+            <ProtectedRoute
+              path="/people/:people_id"
+              component={() => <div>people_page</div>}
               exact={true}
             />
             <Route exact path="/approved" component={Approve} />
@@ -44,6 +53,9 @@ const App = () => {
               path="/movie/description/:movie_id"
               component={Description}
             />
+            <Route path="*">
+              <Redirect to="/trending" />
+            </Route>
           </Switch>
         </div>
         <ToastContainer
