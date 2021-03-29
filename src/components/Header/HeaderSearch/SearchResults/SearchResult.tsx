@@ -1,15 +1,12 @@
 import { ChangeEvent, useState } from 'react';
 import Preloader from '../../../../common/Preloader';
-// import { MovieResultItem } from '../../../../api/searchAPI/types';
 import useMovieSearch from '../../../../hooks/useMovieSearch';
 import Result from './Result';
 
 type Props = {
   innerRef: React.MutableRefObject<HTMLDivElement | null>,
-  // results: Array<MovieResultItem>,
 };
 
-// const SearchResults = ({ innerRef, results }: Props) => {
 const SearchResults = ({ innerRef }: Props) => {
   const [query, setQuery] = useState('');
   const [page, setPage] = useState(1);
