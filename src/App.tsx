@@ -41,11 +41,7 @@ const App = () => {
               component={CreateList}
               exact={true}
             />
-            <Route
-              path="/people/:people_id"
-              component={People}
-              exact
-            />
+            <Route path="/people/:people_id" component={People} exact />
             <Route exact path="/approved" component={Approve} />
             <Route exact path="/trending" component={Trending} />
             <Route
