@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 const ProfileNavigation = () => {
   return (
     <div className="profile-navigation">
-      <NavLink className="navigation-item" to="/profile" exact>
+      <NavLink className="navigation-item" to="/profile/favorite" exact>
         Favorite
       </NavLink>
       <NavLink className="navigation-item" to="/profile/watch-list" exact>

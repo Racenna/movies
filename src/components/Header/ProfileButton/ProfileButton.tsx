@@ -50,7 +50,7 @@ const ProfileButton = ({ session_id, handleSignOut }: Props) => {
       <ul className={`dropdown-menu ${isActive ? 'active' : ''}`}>
         <div className="block">
           <li>
-            <NavLink to="/profile" onClick={() => setIsActive(false)}>
+            <NavLink to="/profile/favorite" onClick={() => setIsActive(false)}>
               Favorite list
             </NavLink>
           </li>
@@ -59,7 +59,7 @@ const ProfileButton = ({ session_id, handleSignOut }: Props) => {
               to="/profile/watch-list"
               onClick={() => setIsActive(false)}
             >
-              Watchlist
+              Watch list
             </NavLink>
           </li>
           <li>

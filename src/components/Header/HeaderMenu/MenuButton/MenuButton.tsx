@@ -1,19 +1,17 @@
-type MenuButtonPropsType = {
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+type Props = {
   isActive: boolean,
   activeChange: (value: boolean) => void,
 };
 
-const MenuButton = ({ activeChange, isActive }: MenuButtonPropsType) => {
+const MenuButton = ({ activeChange, isActive }: Props) => {
   return (
     <div className="menu-box">
-      <div
-        className={`menu-box-button ${isActive ? 'active' : 'inactive'}`}
+      <FontAwesomeIcon
         onClick={() => activeChange(!isActive)}
-      >
-        <div className="line-1"></div>
-        <div className="line-2"></div>
-        <div className="line-3"></div>
-      </div>
+        icon={['fas', 'bars']}
+      />
     </div>
   );
 };

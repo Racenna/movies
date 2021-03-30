@@ -20,7 +20,7 @@ import { toast } from 'react-toastify';
 import { listsAPI } from '../../../api/listsAPI/listsAPI';
 
 type Params = {
-  typeList: 'watch-list' | 'rated' | 'lists' | undefined,
+  typeList: 'watch-list' | 'rated' | 'lists' | 'favorite',
 };
 
 const Profile = () => {
@@ -268,7 +268,7 @@ const Profile = () => {
     setIsLoading(true);
     if (session_id) {
       switch (typeList) {
-        case undefined: {
+        case 'favorite': {
           accountAPI.getFavoriteList(session_id, 'movies', page).then((res) => {
             setFavoriteList((prevList) => {
               return [...prevList, ...res.results];
@@ -316,7 +316,7 @@ const Profile = () => {
     <div className="profile">
       {profile && <ProfileDetail profile={profile} />}
       <ProfileNavigation />
-      {typeList === undefined && (
+      {typeList === 'favorite' && (
         <ProfileFavoriteList
           favoriteList={favoriteList}
           isLoading={isLoading}

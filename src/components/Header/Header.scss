@@ -1,18 +1,126 @@
 @import '../../sass/variables.scss';
-@import '../../sass/mixins.scss';
 
 .header {
 	grid-area: header;
 	display: flex;
 	background-color: $gray;
 
+	.menu-box {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 100%;
+		min-width: 55px;
+		width: 55px;
+		background-color: transparent;
+		font-size: 24px;
+
+		&:focus {
+			background-color: $hoverLightGrayColor;
+		}
+
+		svg:hover {
+			cursor: pointer;
+		}
+	}
+
+	.menu {
+		display: flex;
+		flex-direction: column;
+		&.active {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 270px;
+			height: 100vh;
+			background-color: $lightGrayColor;
+			z-index: 2;
+			transition: left .2s ease-in-out;
+		}
+
+		&.inactive {
+			position: fixed;
+			left: -270px;
+			width: 270px;
+			height: 100vh;
+			background-color: $lightGrayColor;
+			z-index: 2;
+			transition: left .2s ease-in-out;
+		}
+
+		&-header {
+			display: flex;
+			align-items: center;
+			min-height: $headerHeight;
+			font-size: 24px;
+			border-bottom: 1px solid $hightLight;
+		}
+
+		&-navigation-body {
+			overflow-x: hidden;
+			overflow-y: auto;
+
+			nav {
+				padding: 15px 0;
+				border-bottom: 1px solid $hightLight;
+				line-height: 1.5;
+	
+				li {
+					height: 50px;
+	
+					
+					a {
+						padding-left: 15px;
+						display: flex;
+						align-items: center;
+						height: inherit;
+						width: 100%;
+						color: #ffffff;
+						font-size: 20px;
+	
+						svg {
+							margin-right: 15px;
+							font-size: 30px;
+							width: 30px;
+						}
+						
+						&.active-link {
+							svg {
+								color: $secondaryColor;
+							}
+						}
+	
+						&:hover {
+							background-color: #545454;
+						}
+					}
+				}
+	
+			}
+		}
+
+	};
+
+	.menu-shadow {
+		&.active {
+			position: fixed;
+			top: 0;
+			width: 100vw;
+			height: 100vh;
+			background-color: #222;
+			opacity: 0.5;
+			z-index: 1;
+		}
+	}
+
 	&-logo {
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		min-width: $logoNavbarWidth;
-		width: $logoNavbarWidth;
-		color: $secondaryColor;
+
+		img {
+			width: 200px;
+		}
 	}
 
 	&-search {
@@ -67,7 +175,6 @@
 					flex-flow: row nowrap;
 					align-items: center;
 					min-height: 50px;
-					// height: 40px;
 					padding: 0 20px;
 					line-height: 1.5;
 					border-top: 1px solid $hoverLightGrayColor;
@@ -107,35 +214,33 @@
 		background-color: transparent;
 		width: 120px;
 		color: #ffffff;
-		font-size: 20px;
-		user-select: none;
+		font-size: 18px;
 		min-width: 70px;
+		user-select: none;
+
 		margin-left: auto;
 
 		.sign-in-button {
-			height: 50px;
+			height: $headerHeight - 15px;
 			border-radius: 6px;
-			width: 90%;
+			width: 70%;
 			font-size: 18px;
 			border: 2px solid $secondaryColor;
 			background-color: $darkGray;
 			color: #ffffff;
 			transition: .2s ease;
 			
-			margin-right: 10px;
-
 			&:hover {
 				background-color: $secondaryColor;
 			}
 		}
 
 		.profile-button {
-
 			.avatar {
 				cursor: pointer;
 				background-color: $hoverLightGrayColor;
-				width: 50px;
-				height: 50px;
+				width: $headerHeight - 15px;
+				height: $headerHeight - 15px;
 				border-radius: 100%;
 			}
 
@@ -204,104 +309,6 @@
 					}
 				}
 			}
-		}
-
-	}
-
-	.menu {
-		display: none;
-	};
-
-	.menu-box {
-		display: none;
-	}
-}
-
-@media (max-width: $tablet-breakpoint) {
-	.header {
-		.menu-box {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			min-width: $menuBoxSize;
-			width: $menuBoxSize;
-			background-color: $secondaryColor;
-			
-			&-button {
-				z-index: 3;
-				width: $menuBoxSize / 2;
-				height: $menuBoxSize / 2;
-				cursor: pointer;
-				
-				&.inactive {
-					@include menuButton;
-				}
-				
-				&.active {
-					@include menuButton;
-		
-					.line-1 {
-						-webkit-transform: rotate(-45deg) translate(-9px, 7px);
-						transform: rotate(-45deg) translate(-9px, 7px);
-					}
-					.line-2 {
-						opacity: 0;
-					}
-					.line-3 {
-						-webkit-transform: rotate(45deg) translate(-8px, -8px);
-						transform: rotate(45deg) translate(-9px, -8px);
-					}
-				}
-			}
-		}
-
-		.menu {
-			display: block;
-
-			&.active {
-				display: flex;
-				flex-flow: column nowrap;
-				position: fixed;
-				top: 0;
-				left: 0;
-				padding-top: $headerHeight;
-				width: 300px;
-				height: 100vh;
-				background-color: $lightGrayColor;
-				z-index: 2;
-				transition: left .4s ease-in-out;
-			}
-
-			&.inactive {
-				position: fixed;
-				left: -300px;
-				width: 300px;
-				height: 100vh;
-				padding-top: $headerHeight;
-				background-color: $lightGrayColor;
-				z-index: 2;
-				transition: left .4s ease-in-out;
-			}
-		}
-
-		.menu-shadow {
-			&.active {
-				position: fixed;
-				top: 0;
-				width: 100vw;
-				height: 100vh;
-				background-color: #222;
-				opacity: 0.7;
-				z-index: 1;
-			}
-		}
-
-		&-logo {
-			display: none;
-		}
-
-		&-search {
-			width: calc(100vw - 120px - 70px);
 		}
 	}
 }
