@@ -41,10 +41,10 @@ const App = () => {
               component={CreateList}
               exact={true}
             />
-            <ProtectedRoute
+            <Route
               path="/people/:people_id"
               component={People}
-              exact={true}
+              exact
             />
             <Route exact path="/approved" component={Approve} />
             <Route exact path="/trending" component={Trending} />
