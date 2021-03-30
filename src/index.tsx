@@ -16,6 +16,7 @@ import {
   faSearch,
   faVideo,
   faEraser,
+  faBars,
 } from '@fortawesome/free-solid-svg-icons';
 
 library.add(
@@ -28,7 +29,8 @@ library.add(
   faTrashAlt,
   faSearch,
   faVideo,
-  faEraser
+  faEraser,
+  faBars
 );
 
 ReactDOM.render(

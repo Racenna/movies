@@ -77,7 +77,7 @@ const Description = () => {
         setCustomLists(res.results);
       });
     }
-  }, [session_id]);
+  }, [session_id, movie_id]);
 
   const handleFavorite = (isFavorite: boolean) => {
     if (session_id) {

@@ -6,7 +6,6 @@ import {
 } from 'react-router-dom';
 import { ToastContainer, Zoom } from 'react-toastify';
 import Header from './components/Header';
-import Navbar from './components/Navbar';
 import Trending from './components/Main/Trending';
 import ListDetail from './components/Main/List/ListDetail';
 import CreateList from './components/Main/List/CreateList';
@@ -25,14 +24,13 @@ const App = () => {
       <SessionContextProvider>
         <div className="App">
           <Header />
-          <Navbar />
           <Switch>
             <Route
               exact
               path="/"
               component={() => <Redirect to="/trending" />}
             />
-            <ProtectedRoute path="/profile/:typeList?" component={Profile} />
+            <ProtectedRoute path="/profile/:typeList" component={Profile} />
             <ProtectedRoute
               path="/list/:listId"
               component={ListDetail}
