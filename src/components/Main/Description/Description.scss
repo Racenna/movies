@@ -814,39 +814,39 @@
 	}
 }
 
-@media (max-width: 550px) {
-	.description {
-		&-block {
-			.detail {
-				display: flex;
-				flex-flow: column nowrap;
-				align-items: center;
+// @media (max-width: 550px) {
+// 	.description {
+// 		&-block {
+// 			.detail {
+// 				display: flex;
+// 				flex-flow: column nowrap;
+// 				align-items: center;
 
-				&-poster {
-					margin-right: 0;
-					margin-bottom: 20px;
-				}
-			}
-		}
+// 				&-poster {
+// 					margin-right: 0;
+// 					margin-bottom: 20px;
+// 				}
+// 			}
+// 		}
 
-		&-cast {
-			.modal-window {
+// 		&-cast {
+// 			.modal-window {
 
-				&.active {
-					.content-wrapper {
-						flex-flow: column nowrap;
+// 				&.active {
+// 					.content-wrapper {
+// 						flex-flow: column nowrap;
 
-						& > div:last-child {
-							margin-left: 0;
-						}
+// 						& > div:last-child {
+// 							margin-left: 0;
+// 						}
 
-						.title {
-							display: flex;
-							justify-content: center;
-						}
-					}
-				}
-			}
-		}
-	}
-}
+// 						.title {
+// 							display: flex;
+// 							justify-content: center;
+// 						}
+// 					}
+// 				}
+// 			}
+// 		}
+// 	}
+// }

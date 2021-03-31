@@ -4,6 +4,9 @@
 	grid-area: header;
 	display: flex;
 	background-color: $gray;
+	min-width: 320px;
+	width: 100%;
+	position: fixed;
 
 	.menu-box {
 		display: flex;
