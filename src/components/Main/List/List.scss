@@ -7,7 +7,7 @@
 	line-height: 1.5;
 	overflow-y: scroll;
 	overflow-x: hidden;
-	height: calc(100vh - $headerHeight);
+	height: calc(100vh - 55px);
 
 	@include _425 {
 		padding: 0px 0px 5px 15px;
@@ -192,7 +192,7 @@
 	align-items: center;
 	padding: 20px;
 	line-height: 1.5;
-	height: calc(100vh - $headerHeight);
+	height: calc(100vh - 55px);
 	overflow: hidden;
 
 	.create-list-form {

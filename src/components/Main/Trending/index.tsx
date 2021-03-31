@@ -5,7 +5,7 @@ import { TrendingResults } from '../../../api/trendingAPI/types';
 import Pagination from '../../../common/Pagination';
 import Preloader from '../../../common/Preloader';
 import Items from './Items/Items';
-import '../Main.scss';
+import './Trending.scss';
 
 const Trending = () => {
   const [items, setItems] = useState<Array<TrendingResults>>([]);
@@ -43,8 +43,8 @@ const Trending = () => {
   if (isLoading) return <Preloader />;
 
   return (
-    <div className="main">
-      <div className="main-title">Trending</div>
+    <div className="trending">
+      <div className="trending-title">Trending</div>
       <Items items={items} />
       <Pagination
         page={currentPage}

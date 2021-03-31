@@ -9,16 +9,3 @@
   grid-template-rows: $headerHeight 1fr;
   grid-template-columns: 1fr;
 }
-
-// @media (max-width: $tablet-breakpoint) {
-//   .App {
-//     display: grid;
-//     width: 100%;
-  
-//     grid-template-areas: 
-//       "header"
-//       "main";
-//     grid-template-rows: $headerHeight 1fr;
-//     grid-template-columns: 1fr;
-//   }
-// }

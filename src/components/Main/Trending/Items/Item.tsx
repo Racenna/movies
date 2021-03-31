@@ -19,7 +19,7 @@ const Item = ({ poster_path, title, release_date, id }: Props) => {
 
   const date = release_date ? release_date.slice(0, 4) : '';
   return (
-    <div className="main-content-item">
+    <div className="trending-content-item">
       <NavLink to={`/movie/description/${id}`} className="item-image">
         {poster}
       </NavLink>

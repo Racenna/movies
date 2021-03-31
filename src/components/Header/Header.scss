@@ -8,7 +8,6 @@
 	min-width: 320px;
 	width: 100%;
 	position: fixed;
-	z-index: 10;
 
 	.menu-box {
 		display: flex;
@@ -39,7 +38,7 @@
 			width: 270px;
 			height: 100vh;
 			background-color: $lightGrayColor;
-			z-index: 2;
+			z-index: 5;
 			transition: left .2s ease-in-out;
 		}
 
@@ -78,7 +77,6 @@
 	
 				li {
 					height: 50px;
-	
 					
 					a {
 						padding-left: 15px;
@@ -88,11 +86,19 @@
 						width: 100%;
 						color: #ffffff;
 						font-size: 20px;
+
+						@include _425 {
+							font-size: 18px;
+						}
 	
 						svg {
 							margin-right: 15px;
 							font-size: 30px;
 							width: 30px;
+
+							@include _425 {
+								font-size: 22px;
+							}
 						}
 						
 						&.active-link {

@@ -20,7 +20,7 @@
 
 .profile {
 	grid-area: main;
-	height: calc(100vh - $headerHeight);
+	height: calc(100vh - 55px);
 	padding: 25px 0 0px 20px;
 	overflow-y: scroll;
 	overflow-x: hidden;
@@ -191,7 +191,7 @@
 
 				&-release {
 					display: block;
-					opacity: .7;
+					color: #a3a3a3;
 
 					@include _425 {
 						font-size: 14px;
