@@ -1,18 +1,26 @@
 @import '../../../sass/variables.scss';
+@import '../../../sass/mixins.scss';
 
 .list-description {
-	padding: 20px 20px 0px 20px;
+	grid-area: main;
+	padding: 20px 20px 5px 20px;
 	line-height: 1.5;
 	overflow-y: scroll;
 	overflow-x: hidden;
-	height: calc(100vh - 70px);
+	height: calc(100vh - $headerHeight);
 
-	grid-area: main;
+	@include _425 {
+		padding: 0px 0px 5px 15px;
+	}
 
 	.not-found {
 		display: flex;
 		justify-content: center;
 		font-size: 38px;
+
+		@include _425 {
+			font-size: 28px;
+		}
 	}
 
 	.block {
@@ -24,17 +32,30 @@
 	.detail {
 		&-title {
 			font-size: 38px;
+
+			@include _425 {
+				font-size: 28px;
+			}
 		}
 
 		&-created-by {
 			font-size: 22px;
 			opacity: 0.8;
 			margin-left: 10px;
+
+			@include _425 {
+				font-size: 16px;
+			}
 		}
 
 		&-favorite-count {
 			font-size: 22px;
 			padding: 3px 5px;
+			
+			@include _425 {
+				font-size: 18px;
+			}
+
 			svg {
 				color: $secondaryColor;
 			}
@@ -45,6 +66,10 @@
 			font-size: 22px;
 			padding: 3px 5px;
 
+			@include _425 {
+				font-size: 18px;
+			}
+
 			svg {
 				color: #9FA8DA;
 			}
@@ -53,6 +78,14 @@
 		&-description {
 			&-title {
 				font-size: 24px;
+
+				@include _425 {
+					font-size: 18px;
+				}
+			}
+
+			@include _425 {
+				font-size: 16px;
 			}
 		}
 
@@ -61,6 +94,10 @@
 			flex-flow: row wrap;
 			justify-content: flex-start;
 
+			@include _425 {
+				flex-flow: column nowrap;
+			}
+
 			.item {
 				display: flex;
 				flex-direction: column;
@@ -68,12 +105,34 @@
 				margin-top: 35px;
 				width: 250px;
 
+				@include _425 {
+					flex-direction: row;
+					align-items: flex-start;
+					width: 100%;
+					border-top: 1px solid $hoverLightGrayColor;
+					padding: 10px 0;
+					margin-top: 0;
+
+					&:last-child {
+						border-bottom: 1px solid $hoverLightGrayColor;
+					}
+				}
+
 				&-image {
+					@include _425 {
+						margin-right: 10px;
+					}
+
 					img {
 						border-radius: 6px;
-						height: 300px;
 						width: 200px;
+						height: 200px * $aspectRatio;
 						transition: .3s ease;
+
+						@include _425 {
+							width: 130px;
+							height: 130px * $aspectRatio;
+						}
 
 						&:hover {
 							opacity: .65;
@@ -85,11 +144,16 @@
 						justify-content: center;
 						align-items: center;
 						width: 200px;
-						height: 300px;
+						height: 200px * $aspectRatio;
 						border-radius: 6px;
 						transition: .3s ease;
 						color: #ffffff;
 						background-color: #363636;
+
+						@include _425 {
+							width: 130px;
+							height: 130px * $aspectRatio;
+						}
 
 						&:hover {
 							background-color: #444444;
@@ -101,6 +165,11 @@
 				&-title {
 					text-align: center;
 					margin-top: 6px;
+
+					@include _425 {
+						margin-top: 0;
+						font-size: 16px;
+					}
 
 					& a {
 						color: #ffffff;
@@ -117,15 +186,14 @@
 }
 
 .create-list-wrapper {
+	grid-area: main;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	padding: 20px;
 	line-height: 1.5;
-	height: calc(100vh - 70px);
+	height: calc(100vh - $headerHeight);
 	overflow: hidden;
-
-	grid-area: main;
 
 	.create-list-form {
 		display: flex;
@@ -134,11 +202,17 @@
 		border: 2px solid #949494;
 		border-radius: 12px;
 		overflow: hidden;
+		min-height: 360px;
+		max-height: 80%;
+		height: 100%;
 		width: 60%;
-		height: 80%;
 		padding: 20px;
 		background-color: $lightGrayColor;
-		min-height: 400px;
+
+		@include _425 {
+
+			width: 100%;
+		}
 
 		.form-title {
 			display: flex;
@@ -146,10 +220,18 @@
 			align-items: center;
 			width: 100%;
 			font-size: 38px;
+
+			@include _425 {
+				font-size: 24px;
+			}
 		}
 
 		label {
 			font-size: 22px;
+			
+			@include _425 {
+				font-size: 16px;
+			}
 		}
 
 		input[type="text"] {
@@ -157,6 +239,11 @@
 			border-radius: 6px;
 			padding: 0 10px;
 			font-size: 22px;
+
+			@include _425 {
+				min-height: 30px;
+				font-size: 16px;
+			}
 		}
 
 		textarea {
@@ -165,6 +252,11 @@
 			font-size: 22px;
 			border-radius: 6px;
 			padding: 5px 10px;
+
+			@include _425 {
+				font-size: 16px;
+				padding: 3px 8px;
+			}
 		}
 
 		button {
@@ -175,6 +267,12 @@
 			border-radius: 6px;
 			padding: 6px 10px;
 			transition: .2s ease;
+
+			@include _425 {
+				font-size: 18px;
+				border-width: 1px;
+				padding: 4px 8px;
+			}
 
 			&:hover {
 				background-color: $secondaryColor;	
