@@ -1,4 +1,5 @@
 @import '../../sass/variables.scss';
+@import '../../sass/mixins.scss';
 
 .header {
 	grid-area: header;
@@ -58,6 +59,12 @@
 			min-height: $headerHeight;
 			font-size: 24px;
 			border-bottom: 1px solid $hightLight;
+
+			& .header-logo {
+				@include _425 {
+					display: block;
+				}
+			}
 		}
 
 		&-navigation-body {
@@ -125,6 +132,10 @@
 		img {
 			width: 200px;
 		}
+
+		@include _425 {
+			display: none;
+		}
 	}
 
 	&-search {
@@ -138,6 +149,10 @@
 			background: transparent;
 			transition: .3s ease;
 
+			@include _425 {
+				font-size: 16px;
+			}
+
 			&:hover {
 				color: $secondaryColor;
 			}
@@ -149,25 +164,35 @@
 			top: 0;
 			left: 50%;
     	transform: translate(-50%, 0);
-			width: 860px;
+			min-width: 320px;
+			width: 75%;
 			background-color: #111111;
 			z-index: 10;
+
+			@include _425 {
+				width: 100%;
+			}
 
 			// if display flex
 			flex-flow: column nowrap;
 			justify-content: flex-start;
 
 			input[type='text'] {
-				min-height: 70px;
+				min-height: $headerHeight;
 				background-color: #111111;
 				color: #ffffff;
 				font-size: 24px;
 				border-bottom: 1px solid $hoverLightGrayColor;
 				padding-left: 20px;
+
+				@include _425 {
+					font-size: 18px;
+					padding-left: 10px;
+				}
 			}
 
 			.search-result {
-				max-height: 330px;
+				max-height: 50vh;
 				overflow-y: scroll;
 
 				.no-result {
@@ -182,6 +207,11 @@
 					padding: 0 20px;
 					line-height: 1.5;
 					border-top: 1px solid $hoverLightGrayColor;
+
+					@include _425 {
+						padding: 0px 10px;
+						font-size: 16px;
+					}
 	
 					&:last-child {
 						border-bottom: 1px solid $hoverLightGrayColor;
