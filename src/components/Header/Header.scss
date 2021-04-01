@@ -1,9 +1,13 @@
 @import '../../sass/variables.scss';
+@import '../../sass/mixins.scss';
 
 .header {
 	grid-area: header;
 	display: flex;
 	background-color: $gray;
+	min-width: 320px;
+	width: 100%;
+	position: fixed;
 
 	.menu-box {
 		display: flex;
@@ -34,7 +38,7 @@
 			width: 270px;
 			height: 100vh;
 			background-color: $lightGrayColor;
-			z-index: 2;
+			z-index: 5;
 			transition: left .2s ease-in-out;
 		}
 
@@ -54,6 +58,12 @@
 			min-height: $headerHeight;
 			font-size: 24px;
 			border-bottom: 1px solid $hightLight;
+
+			& .header-logo {
+				@include _559 {
+					display: block;
+				}
+			}
 		}
 
 		&-navigation-body {
@@ -67,7 +77,6 @@
 	
 				li {
 					height: 50px;
-	
 					
 					a {
 						padding-left: 15px;
@@ -77,11 +86,19 @@
 						width: 100%;
 						color: #ffffff;
 						font-size: 20px;
+
+						@include _559 {
+							font-size: 18px;
+						}
 	
 						svg {
 							margin-right: 15px;
 							font-size: 30px;
 							width: 30px;
+
+							@include _559 {
+								font-size: 22px;
+							}
 						}
 						
 						&.active-link {
@@ -121,6 +138,10 @@
 		img {
 			width: 200px;
 		}
+
+		@include _559 {
+			display: none;
+		}
 	}
 
 	&-search {
@@ -134,6 +155,10 @@
 			background: transparent;
 			transition: .3s ease;
 
+			@include _559 {
+				font-size: 16px;
+			}
+
 			&:hover {
 				color: $secondaryColor;
 			}
@@ -145,25 +170,35 @@
 			top: 0;
 			left: 50%;
     	transform: translate(-50%, 0);
-			width: 860px;
+			min-width: 320px;
+			width: 75%;
 			background-color: #111111;
 			z-index: 10;
+
+			@include _559 {
+				width: 100%;
+			}
 
 			// if display flex
 			flex-flow: column nowrap;
 			justify-content: flex-start;
 
 			input[type='text'] {
-				min-height: 70px;
+				min-height: $headerHeight;
 				background-color: #111111;
 				color: #ffffff;
 				font-size: 24px;
 				border-bottom: 1px solid $hoverLightGrayColor;
 				padding-left: 20px;
+
+				@include _559 {
+					font-size: 18px;
+					padding-left: 10px;
+				}
 			}
 
 			.search-result {
-				max-height: 330px;
+				max-height: 50vh;
 				overflow-y: scroll;
 
 				.no-result {
@@ -178,6 +213,11 @@
 					padding: 0 20px;
 					line-height: 1.5;
 					border-top: 1px solid $hoverLightGrayColor;
+
+					@include _559 {
+						padding: 0px 10px;
+						font-size: 16px;
+					}
 	
 					&:last-child {
 						border-bottom: 1px solid $hoverLightGrayColor;

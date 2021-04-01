@@ -31,6 +31,7 @@ const ListDetail = () => {
 
         setDetail(res);
         setIsLoading(false);
+        document.title = res.name;
       })
       .catch((err: Error) => {
         setError(true);

@@ -59,6 +59,7 @@ const Description = () => {
       setRecommended(res.recommendations);
       setSimilar(res.similar);
       setIsLoading(false);
+      document.title = `${res.detail.title}`;
     });
   }, [movie_id]);
 

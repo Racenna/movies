@@ -7,7 +7,7 @@ type Props = {
 
 const Items = ({ items }: Props) => {
   return (
-    <div className="main-content">
+    <div className="trending-content">
       {items.map((value) => (
         <Item
           key={value.id}

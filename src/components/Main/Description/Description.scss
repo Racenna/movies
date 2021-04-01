@@ -1,8 +1,9 @@
 @import '../../../sass/variables.scss';
+@import '../../../sass/mixins.scss';
 
 .description {
 	grid-area: main;
-	height: calc(100vh - 70px);
+	height: calc(100vh - 55px);
 	padding: 25px 0 0px 20px;
 	overflow-y: scroll;
 	overflow-x: hidden;
@@ -19,6 +20,10 @@
 		.desc-header {
 			.title {
 				font-size: 36px;
+
+				@include _559 {
+					font-size: 26px;
+				}
 			}
 
 			padding-bottom: 10px;
@@ -28,16 +33,32 @@
 
 		.detail {
 			display: flex;
+
+			@include _559 {
+				flex-direction: column;
+				align-items: center;
+			}
 			
 			&-poster {
 				margin-right: 20px;
 				border-radius: 6px;
 				min-width: 250px;
 				overflow: hidden;
+
+				@include _559 {
+					margin-right: 0;
+					margin-bottom: 10px;
+					min-width: 200px;
+				}
 	
 				img {
 					width: 250px;
-					height: 375px;
+					height: $aspectRatio * 250px;
+
+					@include _559 {
+						width: 200px;
+						height: $aspectRatio * 200px;
+					}
 				}
 
 				.empty-poster {
@@ -45,11 +66,17 @@
 					justify-content: center;
 					align-items: center;
 					width: 250px;
-					height: 375px;
+					height: $aspectRatio * 250px;
 					font-size: 28px;
 					color: #ffffff;
 					background-color: $lightGrayColor;
 					user-select: none;
+
+					@include _559 {
+						width: 200px;
+						height: $aspectRatio * 200px;
+						font-size: 24px;
+					}
 				}
 
 				.poster-buttons {
@@ -60,6 +87,11 @@
 					min-height: 40px;
 					background-color: #151515;
 					font-size: 22px;
+
+					@include _559 {
+						min-width: 200px;
+						font-size: 18px;
+					}
 
 
 					.like-button {
@@ -133,6 +165,11 @@
 							padding: 15px 10px;
 							border-radius: 6px;
 
+							@include _559 {
+								width: 100%;
+								border-radius: 0;
+							}
+
 							.lists-title {
 								display: flex;
 								justify-content: center;
@@ -146,6 +183,10 @@
 								border-radius: 6px;
 								transition: .2s ease;
 								margin-bottom: 10px;
+
+								@include _559 {
+									font-size: 16px;
+								}
 								
 								&:hover {
 									background-color: $secondaryColor;
@@ -159,6 +200,9 @@
 								padding: 6px;
 								border-top: 1px solid $hoverLightGrayColor;
 
+								@include _559 {
+									padding: 3px;
+								}
 								
 								&:last-child {
 									border-bottom: 1px solid $hoverLightGrayColor;
@@ -167,11 +211,20 @@
 								&-name {
 									font-size: 21px;
 									margin-right: 10px;
+
+									@include _559 {
+										font-size: 16px;
+										margin-right: 5px;
+									}
 								}
 
 								&-items-count {
 									font-size: 14px;
-									opacity: .7;
+									color: #929292;
+
+									@include _559 {
+										font-size: 11px;
+									}
 								}
 
 								&:hover {
@@ -187,6 +240,11 @@
 									border-radius: 6px;
 									transition: .1s ease;
 
+									@include _559 {
+										padding: 3px;
+										font-size: 16px;
+									}
+
 									&:hover {
 										background-color: $secondaryColor;
 									}
@@ -199,13 +257,16 @@
 			}
 
 			&-text {
-				min-width: 100px;
-	
 				.info {
 					padding-bottom: 10px;
 					margin-bottom: 10px;
 					border-bottom: 1px solid $secondaryColor;
 	
+					@include _559 {
+						padding: 0px 10px 10px;
+						font-size: 16px;
+					}
+
 					&-item {
 						margin-bottom: 6px;
 					}
@@ -226,14 +287,27 @@
 						padding: 5px 8px;
 						border: 2px solid $secondaryColor;
 						border-radius: 4px;
-						
 						user-select: none;
+						
+						@include _559 {
+							margin-right: 4px;
+							margin-bottom: 4px;
+							padding: 3px;
+							border-width: 1px;
+						}
 	
 						&:hover {
 							background-color: $secondaryColor;
 						}
 					}
 	
+				}
+
+				.overview {
+					@include _559 {
+						padding: 0px 10px;
+						font-size: 16px;
+					}
 				}
 			}
 		}
@@ -246,19 +320,27 @@
 		
 		&-title {
 			font-size: 28px;
+
+			@include _559 {
+				font-size: 22px;
+			}
 		}
 
 		.more {
-
 			margin-right: 20px;
 			float: right;
 			transition: .3s ease;
-
-			user-select: none;
-
 			border: 2px solid $secondaryColor;
 			border-radius: 6px;
 			padding: 4px 10px;
+			user-select: none;
+
+			@include _559 {
+				margin-right: 10px;
+				border-width: 1px;
+				padding: 3px 5px;
+				font-size: 16px;
+			}
 
 			&:hover {
 				cursor: pointer;
@@ -274,7 +356,7 @@
 
 			&-item {
 				display: flex;
-				flex-flow: column nowrap;
+				flex-direction: column;
 				align-items: center;
 				text-align: center;
 				min-width: 150px;
@@ -286,13 +368,23 @@
 				transition: .3s ease;
 				color: #ffffff;
 
+				@include _559 {
+					min-width: 100px;
+					width: 100px;	
+				}
+
 				img {
-					width: 100%;
-					height: 225px;
+					width: 150px;
+					height: 150px * $aspectRatio;
+
+					@include _559 {
+						width: 100px;
+						height: 100px * $aspectRatio;
+					}
 				}
 
 				.cast-name {
-					margin: 10px 0;
+					margin: 10px 5px;
 				}
 
 				&:hover {
@@ -356,17 +448,30 @@
 					height: calc(100vh - 6vh - 30px);
 					overflow-y: scroll;
 
+					@include _559 {
+						flex-direction: column;
+					}
+
 					& > div {
 						width: 100%;
 					}
 
 					& > div:last-child {
 						margin-left: 20px;
+
+						@include _559 {
+							margin-left: 0;
+						}
 					}
 
 					.title {
 						font-size: 32px;
 						margin: 15px 0;
+
+						@include _559 {
+							display: flex;
+							justify-content: center;
+						}
 					}
 
 					.list {
@@ -417,8 +522,7 @@
 
 								div span:first-child {
 									display: block;
-									color: #ffffff;
-									opacity: .6;
+									color: #929292;
 								}
 							}
 						}
@@ -434,9 +538,7 @@
 			&.inactive {
 				display: none;
 			}
-
 		}
-
 	}
 
 	&-multimedia {
@@ -452,6 +554,10 @@
 			&-title {
 				font-size: 28px;
 				margin-bottom: 10px;
+
+				@include _559 {
+					font-size: 22px;
+				}
 			}
 			
 			&-content {
@@ -467,16 +573,25 @@
 						img {
 							object-fit: cover;
 							height: 160px;
-							width: 285px;
+							width: 160px * $aspectRatio;
+							
+							@include _559 {
+								height: 120px;
+								width: 120px * $aspectRatio;
+							}
 						}
 	
 						.preview-title {
 							display: block;
 							padding-top: 3px;
-							width: 260px;
+							width: 160px * $aspectRatio;
 							white-space: nowrap;
 							overflow: hidden;
 							text-overflow: ellipsis;
+						
+							@include _559 {
+								width: 120px * $aspectRatio;
+							}
 						}
 	
 						.fade {
@@ -486,10 +601,15 @@
 							align-items: center;
 							position: absolute;
 							height: 160px;
-							width: 285px;
+							width: 160px * $aspectRatio;
 							top: 0;
 							left: 0;
 							transition: .3s ease;
+
+							@include _559 {
+								height: 120px;
+								width: 120px * $aspectRatio;
+							}
 							
 							.play-button {
 								border-style: solid;
@@ -497,6 +617,10 @@
 								border-color: transparent transparent transparent #ffffff;
 								opacity: .8;
 								transition: .3s ease;
+
+								@include _559 {
+									border-width: 18px 0px 18px 36px;
+								}
 							}
 	
 							&:hover {
@@ -581,6 +705,10 @@
 			&-title {
 				font-size: 28px;
 				margin-bottom: 10px;
+
+				@include _559 {
+					font-size: 22px;
+				}
 			}
 
 			&-content {
@@ -596,8 +724,13 @@
 					.backdrop-img {
 						border-radius: 8px;
 						height: 170px;
-						width: 255px;
+						width: 170px * 1.7;
 						transition: .3s ease;
+
+						@include _559 {
+							height: 130px;
+							width: 130px * 1.7;
+						}
 
 						&:hover {
 							cursor: pointer;
@@ -607,9 +740,14 @@
 
 					.poster-img {
 						border-radius: 8px;
-						height: 255px;
 						width: 170px;
+						height: 170px * $aspectRatio;
 						transition: .3s ease;
+
+						@include _559 {
+							width: 130px;
+							height: 130px * $aspectRatio;
+						}
 
 						&:hover {
 							cursor: pointer;
@@ -714,10 +852,16 @@
 			color: #ffffff;
 			background-color: $lightGrayColor;
 			user-select: none;
-			border-radius: 8px;
-			height: 300px;
+			border-radius: 6px;
 			width: 200px;
+			height: 200px * $aspectRatio;
 			transition: .3s ease;
+
+			@include _559 {
+				width: 150px;
+				height: 150px * $aspectRatio;
+				font-size: 22px;
+			}
 
 			&:hover {
 				background-color: $hoverLightGrayColor;
@@ -732,6 +876,10 @@
 			&-title {
 				font-size: 28px;
 				margin-bottom: 10px;
+
+				@include _559 {
+					font-size: 22px;
+				}
 			}
 
 			&-content {
@@ -746,14 +894,23 @@
 
 					&-title {
 						margin-top: 5px;
+
+						@include _559 {
+							font-size: 16px;
+						}
 					}
 
 					img {
-						border-radius: 8px;
-						height: 300px;
+						border-radius: 6px;
 						width: 200px;
+						height: 200px * $aspectRatio;
 						transition: .3s ease;
 	
+						@include _559 {
+							width: 150px;
+							height: 150px * $aspectRatio;
+						}
+
 						&:hover {
 							opacity: .65;
 						}
@@ -776,6 +933,10 @@
 			&-title {
 				font-size: 28px;
 				margin-bottom: 10px;
+
+				@include _559 {
+					font-size: 22px;
+				}
 			}
 
 			&-content {
@@ -790,14 +951,23 @@
 
 					&-title {
 						margin-top: 5px;
+
+						@include _559 {
+							font-size: 16px;
+						}
 					}
 
 					img {
 						border-radius: 8px;
-						height: 300px;
 						width: 200px;
+						height: 200px * $aspectRatio;
 						transition: .3s ease;
 	
+						@include _559 {
+							width: 150px;
+							height: 150px * $aspectRatio;
+						}
+
 						&:hover {
 							opacity: .65;
 						}
@@ -807,43 +977,6 @@
 						color: inherit;
 					
 						&:hover {color: $secondaryColor}
-					}
-				}
-			}
-		}
-	}
-}
-
-@media (max-width: 550px) {
-	.description {
-		&-block {
-			.detail {
-				display: flex;
-				flex-flow: column nowrap;
-				align-items: center;
-
-				&-poster {
-					margin-right: 0;
-					margin-bottom: 20px;
-				}
-			}
-		}
-
-		&-cast {
-			.modal-window {
-
-				&.active {
-					.content-wrapper {
-						flex-flow: column nowrap;
-
-						& > div:last-child {
-							margin-left: 0;
-						}
-
-						.title {
-							display: flex;
-							justify-content: center;
-						}
 					}
 				}
 			}

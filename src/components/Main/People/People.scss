@@ -1,7 +1,8 @@
 @import '../../../sass/variables.scss';
+@import '../../../sass/mixins.scss';
 
-$imgWidth: 300px;
-$aspectRatio: 1.5;
+$desktopImgWidth: 300px;
+$mobileImgWidth: 200px;
 
 .active {
 	display: inline;
@@ -15,15 +16,26 @@ $aspectRatio: 1.5;
 
 .people {
 	grid-area: main;
-	height: calc(100vh - 70px);
+	height: calc(100vh - 55px);
 	overflow-y: scroll;
 	overflow-x: hidden;
 	padding: 20px 0px 0px 20px;
 
+	@include _559 {
+		padding: 10px 0 0 10px;
+	}
+
+
 	.not-found {
 		display: flex;
 		justify-content: center;
+		text-align: center;
+		line-height: 1.2;
 		font-size: 38px;
+
+		@include _559 {
+			font-size: 24px;
+		}
 	}
 
 	&-detail {
@@ -33,6 +45,10 @@ $aspectRatio: 1.5;
 			padding-bottom: 10px;
 			margin-bottom: 10px;
 			border-bottom: 1px solid $secondaryColor;
+
+			@include _559 {
+				font-size: 26px;
+			}
 		}
 
 		.main-info-block {
@@ -41,18 +57,39 @@ $aspectRatio: 1.5;
 			padding-bottom: 10px;
 			margin-bottom: 10px;
 			border-bottom: 1px solid $secondaryColor;
+
+			@include _559 {
+				flex-direction: column;
+				align-items: center;
+			}
 			
 			.poster {
-				width: $imgWidth;
-				height: $imgWidth * $aspectRatio;
+				width: $desktopImgWidth;
+				height: $desktopImgWidth * $aspectRatio;
 				border-radius: 6px;
 				margin-right: 20px;
+
+				@include _559 {
+					width: $mobileImgWidth;
+					height: $mobileImgWidth * $aspectRatio;
+					margin-right: 0;
+					margin-bottom: 10px;
+				}
 			}
 
 			.info {
 
+				@include _559 {
+					margin-left: 10px;
+					margin-right: 10px;
+				}
+
 				&-item {
 					line-height: 1.5;
+
+					@include _559 {
+						font-size: 16px;
+					}
 					
 					&-title {
 						color: $secondaryColor;
@@ -63,6 +100,7 @@ $aspectRatio: 1.5;
 						border-radius: 6px;
 						padding: 0px 6px;
 						transition: .1s ease;
+						white-space: nowrap;
 
 						&:hover {
 							cursor: pointer;
@@ -75,6 +113,7 @@ $aspectRatio: 1.5;
 						border-radius: 6px;
 						padding: 2px 6px;
 						transition: .1s ease;
+						white-space: nowrap;
 
 						&:hover {
 							cursor: pointer;
@@ -97,7 +136,12 @@ $aspectRatio: 1.5;
 				display: inline-block;
 				font-size: 28px;
 				margin-bottom: 10px;
+
+				@include _559 {
+					font-size: 22px;
+				}
 			}
+
 			&-items {
 				display: flex;
 				flex-flow: row nowrap;
@@ -123,12 +167,23 @@ $aspectRatio: 1.5;
 						line-height: 1.2;
 						margin-top: 8px;
 						padding-right: 20px;
+
+						@include _559 {
+							margin-top: 5px;
+							font-size: 16px;
+						}
 					}
 						
 					img {
 						width: 200px;
 						height: $aspectRatio * 200px;
 						margin-right: 20px;
+						border-radius: 6px;
+
+						@include _559 {
+							width: 150px;
+							height: $aspectRatio * 150px;
+						}
 					}
 
 					.empty-poster {
@@ -148,6 +203,12 @@ $aspectRatio: 1.5;
 						&:hover {
 							background-color: $hoverLightGrayColor;
 						}
+
+						@include _559 {
+							width: 150px;
+							height: $aspectRatio * 150px;
+							font-size: 24px;
+						}
 					}
 				}
 			}
@@ -155,10 +216,18 @@ $aspectRatio: 1.5;
 
 		.crew-credit {
 			&-department {
+				padding-bottom: 10px;
+				margin-bottom: 10px;
+				border-bottom: 1px solid $secondaryColor;
+
 				span {
 					display: inline-block;
 					font-size: 28px;
 					margin-bottom: 10px;
+
+					@include _559 {
+						font-size: 22px;
+					}
 				}
 
 				.department-wrapper {
@@ -169,49 +238,66 @@ $aspectRatio: 1.5;
 
 					.item {
 						display: flex;
-					flex-direction: column;
-					align-items: center;
-
-					a {
-						text-align: center;
-						color: #ffffff;
-						transition: .2s ease;
-
-						&:hover {
-							color: $secondaryColor;
-						}
-					}
-
-					&-title {
-						line-height: 1.2;
-						margin-top: 8px;
-						padding-right: 20px;
-					}
-						
-					img {
-						width: 200px;
-						height: $aspectRatio * 200px;
-						margin-right: 20px;
-					}
-
-					.empty-poster {
-						display: flex;
-						justify-content: center;
+						flex-direction: column;
 						align-items: center;
-						width: 200px;
-						height: $aspectRatio * 200px;
-						font-size: 28px;
-						color: #ffffff;
-						background-color: $lightGrayColor;
-						user-select: none;
-						border-radius: 6px;
-						margin-right: 20px;
-						transition: .2s ease;
 
-						&:hover {
-							background-color: $hoverLightGrayColor;
+						a {
+							text-align: center;
+							color: #ffffff;
+							transition: .2s ease;
+
+							&:hover {
+								color: $secondaryColor;
+							}
 						}
-					}
+
+						&-title {
+							line-height: 1.2;
+							margin-top: 8px;
+							padding-right: 20px;
+
+							@include _559 {
+								margin-top: 5px;
+								font-size: 16px;
+							}
+						}
+							
+						img {
+							width: 200px;
+							height: $aspectRatio * 200px;
+							margin-right: 20px;
+							border-radius: 6px;
+
+							@include _559 {
+								width: 150px;
+								height: $aspectRatio * 150px;
+							}
+						}
+
+						.empty-poster {
+							display: flex;
+							justify-content: center;
+							align-items: center;
+							width: 200px;
+							height: $aspectRatio * 200px;
+							font-size: 28px;
+							color: #ffffff;
+							background-color: $lightGrayColor;
+							user-select: none;
+							border-radius: 6px;
+							margin-right: 20px;
+							transition: .2s ease;
+
+							&:hover {
+								background-color: $hoverLightGrayColor;
+							}
+
+							@include _559 {
+								width: 150px;
+								height: $aspectRatio * 150px;
+								font-size: 24px;
+							}
+						}
 					}
 				}
 			}
