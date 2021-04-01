@@ -1,4 +1,4 @@
-import { useState, ChangeEvent, useContext } from 'react';
+import { useState, ChangeEvent, useContext, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { listsAPI } from '../../../api/listsAPI/listsAPI';
 import { SessionContext } from '../../../contexts/SessionContext';
@@ -7,6 +7,10 @@ const CreateList = () => {
   const { session_id } = useContext(SessionContext);
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
+
+  useEffect(() => {
+    document.title = 'Create list';
+  }, []);
 
   const handleCreateList = () => {
     if (!session_id) return;

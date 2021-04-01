@@ -60,7 +60,7 @@
 			border-bottom: 1px solid $hightLight;
 
 			& .header-logo {
-				@include _425 {
+				@include _559 {
 					display: block;
 				}
 			}
@@ -87,7 +87,7 @@
 						color: #ffffff;
 						font-size: 20px;
 
-						@include _425 {
+						@include _559 {
 							font-size: 18px;
 						}
 	
@@ -96,7 +96,7 @@
 							font-size: 30px;
 							width: 30px;
 
-							@include _425 {
+							@include _559 {
 								font-size: 22px;
 							}
 						}
@@ -139,7 +139,7 @@
 			width: 200px;
 		}
 
-		@include _425 {
+		@include _559 {
 			display: none;
 		}
 	}
@@ -155,7 +155,7 @@
 			background: transparent;
 			transition: .3s ease;
 
-			@include _425 {
+			@include _559 {
 				font-size: 16px;
 			}
 
@@ -175,7 +175,7 @@
 			background-color: #111111;
 			z-index: 10;
 
-			@include _425 {
+			@include _559 {
 				width: 100%;
 			}
 
@@ -191,7 +191,7 @@
 				border-bottom: 1px solid $hoverLightGrayColor;
 				padding-left: 20px;
 
-				@include _425 {
+				@include _559 {
 					font-size: 18px;
 					padding-left: 10px;
 				}
@@ -214,7 +214,7 @@
 					line-height: 1.5;
 					border-top: 1px solid $hoverLightGrayColor;
 
-					@include _425 {
+					@include _559 {
 						padding: 0px 10px;
 						font-size: 16px;
 					}

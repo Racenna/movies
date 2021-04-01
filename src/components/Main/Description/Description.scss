@@ -21,7 +21,7 @@
 			.title {
 				font-size: 36px;
 
-				@include _425 {
+				@include _559 {
 					font-size: 26px;
 				}
 			}
@@ -34,7 +34,7 @@
 		.detail {
 			display: flex;
 
-			@include _425 {
+			@include _559 {
 				flex-direction: column;
 				align-items: center;
 			}
@@ -45,7 +45,7 @@
 				min-width: 250px;
 				overflow: hidden;
 
-				@include _425 {
+				@include _559 {
 					margin-right: 0;
 					margin-bottom: 10px;
 					min-width: 200px;
@@ -55,7 +55,7 @@
 					width: 250px;
 					height: $aspectRatio * 250px;
 
-					@include _425 {
+					@include _559 {
 						width: 200px;
 						height: $aspectRatio * 200px;
 					}
@@ -72,7 +72,7 @@
 					background-color: $lightGrayColor;
 					user-select: none;
 
-					@include _425 {
+					@include _559 {
 						width: 200px;
 						height: $aspectRatio * 200px;
 						font-size: 24px;
@@ -88,7 +88,7 @@
 					background-color: #151515;
 					font-size: 22px;
 
-					@include _425 {
+					@include _559 {
 						min-width: 200px;
 						font-size: 18px;
 					}
@@ -165,7 +165,7 @@
 							padding: 15px 10px;
 							border-radius: 6px;
 
-							@include _425 {
+							@include _559 {
 								width: 100%;
 								border-radius: 0;
 							}
@@ -184,7 +184,7 @@
 								transition: .2s ease;
 								margin-bottom: 10px;
 
-								@include _425 {
+								@include _559 {
 									font-size: 16px;
 								}
 								
@@ -200,7 +200,7 @@
 								padding: 6px;
 								border-top: 1px solid $hoverLightGrayColor;
 
-								@include _425 {
+								@include _559 {
 									padding: 3px;
 								}
 								
@@ -212,7 +212,7 @@
 									font-size: 21px;
 									margin-right: 10px;
 
-									@include _425 {
+									@include _559 {
 										font-size: 16px;
 										margin-right: 5px;
 									}
@@ -220,9 +220,9 @@
 
 								&-items-count {
 									font-size: 14px;
-									opacity: .7;
+									color: #929292;
 
-									@include _425 {
+									@include _559 {
 										font-size: 11px;
 									}
 								}
@@ -240,7 +240,7 @@
 									border-radius: 6px;
 									transition: .1s ease;
 
-									@include _425 {
+									@include _559 {
 										padding: 3px;
 										font-size: 16px;
 									}
@@ -262,7 +262,7 @@
 					margin-bottom: 10px;
 					border-bottom: 1px solid $secondaryColor;
 	
-					@include _425 {
+					@include _559 {
 						padding: 0px 10px 10px;
 						font-size: 16px;
 					}
@@ -289,7 +289,7 @@
 						border-radius: 4px;
 						user-select: none;
 						
-						@include _425 {
+						@include _559 {
 							margin-right: 4px;
 							margin-bottom: 4px;
 							padding: 3px;
@@ -304,7 +304,7 @@
 				}
 
 				.overview {
-					@include _425 {
+					@include _559 {
 						padding: 0px 10px;
 						font-size: 16px;
 					}
@@ -321,7 +321,7 @@
 		&-title {
 			font-size: 28px;
 
-			@include _425 {
+			@include _559 {
 				font-size: 22px;
 			}
 		}
@@ -335,7 +335,7 @@
 			padding: 4px 10px;
 			user-select: none;
 
-			@include _425 {
+			@include _559 {
 				margin-right: 10px;
 				border-width: 1px;
 				padding: 3px 5px;
@@ -368,7 +368,7 @@
 				transition: .3s ease;
 				color: #ffffff;
 
-				@include _425 {
+				@include _559 {
 					min-width: 100px;
 					width: 100px;	
 				}
@@ -377,7 +377,7 @@
 					width: 150px;
 					height: 150px * $aspectRatio;
 
-					@include _425 {
+					@include _559 {
 						width: 100px;
 						height: 100px * $aspectRatio;
 					}
@@ -448,7 +448,7 @@
 					height: calc(100vh - 6vh - 30px);
 					overflow-y: scroll;
 
-					@include _425 {
+					@include _559 {
 						flex-direction: column;
 					}
 
@@ -459,7 +459,7 @@
 					& > div:last-child {
 						margin-left: 20px;
 
-						@include _425 {
+						@include _559 {
 							margin-left: 0;
 						}
 					}
@@ -468,7 +468,7 @@
 						font-size: 32px;
 						margin: 15px 0;
 
-						@include _425 {
+						@include _559 {
 							display: flex;
 							justify-content: center;
 						}
@@ -522,8 +522,7 @@
 
 								div span:first-child {
 									display: block;
-									color: #ffffff;
-									opacity: .6;
+									color: #929292;
 								}
 							}
 						}
@@ -556,7 +555,7 @@
 				font-size: 28px;
 				margin-bottom: 10px;
 
-				@include _425 {
+				@include _559 {
 					font-size: 22px;
 				}
 			}
@@ -576,7 +575,7 @@
 							height: 160px;
 							width: 160px * $aspectRatio;
 							
-							@include _425 {
+							@include _559 {
 								height: 120px;
 								width: 120px * $aspectRatio;
 							}
@@ -590,7 +589,7 @@
 							overflow: hidden;
 							text-overflow: ellipsis;
 						
-							@include _425 {
+							@include _559 {
 								width: 120px * $aspectRatio;
 							}
 						}
@@ -607,7 +606,7 @@
 							left: 0;
 							transition: .3s ease;
 
-							@include _425 {
+							@include _559 {
 								height: 120px;
 								width: 120px * $aspectRatio;
 							}
@@ -619,7 +618,7 @@
 								opacity: .8;
 								transition: .3s ease;
 
-								@include _425 {
+								@include _559 {
 									border-width: 18px 0px 18px 36px;
 								}
 							}
@@ -707,7 +706,7 @@
 				font-size: 28px;
 				margin-bottom: 10px;
 
-				@include _425 {
+				@include _559 {
 					font-size: 22px;
 				}
 			}
@@ -728,7 +727,7 @@
 						width: 170px * 1.7;
 						transition: .3s ease;
 
-						@include _425 {
+						@include _559 {
 							height: 130px;
 							width: 130px * 1.7;
 						}
@@ -745,7 +744,7 @@
 						height: 170px * $aspectRatio;
 						transition: .3s ease;
 
-						@include _425 {
+						@include _559 {
 							width: 130px;
 							height: 130px * $aspectRatio;
 						}
@@ -858,7 +857,7 @@
 			height: 200px * $aspectRatio;
 			transition: .3s ease;
 
-			@include _425 {
+			@include _559 {
 				width: 150px;
 				height: 150px * $aspectRatio;
 				font-size: 22px;
@@ -878,7 +877,7 @@
 				font-size: 28px;
 				margin-bottom: 10px;
 
-				@include _425 {
+				@include _559 {
 					font-size: 22px;
 				}
 			}
@@ -896,7 +895,7 @@
 					&-title {
 						margin-top: 5px;
 
-						@include _425 {
+						@include _559 {
 							font-size: 16px;
 						}
 					}
@@ -907,7 +906,7 @@
 						height: 200px * $aspectRatio;
 						transition: .3s ease;
 	
-						@include _425 {
+						@include _559 {
 							width: 150px;
 							height: 150px * $aspectRatio;
 						}
@@ -935,7 +934,7 @@
 				font-size: 28px;
 				margin-bottom: 10px;
 
-				@include _425 {
+				@include _559 {
 					font-size: 22px;
 				}
 			}
@@ -953,7 +952,7 @@
 					&-title {
 						margin-top: 5px;
 
-						@include _425 {
+						@include _559 {
 							font-size: 16px;
 						}
 					}
@@ -964,7 +963,7 @@
 						height: 200px * $aspectRatio;
 						transition: .3s ease;
 	
-						@include _425 {
+						@include _559 {
 							width: 150px;
 							height: 150px * $aspectRatio;
 						}

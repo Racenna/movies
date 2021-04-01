@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import noImage from '../../../assets/svg/no_image.svg';
 
 type Props = {
@@ -24,6 +24,11 @@ const PeopleDetail = ({
 }: Props) => {
   const [knownAs, setKnownAs] = useState(false);
   const [moreBiography, setMoreBiography] = useState(false);
+
+  useEffect(() => {
+    document.title = name;
+  }, []);
+
   return (
     <div className="people-detail">
       <div className="people-detail-name">{name}</div>

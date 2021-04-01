@@ -21,7 +21,7 @@ $mobileImgWidth: 200px;
 	overflow-x: hidden;
 	padding: 20px 0px 0px 20px;
 
-	@include _425 {
+	@include _559 {
 		padding: 10px 0 0 10px;
 	}
 
@@ -33,7 +33,7 @@ $mobileImgWidth: 200px;
 		line-height: 1.2;
 		font-size: 38px;
 
-		@include _425 {
+		@include _559 {
 			font-size: 24px;
 		}
 	}
@@ -46,7 +46,7 @@ $mobileImgWidth: 200px;
 			margin-bottom: 10px;
 			border-bottom: 1px solid $secondaryColor;
 
-			@include _425 {
+			@include _559 {
 				font-size: 26px;
 			}
 		}
@@ -58,7 +58,7 @@ $mobileImgWidth: 200px;
 			margin-bottom: 10px;
 			border-bottom: 1px solid $secondaryColor;
 
-			@include _425 {
+			@include _559 {
 				flex-direction: column;
 				align-items: center;
 			}
@@ -69,7 +69,7 @@ $mobileImgWidth: 200px;
 				border-radius: 6px;
 				margin-right: 20px;
 
-				@include _425 {
+				@include _559 {
 					width: $mobileImgWidth;
 					height: $mobileImgWidth * $aspectRatio;
 					margin-right: 0;
@@ -79,7 +79,7 @@ $mobileImgWidth: 200px;
 
 			.info {
 
-				@include _425 {
+				@include _559 {
 					margin-left: 10px;
 					margin-right: 10px;
 				}
@@ -87,7 +87,7 @@ $mobileImgWidth: 200px;
 				&-item {
 					line-height: 1.5;
 
-					@include _425 {
+					@include _559 {
 						font-size: 16px;
 					}
 					
@@ -137,7 +137,7 @@ $mobileImgWidth: 200px;
 				font-size: 28px;
 				margin-bottom: 10px;
 
-				@include _425 {
+				@include _559 {
 					font-size: 22px;
 				}
 			}
@@ -168,7 +168,7 @@ $mobileImgWidth: 200px;
 						margin-top: 8px;
 						padding-right: 20px;
 
-						@include _425 {
+						@include _559 {
 							margin-top: 5px;
 							font-size: 16px;
 						}
@@ -180,7 +180,7 @@ $mobileImgWidth: 200px;
 						margin-right: 20px;
 						border-radius: 6px;
 
-						@include _425 {
+						@include _559 {
 							width: 150px;
 							height: $aspectRatio * 150px;
 						}
@@ -204,7 +204,7 @@ $mobileImgWidth: 200px;
 							background-color: $hoverLightGrayColor;
 						}
 
-						@include _425 {
+						@include _559 {
 							width: 150px;
 							height: $aspectRatio * 150px;
 							font-size: 24px;
@@ -225,7 +225,7 @@ $mobileImgWidth: 200px;
 					font-size: 28px;
 					margin-bottom: 10px;
 
-					@include _425 {
+					@include _559 {
 						font-size: 22px;
 					}
 				}
@@ -256,7 +256,7 @@ $mobileImgWidth: 200px;
 							margin-top: 8px;
 							padding-right: 20px;
 
-							@include _425 {
+							@include _559 {
 								margin-top: 5px;
 								font-size: 16px;
 							}
@@ -268,7 +268,7 @@ $mobileImgWidth: 200px;
 							margin-right: 20px;
 							border-radius: 6px;
 
-							@include _425 {
+							@include _559 {
 								width: 150px;
 								height: $aspectRatio * 150px;
 							}
@@ -292,7 +292,7 @@ $mobileImgWidth: 200px;
 								background-color: $hoverLightGrayColor;
 							}
 
-							@include _425 {
+							@include _559 {
 								width: 150px;
 								height: $aspectRatio * 150px;
 								font-size: 24px;

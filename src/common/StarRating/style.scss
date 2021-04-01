@@ -11,7 +11,7 @@
 	padding: 20px;
 	border-radius: 6px;
 
-	@include _425 {
+	@include _559 {
 		min-width: 0;
 		width: 100%;
 		border-radius: 0;
@@ -21,7 +21,7 @@
 	.rating-title {
 		margin-bottom: 20px;
 
-		@include _425 {
+		@include _559 {
 			margin-bottom: 10px;
 		}
 	}
@@ -35,7 +35,7 @@
 		cursor: pointer;
 		transform: rotate(180deg);
 
-		@include _425 {
+		@include _559 {
 			font-size: 20px;
 		}
 
@@ -60,7 +60,7 @@
 		.remove-rating {
 			font-size: 28px;
 
-			@include _425 {
+			@include _559 {
 				font-size: 16px;
 				margin-left: 5px;
 			}

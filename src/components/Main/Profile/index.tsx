@@ -275,6 +275,7 @@ const Profile = () => {
             });
             setTotalPage(res.total_pages);
             setIsLoading(false);
+            document.title = 'Profile | Favorite';
           });
           break;
         }
@@ -285,6 +286,7 @@ const Profile = () => {
             });
             setTotalPage(res.total_pages);
             setIsLoading(false);
+            document.title = 'Profile | Watch list';
           });
           break;
         }
@@ -295,6 +297,7 @@ const Profile = () => {
             });
             setTotalPage(res.total_pages);
             setIsLoading(false);
+            document.title = 'Profile | Rated';
           });
           break;
         }
@@ -305,6 +308,7 @@ const Profile = () => {
             });
             setTotalPage(res.total_pages);
             setIsLoading(false);
+            document.title = 'Profile | Lists';
           });
           break;
         }

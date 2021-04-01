@@ -16,6 +16,10 @@ const Trending = () => {
   const location = useLocation();
 
   useEffect(() => {
+    document.title = 'Trending';
+  }, []);
+
+  useEffect(() => {
     const params = new URLSearchParams(location.search);
     const page = params.get('page');
     if (page) {
