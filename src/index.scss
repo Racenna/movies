@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
 @import 'sass/variables.scss';
 @import 'sass/null_style.scss';
+@import 'sass/mixins.scss';
 
 body {
   padding: 0px;
@@ -31,4 +32,15 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background-color: #cc5252;
+}
+
+@include _559 {
+  ::-webkit-scrollbar {
+    width: 11px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-width: 4px;
+  }
 }
