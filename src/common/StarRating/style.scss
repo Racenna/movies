@@ -7,7 +7,7 @@
 	align-items: center;
 	background-color: $gray;
 	min-width: 375px;
-	width: 45%;
+	width: 60%;
 	padding: 20px;
 	border-radius: 6px;
 
@@ -40,7 +40,6 @@
 		}
 
 		.rating-star {
-			width: 100%;
 			transform: rotate(180deg);
 
 			&.rated {
