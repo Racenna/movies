@@ -1,11 +1,16 @@
+# Racenna Movie
+## App available on
+https://movies-racenna.vercel.app 
+## Description
+This is a web application for viewing movie descriptions, cast, crew, trailers, posters and similar movies. \
+An unauthorized user can view the page with today's movie trends, as well as view description of movies and actors. \
+An authorized user can add a movie to the favorites list, watchlist, custom user list, and set/remove a rating for the movie. Also in the profile, the user can remove movies from the lists and create a new custom list.
+## Authorization
+For authorization in the web application, you must click the button in the upper right corner, and you will be redirected to "[The Movie Database](https://www.themoviedb.org/)" site to approve the 3rd party authentication request. When you approve or deny, you will be redirected back to the web application.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## App available on
-https://movies-racenna.vercel.app \
-https://movies-git-master-racenna.vercel.app \
-https://movies-kohl.vercel.app
 
 ## Available Scripts
 

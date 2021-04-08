@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { peopleAPI } from '../api/peopleAPI/peopleAPI';
 import { Details, Cast, Crew } from '../api/peopleAPI/types';
-// import { StatusCodes } from '../api/statusCodes';
 
 const usePeopleDetails = (people_id: number) => {
   const [isLoading, setIsLoading] = useState(true);
