@@ -1,3 +1,4 @@
+import React, { Suspense } from 'react';
 import {
   BrowserRouter as Router,
   Redirect,
@@ -5,16 +6,23 @@ import {
   Switch,
 } from 'react-router-dom';
 import { ToastContainer, Zoom } from 'react-toastify';
-import Header from './components/Header';
-import Trending from './components/Main/Trending';
-import ListDetail from './components/Main/List/ListDetail';
-import CreateList from './components/Main/List/CreateList';
-import Description from './components/Main/Description';
-import Profile from './components/Main/Profile';
-import Approve from './components/Main/Approve/Approve';
-import People from './components/Main/People';
 import SessionContextProvider from './contexts/SessionContext';
 import ProtectedRoute from './common/ProtectedRoute';
+import Preloader from './common/Preloader';
+import Header from './components/Header';
+import Trending from './components/Main/Trending';
+import Description from './components/Main/Description';
+import People from './components/Main/People';
+
+const ListDetail = React.lazy(
+  () => import('./components/Main/List/ListDetail')
+);
+const CreateList = React.lazy(
+  () => import('./components/Main/List/CreateList')
+);
+
+const Profile = React.lazy(() => import('./components/Main/Profile'));
+const Approve = React.lazy(() => import('./components/Main/Approve/Approve'));
 import './App.scss';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -30,19 +38,42 @@ const App = () => {
               path="/"
               component={() => <Redirect to="/trending" />}
             />
-            <ProtectedRoute path="/profile/:typeList" component={Profile} />
+            <ProtectedRoute
+              path="/profile/:typeList"
+              component={() => (
+                <Suspense fallback={<Preloader />}>
+                  <Profile />
+                </Suspense>
+              )}
+            />
             <ProtectedRoute
               path="/list/:listId"
-              component={ListDetail}
+              component={() => (
+                <Suspense fallback={<Preloader />}>
+                  <ListDetail />
+                </Suspense>
+              )}
               exact={true}
             />
             <ProtectedRoute
               path="/create-list"
-              component={CreateList}
+              component={() => (
+                <Suspense fallback={<Preloader />}>
+                  <CreateList />
+                </Suspense>
+              )}
               exact={true}
             />
             <Route path="/people/:people_id" component={People} exact />
-            <Route exact path="/approved" component={Approve} />
+            <Route
+              exact
+              path="/approved"
+              component={() => (
+                <Suspense fallback={<Preloader />}>
+                  <Approve />
+                </Suspense>
+              )}
+            />
             <Route exact path="/trending" component={Trending} />
             <Route
               path="/movie/description/:movie_id"

@@ -34,7 +34,11 @@ const Approve = () => {
   if (isApproved)
     return <Redirect to={localStorage.getItem('prevPage') || ''} />;
 
-  return <div className="main">Authentication</div>;
+  return (
+    <div style={{ gridArea: 'main', padding: '15px', fontSize: '21px' }}>
+      Authentication
+    </div>
+  );
 };
 
 export default Approve;
